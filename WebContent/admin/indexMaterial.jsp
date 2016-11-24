@@ -49,22 +49,15 @@
 					<tbody>
 						<%
 							for (Material item : alItem) {
-								String pic = request.getContextPath() +"/files/" +item.getName_picture();
+								
 						%>
 						<tr class="odd gradeX" align="center">
 							<td><%=item.getId_material()%></td>
 							<td><%=item.getName()%></td>
 							<td><%=item.getName_unit()%></td>
 							<td><%=item.getNote()%></td>
-							<%
-							if(!"".equals(item.getName_picture())){
-								
-							%>
-							<td align="center"><img src="<%=pic %>" class="hoa" /></td>
-							<%}else{ %>
-								<p>chưa update anh</p>
-							<%} %>
-							
+							<td><img src="<%=item.getLink()%>" alt="No Image"
+								width="50" /></td>
 							<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
 								href="<%=request.getContextPath()%>/admin/delMaterial?id=<%=item.getId_material()%>">
 									Delete</a></td>

@@ -29,5 +29,9 @@ public class UnitBo {
 		return itemDao.delItemByID(id);
 	}
 
+	public int setUnitById(int unit, String name_unit) {
+		return itemDao.setUnitById(unit,name_unit);
+	}
+
 	
 }

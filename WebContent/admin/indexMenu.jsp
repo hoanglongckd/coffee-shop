@@ -5,11 +5,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/templates/inc/_header.jsp" %>
-<%@include file="/templates/inc/_top.jsp" %>
-<%@include file="/templates/inc/_menu.jsp" %>
+<%@include file="/templates/inc/_header.jsp"%>
+<%@include file="/templates/inc/_top.jsp"%>
+<%@include file="/templates/inc/_menu.jsp"%>
 <%@include file="/templates/inc/left_bar.jsp"%>
-<title> Danh sách Thuc Đơn</title>
+<title>Danh sách Thuc Đơn</title>
 
 <!-- Page Content -->
 
@@ -40,8 +40,8 @@
 							<th>Tên Thực Đơn</th>
 							<th>Tên Loại Thực DƠn</th>
 							<th>Gía Tiền</th>
-							<th>Mô tả </th>
-							<th>Hình Anh </th>
+							<th>Mô tả</th>
+							<th>Hình Anh</th>
 							<th>Delete</th>
 							<th>Edit</th>
 
@@ -51,7 +51,6 @@
 					<tbody>
 						<%
 							for (MenuAdmin item : alItem) {
-								
 						%>
 						<tr class="odd gradeX" align="center">
 							<td><%=item.getId_Menu()%></td>
@@ -59,11 +58,10 @@
 							<td><%=item.getName_type_menu()%></td>
 							<td><%=item.getPrice()%></td>
 							<td><%=item.getMota()%></td>
-							<td>
-										<img src="<%=item.getLink() %>" alt="No Image" width="50" />
-									</td>
-							
-							
+							<td><img src="<%=item.getLink()%>" alt="No Image"
+								width="50" /></td>
+
+
 							<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
 								href="<%=request.getContextPath()%>/admin/delMenu?id=<%=item.getId_Menu()%>">
 									Delete</a></td>

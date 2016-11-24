@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Material;
+import bo.AnhBo;
 import bo.MaterialBo;
 import bo.UnitBo;
 
@@ -42,34 +43,33 @@ public class ControllerEditMaterial extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UnitBo uBo = new UnitBo();
 		MaterialBo maBo = new MaterialBo();
-		
-		request.setAttribute("alItemU", uBo.getList());
-		request.setAttribute("alItemP", maBo.getListPicture());
+
+		UnitBo unitBo = new UnitBo();
+
 		if (request.getParameter("submit") != null) {
 			int Id = Integer.parseInt(request.getParameter("id"));
-			int id_picture =0;
-			 
-			 int id_unit =0;
-			 String name;
-			 String note;
-			//String name  =new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
-			 if(request.getParameter("picture")!=null){
-				 id_picture = Integer.parseInt(request.getParameter("picture"));
-			 }
-			 
-			 if(request.getParameter("unit")!=null){
-				 id_unit = Integer.parseInt(request.getParameter("unit"));
-			 }
-			name  =new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
-			note = new String( request.getParameter("note").getBytes("ISO-8859-1"),"UTF-8");
-			Material Item = new Material(Id, id_picture, id_unit, 1, name, note);
-			int result = maBo.editItem(Item);
-			if(result >0){
-				response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=1");
-			}else{
-				response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=0");
+			Material Item = maBo.getItemById(Id);
+			
+
+			String link = new String(request.getParameter("link").getBytes("ISO-8859-1"), "UTF-8");
+			String name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
+			String note = new String(request.getParameter("note").getBytes("ISO-8859-1"), "UTF-8");
+			String name_unit = new String(request.getParameter("unit").getBytes("ISO-8859-1"), "UTF-8");
+			System.out.println("lik"+link);
+			int resultPicture = AnhBo.getInstance().setLinkPictuteByID(Item.getId_picture(), link);
+			if (resultPicture > 0) {
+				int resultUnit = unitBo.setUnitById(Item.getUnit(), name_unit);
+				if (resultUnit > 0) {
+
+					Material itemNewMa = new Material(Id, Item.getId_picture(), Item.getUnit(), 1, name, note);
+					int result = maBo.editItem(itemNewMa);
+					if (result > 0) {
+						response.sendRedirect(request.getContextPath() + "/admin/indexMaterial?msg=1");
+					} else {
+						response.sendRedirect(request.getContextPath() + "/admin/indexMaterial?msg=0");
+					}
+				}
 			}
 		} else {
 			int Id = Integer.parseInt(request.getParameter("id"));

@@ -9,6 +9,7 @@ public class Material {
 	private String note;
 	private String name_picture;
 	private String name_unit;
+	private String link;
 	public int getId_material() {
 		return id_material;
 	}
@@ -58,8 +59,26 @@ public class Material {
 	public void setName_unit(String name_unit) {
 		this.name_unit = name_unit;
 	}
+	
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	
+	public Material(int id_material, int id_picture, int unit, int id_shop, String name, String note) {
+		super();
+		this.id_material = id_material;
+		this.id_picture = id_picture;
+		this.unit = unit;
+		this.id_shop = id_shop;
+		this.name = name;
+		this.note = note;
+	}
+	
 	public Material(int id_material, int id_picture, int unit, int id_shop, String name, String note,
-			String name_picture, String name_unit) {
+			String name_picture, String name_unit, String link) {
 		super();
 		this.id_material = id_material;
 		this.id_picture = id_picture;
@@ -69,15 +88,7 @@ public class Material {
 		this.note = note;
 		this.name_picture = name_picture;
 		this.name_unit = name_unit;
-	}
-	public Material(int id_material, int id_picture, int unit, int id_shop, String name, String note) {
-		super();
-		this.id_material = id_material;
-		this.id_picture = id_picture;
-		this.unit = unit;
-		this.id_shop = id_shop;
-		this.name = name;
-		this.note = note;
+		this.link = link;
 	}
 	public Material() {
 		super();

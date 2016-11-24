@@ -29,7 +29,7 @@ public class MaterialDao {
 			rs = pst.executeQuery();
 			
 			while (rs.next()) {
-				Item = new Material(rs.getInt("idNguyenLieu"),rs.getInt("idAnh"),rs.getInt("idDonViTinh"),rs.getInt("idQuan"),rs.getString("tenNguyenLieu"),rs.getString("ghiChu"),rs.getString("ten"),rs.getString("tenDonViTinh"));
+				Item = new Material(rs.getInt("idNguyenLieu"),rs.getInt("idAnh"),rs.getInt("idDonViTinh"),rs.getInt("idQuan"),rs.getString("tenNguyenLieu"),rs.getString("ghiChu"),rs.getString("ten"),rs.getString("tenDonViTinh"),rs.getString("duongDan"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {
@@ -116,14 +116,16 @@ public class MaterialDao {
 		Material objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM nguyenlieu WHERE idNguyenLieu = ?  LIMIT 1";
+		String query = "SELECT * FROM  nguyenlieu LEFT JOIN donvitinh ON nguyenlieu.idDonViTinh = donvitinh.idDonViTinh LEFT JOIN "
+				+ "anh ON nguyenlieu.idAnh = anh.idAnh  WHERE nguyenlieu.idQuan = 1 && idNguyenLieu = ?  LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,Id );
 			rs = pst.executeQuery();
 			if(rs.next()){
-				objItem =  new Material(rs.getInt("idNguyenLieu"),rs.getInt("idAnh"),rs.getInt("idDonViTinh"),rs.getInt("idQuan"),rs.getString("tenNguyenLieu"),rs.getString("ghiChu"));
+				objItem = new Material(rs.getInt("idNguyenLieu"),rs.getInt("idAnh"),rs.getInt("idDonViTinh"),rs.getInt("idQuan"),rs.getString("tenNguyenLieu"),rs.getString("ghiChu"),rs.getString("ten"),rs.getString("tenDonViTinh"),rs.getString("duongDan"));
+			
 			}
 			
 		} catch (SQLException e) {

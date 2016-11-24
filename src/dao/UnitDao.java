@@ -51,10 +51,13 @@ public class UnitDao {
 		String query = "INSERT INTO donvitinh(tenDonViTinh) VALUES(?)";
 		
 		try {
-			pst = conn.prepareStatement(query);
+			pst = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 			pst.setString(1,Item.getName() );
 			pst.executeUpdate();
-			result =1;
+			ResultSet rsk= pst.getGeneratedKeys();
+			while(rsk.next()){
+				result = rsk.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,6 +159,35 @@ public class UnitDao {
 			
 		}
 		
+		return result;
+	}
+
+
+	public int setUnitById(int unit, String name_unit) {
+		conn = lb.getConnectMySQL();
+		int result =0;
+		String query = "UPDATE  donvitinh SET tenDonViTinh= ? WHERE idDonViTinh =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setString(1,name_unit);
+			pst.setInt(2, unit);
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		return result;
 	}
 

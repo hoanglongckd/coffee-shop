@@ -30,52 +30,19 @@
 				<form action="" method="POST">
 					
                             
-                      <%
-						ArrayList<Unit> alItemU = (ArrayList<Unit>) request.getAttribute("alItemU");
-					%>
+                    
                                <div class="form-group">
-								<label>Đơn Vị</label> <select name="unit"
-								class="input-short form-control">
-
-						<% for(Unit itemM : alItemU) {
-							String selected ="";
-							if(itemM.getId_unit()== Item.getUnit()){
-								selected ="selected=\"selected\"";
-							}else{
-								selected="";
-							}
-						%>
-								<option <%=selected %> value="<%=itemM.getId_unit()%>"><%=itemM.getName() %></option>
-						<%}%>		
-
-							</select>
-						</div>
+								
 						
 						<div class="form-group">
-                      <%
-						ArrayList<Picture> alItemT = (ArrayList<Picture>) request.getAttribute("alItemP");
-					%>
-                               <div class="form-group">
-								<label>Thực Đơn</label> <select name="picture"
-								class="input-short form-control">
-
-						<% for(Picture itemT : alItemT) {
-							String selected ="";
-							if(itemT.getIdPicture()== Item.getId_picture()){
-								selected ="selected=\"selected\"";
-							}else{
-								selected="";
-							}
-							%>
-						
-								<option <%=selected %> value="<%=itemT.getIdPicture()%>"><%=itemT.getName()%></option>
-						<%}%>		
-
-							</select>
-						</div>
-                                 <label>Tên Nguyên Liệu</label> <input class="form-control"  value="<%=Item.getName()%>" name="name"
+                     
+                                 <label>Tên Nguyên Liệu</label> <input class="form-control" name="name" value="<%=Item.getName() %>"
 								placeholder="Please Enter Username" />
-							<label>Ghi Chú</label> <input class="form-control" value="<%=Item.getNote() %>" name="note"
+								<label>Đơn Vị Tính</label> <input class="form-control" name="unit" value="<%=Item.getName_unit() %>"
+								placeholder="Please Enter Username" />
+							<label>Đường dẫn hình ảnh</label> <input class="form-control" name="link" value="<%=Item.getLink() %>"
+								placeholder="Please Enter Username" />
+							<label>Ghi Chú</label> <input class="form-control" name="note" value="<%=Item.getNote() %>"
 								placeholder="Please Enter Username" />
                             </div>
                             
