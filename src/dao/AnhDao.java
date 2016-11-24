@@ -222,4 +222,35 @@ public class AnhDao {
 		return objItem;
 	}
 
+	public int setLinkPictuteByID(int id_picture, String link) {
+		int result =0;
+		conn = lb.getConnectMySQL();
+		
+		String query = "UPDATE  Anh SET  duongDan =? WHERE idAnh =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setString(1,link);
+			pst.setInt(2,id_picture);
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+		
+	}
+
 }

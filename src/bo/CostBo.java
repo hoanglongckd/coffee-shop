@@ -38,4 +38,9 @@ public class CostBo {
 	}
 
 	
+	public int setPriceByID(Cost costNew) {
+		return itemDao.setPriceByID(costNew);
+	}
+
+	
 }

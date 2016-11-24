@@ -227,4 +227,38 @@ public class CostDao {
 		
 	}
 
+
+	
+
+
+	public int setPriceByID(Cost costNew) {
+		conn = lb.getConnectMySQL();
+		int result =0;
+		String query = "UPDATE  giatien SET giaTien = ?,NgayCapNhap=? WHERE idGiaTien =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setFloat(1,costNew.getCost());
+			pst.setTimestamp(2, costNew.getDate_update());
+			pst.setInt(3, costNew.getId_cost());
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+		
+	}
+
 }

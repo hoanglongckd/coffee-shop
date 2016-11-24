@@ -142,4 +142,64 @@ public class MenuDao {
 		}
 		return result;
 	}
+
+	public MenuAdmin getMenuByID(int id) {
+		MenuAdmin Item = null;
+		
+		conn = lb.getConnectMySQL();
+		String query = "SELECT * FROM thucdon LEFT JOIN giatien ON thucdon.idThucDon = giatien.idThucDon LEFT JOIN anh ON thucdon.idAnh = anh.idAnh LEFT JOIN loaithucpham ON loaithucpham.idLoaiThucPham = thucdon.idLoaiThucPham WHERE thucdon.idQuan =1 && thucdon.idThucDon= ? ";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Item = new MenuAdmin(rs.getInt("idThucDon"), rs.getInt("idAnh"), rs.getString("ten"),
+						rs.getString("duongDan"), rs.getInt("idQuan"), rs.getInt("idLoaiThucPham"),
+						rs.getString("tenLoaiThucPham"), rs.getInt("idGiaTien"), rs.getString("tenThucDon"),
+						rs.getInt("soLuong"), rs.getFloat("giaTien"), rs.getInt("kieuCheBien"), rs.getString("moTa"));
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return Item;
+	}
+
+	public int editItem(MenuAdmin itemNewMenu) {
+		int result = 0;
+		conn = lb.getConnectMySQL();
+		String query = "UPDATE thucdon SET idLoaiThucPham=?,tenThucDon=?,moTa =? WHERE idThucDon =?";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, itemNewMenu.getId_type_Menu());
+			pst.setString(2, itemNewMenu.getName());
+			pst.setString(3, itemNewMenu.getMota());
+			pst.setInt(4, itemNewMenu.getId_Menu());
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

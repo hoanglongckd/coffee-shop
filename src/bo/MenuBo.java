@@ -21,4 +21,10 @@ public class MenuBo {
 	public int addItem(MenuAdmin itemMenu) {
 		return menuDao.addItem(itemMenu);
 	}
+	public MenuAdmin getMenuByID(int id) {
+		return menuDao.getMenuByID(id);
+	}
+	public int editItem(MenuAdmin itemNewMenu) {
+		return menuDao.editItem(itemNewMenu);
+	}
 }

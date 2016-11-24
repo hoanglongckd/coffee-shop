@@ -260,4 +260,23 @@
     <servlet-name>ControllerAddMenu</servlet-name>
     <url-pattern>/admin/addMenu</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerEditMenu</servlet-name>
+    <servlet-class>controller.ControllerEditMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditMenu</servlet-name>
+    <url-pattern>/admin/editMenu</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ControllerDelMenu</servlet-name>
+    <servlet-class>controller.ControllerDelMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelMenu</servlet-name>
+    <url-pattern>/admin/delMenu</url-pattern>
+  </servlet-mapping>
 </web-app>

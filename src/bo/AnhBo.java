@@ -53,4 +53,8 @@ public class AnhBo {
 	public Anh getItemByName(String tenAnh) {
 		return AnhDao.getItemByName(tenAnh);
 	}
+	public int setLinkPictuteByID(int id_picture, String link) {
+		return AnhDao.setLinkPictuteByID(id_picture,link);
+	}
+	
 }
