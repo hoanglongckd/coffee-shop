@@ -33,5 +33,9 @@ public class DetailStockBo {
 		return itemDao.addDetailStock(detailStock);
 	}
 
+	public int getIdDetailByID(int id_import) {
+		return itemDao.getIdDetailByID(id_import);
+	}
+
 	
 }

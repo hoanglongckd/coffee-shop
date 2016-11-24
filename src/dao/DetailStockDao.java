@@ -81,7 +81,7 @@ public class DetailStockDao {
 	public int editItem(DetailStock Item) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "UPDATE  nhaphang SET idNhapHang = ?,idNguyenLieu =?,ngayHetHan =?,soLuongConTrongKho =?,tinhTrangSuDung =? WHERE id =? LIMIT 1";
+		String query = "UPDATE  chitietkho SET idNhapHang = ?,idNguyenLieu =?,ngayHetHan =?,soLuongConTrongKho =?,tinhTrangSuDung =? WHERE idChiTietKho =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -198,6 +198,38 @@ public class DetailStockDao {
 			
 		}
 		
+		return result;
+	}
+
+
+	public int getIdDetailByID(int id_import) {
+		int result =0;
+		conn = lb.getConnectMySQL();
+		
+		String query = "SELECT * FROM chitietkho WHERE idNhapHang = ?  LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_import);
+			rs = pst.executeQuery();
+			if(rs.next()){
+				result = rs.getInt("idChiTietKho");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		return result;
 	}
 

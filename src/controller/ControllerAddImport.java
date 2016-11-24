@@ -84,9 +84,7 @@ public class ControllerAddImport extends HttpServlet {
 			}
 
 			ImportGoods ItemNew = new ImportGoods(0, id_materail, id_staff, 1, sl, date_import, count_money);
-			System.out.println("n"+id_staff);
 			int result_import = itemBo.addItem(ItemNew);
-			System.out.println("ad" + result_import);
 
 			if (result_import > 0) {
 				DetailStock detailStock = new DetailStock(0, result_import, id_materail, date_end, sl, 1);

@@ -85,7 +85,7 @@ public class ImportGoodsDao {
 	public int editItem(ImportGoods Item) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "UPDATE  nhaphang SET idNguyenLieu =?,idNhanVien =? ,idQuan =?,soLuong =?,ngayNhapHang =?,soTien =? WHERE id =? LIMIT 1";
+		String query = "UPDATE  nhaphang SET idNguyenLieu =?,idNhanVien =? ,idQuan =?,soLuong =?,ngayNhapHang =?,soTien =? WHERE idNhapHang =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -119,14 +119,14 @@ public class ImportGoodsDao {
 		ImportGoods objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM nhaphang WHERE id = ?  LIMIT 1";
+		String query = "SELECT * FROM  nhaphang INNER JOIN nguyenlieu ON nhaphang.idNguyenLieu = nguyenlieu.idNguyenLieu LEFT JOIN nhanvien ON nhanvien.idNhanVien = nhaphang.idNhanVien LEFT JOIN chitietkho ON chitietkho.idNhapHang = nhaphang.idNhapHang WHERE nhaphang.idQuan = 1 && nhaphang.idNhapHang =?";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,Id );
 			rs = pst.executeQuery();
 			if(rs.next()){
-				objItem =  new ImportGoods(rs.getInt("id"),rs.getInt("idNguyenLieu"),rs.getInt("idNhanVien"),rs.getInt("idQuan"),rs.getInt("soLuong"), rs.getTimestamp("ngayNhapHang"), rs.getFloat("soTien"));
+				objItem = new ImportGoods(rs.getInt("idNhapHang"),rs.getInt("idNguyenLieu"),rs.getString("tenNguyenLieu"),rs.getInt("idNhanVien"), rs.getString("tenNhanVien"),rs.getInt("idQuan"), rs.getInt("soLuong"), rs.getTimestamp("ngayNhapHang"), rs.getFloat("soTien"),rs.getTimestamp("ngayHetHan"), rs.getInt("tinhTrangSuDung"));
 			}
 			
 		} catch (SQLException e) {

@@ -297,4 +297,13 @@
     <servlet-name>ControllerAddImport</servlet-name>
     <url-pattern>/admin/addImport</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerEditImport</servlet-name>
+    <servlet-class>controller.ControllerEditImport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditImport</servlet-name>
+    <url-pattern>/admin/editImport</url-pattern>
+  </servlet-mapping>
 </web-app>
