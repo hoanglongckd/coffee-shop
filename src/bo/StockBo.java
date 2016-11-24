@@ -29,5 +29,18 @@ public class StockBo {
 		return itemDao.delItemByID(id);
 	}
 
+	public boolean getItemByIdMaterial(int id_materail) {
+		return itemDao.getItemByIdMaterial(id_materail);
+	}
+
+	public int setQualityByIDMaterial(int id_materail, int sl) {
+		return itemDao.setQualityByIDMaterial(id_materail,sl);
+	
+	}
+
+	public int getQuality(int id_materail) {
+		return itemDao.getQuality(id_materail);
+	}
+
 	
 }

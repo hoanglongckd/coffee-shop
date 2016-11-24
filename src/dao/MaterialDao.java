@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Material;
+import bean.NhanVien;
 import bean.Picture;
 import libraryConnectDb.LibraryConnectDb;
 
@@ -186,6 +187,36 @@ public class MaterialDao {
 			
 			while (rs.next()) {
 				Item = new Picture(rs.getInt("idAnh"),rs.getString("ten"), rs.getString("duongDan"), rs.getInt("idQuan"));
+				alItem.add(Item);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return alItem;
+	}
+
+
+	public ArrayList<NhanVien> getListStaff() {
+		NhanVien Item = null;
+		ArrayList<NhanVien> alItem = new ArrayList<NhanVien>();
+		conn = lb.getConnectMySQL();
+		String query = "SELECT * FROM nhanvien ";
+		try {
+			pst = conn.prepareStatement(query);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Item = new NhanVien(rs.getInt("idNhanVien"),rs.getString("idAnh"),rs.getString("idQuan"),
+						rs.getString("tenNhanVien"),rs.getString("ghiChu"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {

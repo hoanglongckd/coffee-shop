@@ -168,4 +168,37 @@ public class DetailStockDao {
 		return result;
 	}
 
+
+	public int addDetailStock(DetailStock detailStock) {
+		conn = lb.getConnectMySQL();
+		int result =0;
+		String query = "INSERT INTO chitietkho(idNhapHang,idNguyenLieu,ngayHetHan,soLuongConTrongKho,tinhTrangSuDung) VALUES(?,?,?,?,?)";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, detailStock.getId_import());
+			pst.setInt(2, detailStock.getMaterial());
+			pst.setTimestamp(3, detailStock.getDate_expiration());
+			pst.setInt(4,detailStock.getAmountOfStock());
+			pst.setInt(5, detailStock.getUse_status());
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return result;
+	}
+
 }

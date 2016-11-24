@@ -20,13 +20,13 @@ public class ImportGoodsDao {
 		ImportGoods Item = null;
 		ArrayList<ImportGoods> alItem = new ArrayList<ImportGoods>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM  nhaphang WHERE idQuan = ? ";
+		String query = "SELECT * FROM  nhaphang INNER JOIN nguyenlieu ON nhaphang.idNguyenLieu = nguyenlieu.idNguyenLieu LEFT JOIN nhanvien ON nhanvien.idNhanVien = nhaphang.idNhanVien LEFT JOIN chitietkho ON chitietkho.idNhapHang = nhaphang.idNhapHang WHERE nhaphang.idQuan = 1 ";
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
-			pst.setInt(1, 1);
+			
 			while (rs.next()) {
-				Item = new ImportGoods(rs.getInt("id"),rs.getInt("idNguyenLieu"),rs.getInt("idNhanVien"),rs.getInt("idQuan"),rs.getInt("soLuong"), rs.getTimestamp("ngayNhapHang"), rs.getFloat("soTien"));
+				Item = new ImportGoods(rs.getInt("idNhapHang"),rs.getInt("idNguyenLieu"),rs.getString("tenNguyenLieu"),rs.getInt("idNhanVien"), rs.getString("tenNhanVien"),rs.getInt("idQuan"), rs.getInt("soLuong"), rs.getTimestamp("ngayNhapHang"), rs.getFloat("soTien"),rs.getTimestamp("ngayHetHan"), rs.getInt("tinhTrangSuDung"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {
@@ -52,7 +52,7 @@ public class ImportGoodsDao {
 		String query = "INSERT INTO nhaphang(idNguyenLieu,idNhanVien,idQuan,soLuong,ngayNhapHang,soTien) VALUES(?,?,?,?,?,?)";
 		
 		try {
-			pst = conn.prepareStatement(query);
+			pst = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 			pst.setInt(1, Item.getId_material());
 			pst.setInt(2, Item.getId_staff());
 			pst.setInt(3, Item.getId_shop());
@@ -60,7 +60,11 @@ public class ImportGoodsDao {
 			pst.setTimestamp(5, Item.getDate_import());
 			pst.setFloat(6, Item.getCount_money());
 			pst.executeUpdate();
-			result =1;
+			ResultSet rsk = pst.getGeneratedKeys();
+			while(rsk.next()){
+				result = rsk.getInt(1);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

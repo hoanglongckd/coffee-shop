@@ -47,13 +47,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="<%=request.getContextPath()%>/admin/importProduct.jsp"><i class="fa fa-bar-chart-o fa-fw"></i> Import Product<span class="fa arrow"></span></a>
+                            <a href="<%=request.getContextPath()%>/admin/importProduct"><i class="fa fa-bar-chart-o fa-fw"></i> Nhập Hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/admin/importProduct.jsp">List import product</a>
+                                    <a href="<%=request.getContextPath()%>/admin/indexImport">List Nhập hàng</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/admin/addImportProduct.jsp">Add import product</a>
+                                    <a href="<%=request.getContextPath()%>/admin/addImport">Add Nhập Hàng</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -3,6 +3,7 @@ package bo;
 import java.util.ArrayList;
 
 import bean.Material;
+import bean.NhanVien;
 import bean.Picture;
 import dao.MaterialDao;
 
@@ -32,6 +33,10 @@ public class MaterialBo {
 
 	public ArrayList<Picture> getListPicture() {
 		return itemDao.getListPicture();
+	}
+
+	public ArrayList<NhanVien> getListStaff() {
+		return itemDao.getListStaff();
 	}
 
 	

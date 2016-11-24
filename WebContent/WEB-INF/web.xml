@@ -279,4 +279,22 @@
     <servlet-name>ControllerDelMenu</servlet-name>
     <url-pattern>/admin/delMenu</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerIndexImport</servlet-name>
+    <servlet-class>controller.ControllerIndexImport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexImport</servlet-name>
+    <url-pattern>/admin/indexImport</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerAddImport</servlet-name>
+    <servlet-class>controller.ControllerAddImport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddImport</servlet-name>
+    <url-pattern>/admin/addImport</url-pattern>
+  </servlet-mapping>
 </web-app>

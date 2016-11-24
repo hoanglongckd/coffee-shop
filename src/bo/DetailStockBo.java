@@ -29,5 +29,9 @@ public class DetailStockBo {
 		return itemDao.delItemByID(id);
 	}
 
+	public int addDetailStock(DetailStock detailStock) {
+		return itemDao.addDetailStock(detailStock);
+	}
+
 	
 }

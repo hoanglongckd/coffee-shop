@@ -5,11 +5,16 @@ import java.sql.Timestamp;
 public class ImportGoods {
 	private int id_import;
 	private int id_material;
+	private String name_material;
 	private  int id_staff;
+	private String name_staff;
+	
 	private  int id_shop;
 	private int count_goods;
 	private  Timestamp date_import;
 	private  float count_money;
+	private Timestamp date_end;
+	private int status_use;
 	public int getId_import() {
 		return id_import;
 	}
@@ -66,6 +71,46 @@ public class ImportGoods {
 	public ImportGoods() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public String getName_material() {
+		return name_material;
+	}
+	public void setName_material(String name_material) {
+		this.name_material = name_material;
+	}
+	public String getName_staff() {
+		return name_staff;
+	}
+	public void setName_staff(String name_staff) {
+		this.name_staff = name_staff;
+	}
+	public Timestamp getDate_end() {
+		return date_end;
+	}
+	public void setDate_end(Timestamp date_end) {
+		this.date_end = date_end;
+	}
+	public int getStatus_use() {
+		return status_use;
+	}
+	public void setStatus_use(int status_use) {
+		this.status_use = status_use;
+	}
+	public ImportGoods(int id_import, int id_material, String name_material, int id_staff, String name_staff,
+			int id_shop, int count_goods, Timestamp date_import, float count_money, Timestamp date_end,
+			int status_use) {
+		super();
+		this.id_import = id_import;
+		this.id_material = id_material;
+		this.name_material = name_material;
+		this.id_staff = id_staff;
+		this.name_staff = name_staff;
+		this.id_shop = id_shop;
+		this.count_goods = count_goods;
+		this.date_import = date_import;
+		this.count_money = count_money;
+		this.date_end = date_end;
+		this.status_use = status_use;
 	}
 	
 

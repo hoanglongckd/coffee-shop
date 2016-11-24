@@ -166,4 +166,100 @@ public class StockDao {
 		return result;
 	}
 
+
+	public boolean getItemByIdMaterial(int id_materail) {
+		boolean result = false;
+		conn = lb.getConnectMySQL();
+		
+		String query = "SELECT * FROM kho WHERE idNguyenLieu = ?  LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_materail);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				if(id_materail == rs.getInt("idNguyenLieu"));
+				result = true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+	}
+
+
+	public int setQualityByIDMaterial(int id_materail, int sl) {
+		conn = lb.getConnectMySQL();
+		int result =0;
+		String query = "UPDATE  kho SET tongSoTrongKho =? WHERE idNguyenLieu =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, sl);
+			pst.setInt(2, id_materail);
+			
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+		
+	}
+
+
+	public int getQuality(int id_materail) {
+		int result = 0;
+		conn = lb.getConnectMySQL();
+		
+		String query = "SELECT * FROM kho WHERE idNguyenLieu = ?  LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_materail);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				result +=rs.getInt("tongSoTrongKho");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+	}
+
 }
