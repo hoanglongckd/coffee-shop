@@ -6,16 +6,7 @@
 	<!-- Bootstrap Core CSS -->
 	<link href="<%=request.getContextPath()%>/templates/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<%=request.getContextPath()%>/templates/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-	
-	<!--  DateTimePicker -->
-	<link href="<%=request.getContextPath()%>/templates/datetimepicker/css/daterangepicker.css" rel="stylesheet">
-	
-	<!-- MetisMenu CSS -->
-	<link href="<%=request.getContextPath()%>/templates/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-	
-	<!-- Custom CSS -->
-	<link href="<%=request.getContextPath()%>/templates/dist/css/sb-admin-2.css" rel="stylesheet">
-	
+		
 	<!-- Custom Fonts -->
 	<link href="<%=request.getContextPath()%>/templates/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
@@ -24,6 +15,15 @@
 	
 	<!-- DataTables Responsive CSS -->
 	<link href="<%=request.getContextPath()%>/templates/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+	
+	<!-- MetisMenu CSS -->
+	<link href="<%=request.getContextPath()%>/templates/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+	
+	<!--  DateTimePicker -->
+	<link href="<%=request.getContextPath()%>/templates/datetimepicker/css/daterangepicker.css" rel="stylesheet">
+	
+	<!-- Custom CSS -->
+	<link href="<%=request.getContextPath()%>/templates/dist/css/sb-admin-2.css" rel="stylesheet">
 </head>
 
 <body>
