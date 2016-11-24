@@ -6,9 +6,6 @@
 	<!-- Bootstrap Core CSS -->
 	<link href="<%=request.getContextPath()%>/templates/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<%=request.getContextPath()%>/templates/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-		
-	<!-- Custom Fonts -->
-	<link href="<%=request.getContextPath()%>/templates/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
 	<!-- DataTables CSS -->
 	<link href="<%=request.getContextPath()%>/templates/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
@@ -24,6 +21,10 @@
 	
 	<!-- Custom CSS -->
 	<link href="<%=request.getContextPath()%>/templates/dist/css/sb-admin-2.css" rel="stylesheet">
+	
+	<!-- Custom Fonts -->
+	<link href="<%=request.getContextPath()%>/templates/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+	
 </head>
 
 <body>
