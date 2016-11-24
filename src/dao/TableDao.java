@@ -77,7 +77,7 @@ public class TableDao {
 	public int editTable(Table table) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "UPDATE  ban SET idQuan =?, tenBan =?,trangThai =? WHERE id =? LIMIT 1";
+		String query = "UPDATE  ban SET idQuan =?, tenBan =?,trangThai =? WHERE idBan =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -108,7 +108,7 @@ public class TableDao {
 		Table objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM ban WHERE id = ? LIMIT 1";
+		String query = "SELECT * FROM ban WHERE idBan = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -138,7 +138,7 @@ public class TableDao {
 	public int delTableByID(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  ban WHERE id =? LIMIT 1";
+		String query = "DELETE FROM  ban WHERE idBan =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);

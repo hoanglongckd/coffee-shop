@@ -306,4 +306,13 @@
     <servlet-name>ControllerEditImport</servlet-name>
     <url-pattern>/admin/editImport</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerIndexBill</servlet-name>
+    <servlet-class>controller.ControllerIndexBill</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexBill</servlet-name>
+    <url-pattern>/admin/indexBill</url-pattern>
+  </servlet-mapping>
 </web-app>
