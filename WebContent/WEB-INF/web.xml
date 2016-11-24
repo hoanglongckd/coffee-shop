@@ -1,12 +1,245 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>coffee-shop</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  <display-name>manage-coffee</display-name>
+  <servlet>
+    <servlet-name>JAVA WS</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>controllerAppService</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JAVA WS</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ControllerLogin</servlet-name>
+    <servlet-class>controller.ControllerLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerLogin</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ControllerIndexTable</servlet-name>
+    <servlet-class>controller.ControllerIndexTable</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexTable</servlet-name>
+    <url-pattern>/admin/indexTable</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ControllerAddTable</servlet-name>
+    <servlet-class>controller.ControllerAddTable</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddTable</servlet-name>
+    <url-pattern>/admin/addTable</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ControllerEditTable</servlet-name>
+    <servlet-class>controller.ControllerEditTable</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditTable</servlet-name>
+    <url-pattern>/admin/editTable</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ControllerDelTable</servlet-name>
+    <servlet-class>controller.ControllerDelTable</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelTable</servlet-name>
+    <url-pattern>/admin/delTable</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerIndexTypeMenu</servlet-name>
+    <servlet-class>controller.ControllerIndexTypeMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexTypeMenu</servlet-name>
+    <url-pattern>/admin/indexTypeMenu</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ControllerAddTypeMenu</servlet-name>
+    <servlet-class>controller.ControllerAddTypeMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddTypeMenu</servlet-name>
+    <url-pattern>/admin/addTypeMenu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerEditTypeMenu</servlet-name>
+    <servlet-class>controller.ControllerEditTypeMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditTypeMenu</servlet-name>
+    <url-pattern>/admin/editTypeMenu</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ControllerDelTypeMenu</servlet-name>
+    <servlet-class>controller.ControllerDelTypeMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelTypeMenu</servlet-name>
+    <url-pattern>/admin/delTypeMenu</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ControllerIndexProcess</servlet-name>
+    <servlet-class>controller.ControllerIndexProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexProcess</servlet-name>
+    <url-pattern>/admin/indexProcess</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerAddProcess</servlet-name>
+    <servlet-class>controller.ControllerAddProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddProcess</servlet-name>
+    <url-pattern>/admin/addProcess</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerEditProcess</servlet-name>
+    <servlet-class>controller.ControllerEditProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditProcess</servlet-name>
+    <url-pattern>/admin/editProcess</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerDelProcess</servlet-name>
+    <servlet-class>controller.ControllerDelProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelProcess</servlet-name>
+    <url-pattern>/admin/delProcess</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ControllerIndexUnit</servlet-name>
+    <servlet-class>controller.ControllerIndexUnit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexUnit</servlet-name>
+    <url-pattern>/admin/indexUnit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerAddUnit</servlet-name>
+    <servlet-class>controller.ControllerAddUnit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddUnit</servlet-name>
+    <url-pattern>/admin/addUnit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerEditUnit</servlet-name>
+    <servlet-class>controller.ControllerEditUnit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditUnit</servlet-name>
+    <url-pattern>/admin/editUnit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerDelUnit</servlet-name>
+    <servlet-class>controller.ControllerDelUnit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelUnit</servlet-name>
+    <url-pattern>/admin/delUnit</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ControllerIndexStock</servlet-name>
+    <servlet-class>controller.ControllerIndexStock</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexStock</servlet-name>
+    <url-pattern>/admin/indexStock</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerAddStock</servlet-name>
+    <servlet-class>controller.ControllerAddStock</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddStock</servlet-name>
+    <url-pattern>/admin/addStock</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerEditStock</servlet-name>
+    <servlet-class>controller.ControllerEditStock</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditStock</servlet-name>
+    <url-pattern>/admin/editStock</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerDelStock</servlet-name>
+    <servlet-class>controller.ControllerDelStock</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelStock</servlet-name>
+    <url-pattern>/admin/delStock</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ControllerIndexMaterial</servlet-name>
+    <servlet-class>controller.ControllerIndexMaterial</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexMaterial</servlet-name>
+    <url-pattern>/admin/indexMaterial</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerAddMaterial</servlet-name>
+    <servlet-class>controller.ControllerAddMaterial</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddMaterial</servlet-name>
+    <url-pattern>/admin/addMaterial</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerEditMaterial</servlet-name>
+    <servlet-class>controller.ControllerEditMaterial</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditMaterial</servlet-name>
+    <url-pattern>/admin/editMaterial</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerDelMaterial</servlet-name>
+    <servlet-class>controller.ControllerDelMaterial</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelMaterial</servlet-name>
+    <url-pattern>/admin/delMaterial</url-pattern>
+  </servlet-mapping>
 </web-app>
