@@ -1,5 +1,5 @@
 *.class
-LibraryConnectDb.java
+/src/libraryConnectDb/LibraryConnectDb.java
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
