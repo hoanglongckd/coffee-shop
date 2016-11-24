@@ -39,7 +39,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Admin Area - SE04</a>
+			<a class="navbar-brand" href="index.html">Admin Area</a>
 		</div>
 		<!-- /.navbar-header -->
 	
