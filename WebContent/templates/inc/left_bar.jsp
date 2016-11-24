@@ -35,13 +35,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a  href="<%=request.getContextPath()%>/admin/menu.jsp"><i class="fa fa-cube fa-fw"></i>Menu<span class="fa arrow"></span></a>
+                            <a  href="<%=request.getContextPath()%>/admin/indexMenu"><i class="fa fa-cube fa-fw"></i>Menu<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/admin/menu.jsp">List Menu</a>
+                                    <a href="<%=request.getContextPath()%>/admin/indexMenu">List Menu</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/admin/addMenu.jsp">Add Menu</a>
+                                    <a href="<%=request.getContextPath()%>/admin/addMenu">Add Menu</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

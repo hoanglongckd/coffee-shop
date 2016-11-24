@@ -48,15 +48,19 @@ public class CostDao {
 	public int addItem(Cost Item) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "INSERT INTO giatien(idThucDon,giaTien,NgayCapNhat) VALUES(?,?,?)";
+		String query = "INSERT INTO giatien(idThucDon,giaTien,NgayCapNhap) VALUES(?,?,?)";
 		
 		try {
-			pst = conn.prepareStatement(query);
+			pst = conn.prepareStatement(query,PreparedStatement.RETURN_GENERATED_KEYS);
 			pst.setInt(1,Item.getId_menu() );
 			pst.setFloat(2, Item.getCost());
 			pst.setTimestamp(3, Item.getDate_update());
 			pst.executeUpdate();
-			result =1;
+			ResultSet rsk = pst.getGeneratedKeys();
+			while(rsk.next()){
+				result = rsk.getInt(1);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,6 +195,36 @@ public class CostDao {
 			
 		}
 		return objItem;
+	}
+
+
+	public int setItemCostByID(int id_cost, int id_menu) {
+		conn = lb.getConnectMySQL();
+		int result =0;
+		String query = "UPDATE  giatien SET idThucDon= ? WHERE idGiaTien =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_menu);
+			pst.setFloat(2, id_cost);
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+		
 	}
 
 }

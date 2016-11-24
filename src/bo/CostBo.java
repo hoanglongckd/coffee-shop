@@ -33,5 +33,9 @@ public class CostBo {
 		return itemDao.getItemByIdMenu(id_menu);
 	}
 
+	public int setItemCostByID(int id_cost, int id_menu) {
+		return itemDao.setItemCostByID(id_cost,id_menu);
+	}
+
 	
 }

@@ -242,4 +242,22 @@
     <servlet-name>ControllerDelMaterial</servlet-name>
     <url-pattern>/admin/delMaterial</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerIndexMenu</servlet-name>
+    <servlet-class>controller.ControllerIndexMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerIndexMenu</servlet-name>
+    <url-pattern>/admin/indexMenu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerAddMenu</servlet-name>
+    <servlet-class>controller.ControllerAddMenu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerAddMenu</servlet-name>
+    <url-pattern>/admin/addMenu</url-pattern>
+  </servlet-mapping>
 </web-app>
