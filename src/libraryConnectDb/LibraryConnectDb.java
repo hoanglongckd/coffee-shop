@@ -24,7 +24,7 @@ public class LibraryConnectDb {
 	public Connection getConnectMySQL(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffee_shop?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8","root","");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffee_shop?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8","root","1234");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
