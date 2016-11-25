@@ -68,10 +68,12 @@ public class ControllerUpdateNhanVien extends HttpServlet {
 		
 		int idNhanVien = Integer.parseInt(request.getParameter("idNhanVien"));
 		String duongDan = request.getParameter("duongDan");
-		String name = request.getParameter("ten");
+		String name = new String(request.getParameter("ten").getBytes("ISO-8859-1"), "UTF-8");
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String ghiChu = request.getParameter("ghiChu");
+		String ghiChu = new String(request.getParameter("ghiChu").getBytes("ISO-8859-1"), "UTF-8");
+
 		String tienLuong = request.getParameter("luong");
 		//
 		if (userBo.checkExistUsername(username,idNhanVien)) {

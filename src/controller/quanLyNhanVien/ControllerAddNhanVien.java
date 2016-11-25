@@ -44,8 +44,10 @@ public class ControllerAddNhanVien extends HttpServlet {
 		if(session.getAttribute("idNhanVien")!=null){
 		
 		if(request.getParameter("submit")!=null){
-			String hoTen = request.getParameter("ten");
-			String ghiChu = request.getParameter("ghiChu");
+			String hoTen = new String(request.getParameter("ten").getBytes("ISO-8859-1"), "UTF-8");
+
+			String ghiChu = new String(request.getParameter("ghiChu").getBytes("ISO-8859-1"), "UTF-8");
+
 			String duongDan =request.getParameter("anh");
 			//them anh
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
