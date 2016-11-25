@@ -112,9 +112,6 @@
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-inbox"></i> Nguyên Liệu Trong Kho <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                    	<li>
-                            <a href="<%=request.getContextPath()%>/admin/addStock"> Thêm nguyên liệu trong kho</a>
-                        </li>
                         <li>
                             <a href="<%=request.getContextPath()%>/admin/indexStock"> List nguyên liệu trong kho</a>
                         </li>
