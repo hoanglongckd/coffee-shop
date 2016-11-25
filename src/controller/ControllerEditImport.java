@@ -51,16 +51,19 @@ public class ControllerEditImport extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MaterialBo maBo = new MaterialBo();
-		request.setAttribute("alItemM", maBo.getList());
-		request.setAttribute("alItemN", maBo.getListStaff());
+		
+		request.setAttribute("alItemM", maBo.getList());// list nguyen lieu
+		request.setAttribute("alItemN", maBo.getListStaff());// list nhan vien
 		ImportGoodsBo itemBo = new ImportGoodsBo();
 		DetailStockBo detailStockBo = new DetailStockBo();
 		StockBo stockBo = new StockBo();
 		if (request.getParameter("submit") != null) {
+			//click 'sua' button
 			int Id = Integer.parseInt(request.getParameter("id"));
-			ImportGoods Item = itemBo.getItemById(Id);
-			int id_staff = Integer.parseInt(request.getParameter("staff"));
-			int id_materail = Integer.parseInt(request.getParameter("material"));
+			System.out.println("Id::"+Id);
+			ImportGoods phieuNhapHang = itemBo.getItemById(Id);// lay phieu nhap hang theo idnhaphang
+			int id_staff = Integer.parseInt(request.getParameter("staff"));//idNhanVien
+			int id_materail = Integer.parseInt(request.getParameter("material"));//idNguyenLieu
 			int sl = 0;
 			float count_money = 0;
 			if (request.getParameter("sl") != null) {
@@ -82,19 +85,19 @@ public class ControllerEditImport extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			System.out.println("date_end:"+date_end);
 			ImportGoods ItemNew = new ImportGoods(Id, id_materail, id_staff, 1, sl, date_import, count_money);
-			int result_import = itemBo.editItem(ItemNew);
+			int result_import = itemBo.editItem(ItemNew);//update vao bang nhap hang - true
 			if (result_import > 0) {
-				int id_detail = detailStockBo.getIdDetailByID(Item.getId_import());
-				DetailStock detailStock = new DetailStock(id_detail, Item.getId_import(), id_materail, date_end, sl, 1);
-				int result_detail = detailStockBo.editItem(detailStock);
+				int id_detail = detailStockBo.getIdDetailByID(phieuNhapHang.getId_import());//lay idChiTietKho theo idNhapHang
+				DetailStock detailStock = new DetailStock(id_detail, phieuNhapHang.getId_import(), id_materail, date_end, sl, 1);
+				int result_detail = detailStockBo.editItem(detailStock);//sua trong chi tiet kho
 				if (result_detail > 0) {
 					boolean check = stockBo.getItemByIdMaterial(id_materail);
 					int result = 0;
 					if (check == true) {
 						int slOld = stockBo.getQuality(id_materail);
-						result = stockBo.setQualityByIDMaterial(id_materail, sl + slOld);
+						result = stockBo.setQualityByIDMaterial(id_materail, sl + slOld - phieuNhapHang.getCount_goods());
 					} else {
 						Stock itemStock = new Stock(0, id_materail, 1, sl);
 						result = stockBo.addItem(itemStock);
@@ -107,7 +110,7 @@ public class ControllerEditImport extends HttpServlet {
 					}
 				}
 			}
-		} else {
+		} else { // chưa bấm 'sửa' button
 			int Id = Integer.parseInt(request.getParameter("id"));
 			ImportGoods Item = itemBo.getItemById(Id);
 			request.setAttribute("objItem", Item);

@@ -90,7 +90,7 @@ public class DetailStockDao {
 			pst.setTimestamp(3, Item.getDate_expiration());
 			pst.setInt(4, Item.getAmountOfStock());
 			pst.setInt(5, Item.getUse_status());
-			pst.setInt(6, Item.getId_import());
+			pst.setInt(6, Item.getId_detail());
 			pst.executeUpdate();
 			result =1;
 		} catch (SQLException e) {

@@ -84,7 +84,7 @@
 					
 					<div class="form-group">
 						<label>Ngày hết hạn</label> 
-						<input class="form-control" type="date" name="date_end"
+						<input class="form-control" type="text" name="date_end" value="<%=Item.getDate_end() %>"
 							placeholder="Nhập ngày hết hạn" required />
                   	</div>
                        	
