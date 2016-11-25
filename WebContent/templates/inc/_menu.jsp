@@ -10,7 +10,7 @@
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="button">
 								<i class="fa fa-search"></i>
-							</button>
+							</button> 
 						</span>
 					</div>
 				<!-- /input-group -->
