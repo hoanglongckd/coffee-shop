@@ -13,10 +13,12 @@ import javax.ws.rs.core.Response;
 import bean.LoginedAccount;
 import bean.PrimitiveType;
 import bean.User;
+import beanAdmin.ForLoginApp;
 import bo.UserBo;
 
 @Path("/serverApp")
 public class AppServerLogin {
+	private static final LoginedAccount LoginedAccount = null;
 	static ArrayList<LoginedAccount> alCheck = new ArrayList<LoginedAccount>();
 	UserBo userBo = new UserBo();
 
@@ -26,26 +28,25 @@ public class AppServerLogin {
 	public Response Login(@QueryParam("username") String username, @QueryParam("password") String password) {
 		// boolean check = userBo.CheckLogin(username, password);
 		PrimitiveType<String> result = new PrimitiveType<>();
-
+		ForLoginApp ItemCheck = new ForLoginApp();
 		User Item = userBo.CheckLogin(username, password);
 		if (Item != null) {
 			if (!alCheck.isEmpty()) {
-				for (LoginedAccount checkLogin : alCheck) {
-					if (Item.getId_user() == checkLogin.getId_user()) {
-						alCheck.remove(checkLogin);
-						String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-						alCheck.add(new LoginedAccount(Item.getId_NV(),username, uuid, Item.getId_NV()));
-						result.setValue(uuid);
-
-					} else {
-						String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-						alCheck.add(new LoginedAccount(Item.getId_NV(),username, uuid, Item.getId_NV()));
-						result.setValue(uuid);
-					}
+				boolean check = ItemCheck.checkLoginApp(LoginedAccount, alCheck, Item);
+				if (check == false) {
+					alCheck.remove(LoginedAccount);
+					String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+					alCheck.add(new LoginedAccount(Item.getId_NV(), username, uuid, Item.getId_NV()));
+					result.setValue(uuid);
+				} else {
+					String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+					alCheck.add(new LoginedAccount(Item.getId_NV(), username, uuid, Item.getId_NV()));
+					result.setValue(uuid);
 				}
+
 			} else {
 				String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-				alCheck.add(new LoginedAccount(Item.getId_NV(),username, uuid, Item.getId_NV()));
+				alCheck.add(new LoginedAccount(Item.getId_NV(), username, uuid, Item.getId_NV()));
 				result.setValue(uuid);
 			}
 		} else {
