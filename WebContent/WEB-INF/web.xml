@@ -352,4 +352,13 @@
     <servlet-name>ControllerEditDetailBill</servlet-name>
     <url-pattern>/admin/editDetailBill</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerDelDetailBill</servlet-name>
+    <servlet-class>controller.ControllerDelDetailBill</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelDetailBill</servlet-name>
+    <url-pattern>/admin/delDetailBill</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -55,4 +55,8 @@ public class DetailBillBo {
 		return itemDao.setMoneyByID(id,count,money,id_menu);
 	}
 
+	public int delItemByID(int id) {
+		return itemDao.delItemByID(id);
+	}
+
 }

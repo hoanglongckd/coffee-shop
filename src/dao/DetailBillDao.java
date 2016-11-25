@@ -146,7 +146,7 @@ public class DetailBillDao {
 	public int delItemByID(int id) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  chitiethoadon WHERE id =? LIMIT 1";
+		String query = "DELETE FROM  chitiethoadon WHERE idChiTietHoaDon =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);

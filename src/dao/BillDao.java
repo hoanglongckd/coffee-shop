@@ -438,5 +438,33 @@ public class BillDao {
 		}
 		return result;
 	}
+	public int setSumMoneyByIDBill(int id_bill, float f) {
+		int result =0;
+		conn = lb.getConnectMySQL();
+		String query = "UPDATE  hoadon SET tongTien =? WHERE idHoaDon =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setFloat(1, f);
+			pst.setInt(2,id_bill);
+			
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+	}
 
 }
