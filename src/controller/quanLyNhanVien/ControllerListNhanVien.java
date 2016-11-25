@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Luong;
 import bean.NhanVien;
@@ -26,8 +27,11 @@ public class ControllerListNhanVien extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+    	HttpSession session = request.getSession();
+    	int idNhanVien = Integer.parseInt(session.getAttribute("idNhanVien").toString());
     	ArrayList<NhanVien> listNhanVien = NhanVienBo.getInstance().getListNhanVienDetailByIdQuan(1);
-    	
+    	NhanVien nv = NhanVienBo.getInstance().getItemById(idNhanVien);
+    	listNhanVien.remove(nv);
 		request.setAttribute("listNhanVien", listNhanVien);
 		ArrayList<Luong> listLuongNhanVien = LuongBo.getInstance().getListLuong();
 		request.setAttribute("listLuongNhanVien", listLuongNhanVien);
