@@ -44,7 +44,7 @@
                 </li>
                 
                 <li>
-                    <a  href="#"><i class="fa fa-bars"></i> Hóa  Đơn<span class="fa arrow"></span></a>
+                    <a  href="#"><i class="fa fa-bars"></i> Hóa Đơn<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                     	
                         <li><a href="<%=request.getContextPath()%>/admin/indexBill">List Hóa Đơn</a></li>
@@ -52,10 +52,10 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-cube fa-fw"></i> Import Product<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-cube fa-fw"></i> Nhập hàng<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                    	<li><a href="<%=request.getContextPath()%>/admin/addImportProduct.jsp">Add import product</a></li>
-                        <li><a href="<%=request.getContextPath()%>/admin/importProduct.jsp">List import product</a></li>
+                    	<li><a href="<%=request.getContextPath()%>/admin/addImport">Thêm hàng mới</a></li>
+                        <li><a href="<%=request.getContextPath()%>/admin/indexImport">Danh sách hàng hóa</a></li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
