@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.MaterialBo;
+import bo.ImportGoodsBo;
 
 /**
  * Servlet implementation class ControllerIndexTable
@@ -35,14 +35,14 @@ public class ControllerDelImport extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MaterialBo ItemBo = new MaterialBo();
+		ImportGoodsBo importBo = new ImportGoodsBo();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		int result = ItemBo.delItem(id);
+		int result = importBo.delItem(id);
 		if(result > 0){
-			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=1");
+			response.sendRedirect(request.getContextPath()+"/admin/indexImport?msg=1");
 		}else{
-			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=0");
+			response.sendRedirect(request.getContextPath()+"/admin/indexImport?msg=0");
 		}
 	}
 
