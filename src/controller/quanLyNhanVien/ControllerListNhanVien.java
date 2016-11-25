@@ -30,8 +30,12 @@ public class ControllerListNhanVien extends HttpServlet {
     	HttpSession session = request.getSession();
     	int idNhanVien = Integer.parseInt(session.getAttribute("idNhanVien").toString());
     	ArrayList<NhanVien> listNhanVien = NhanVienBo.getInstance().getListNhanVienDetailByIdQuan(1);
-    	NhanVien nv = NhanVienBo.getInstance().getItemById(idNhanVien);
-    	listNhanVien.remove(nv);
+    	for(NhanVien nv : listNhanVien){
+    		if (nv.getId()==idNhanVien){
+    			listNhanVien.remove(nv);
+    			break;
+    		}
+    	}
 		request.setAttribute("listNhanVien", listNhanVien);
 		ArrayList<Luong> listLuongNhanVien = LuongBo.getInstance().getListLuong();
 		request.setAttribute("listLuongNhanVien", listLuongNhanVien);
