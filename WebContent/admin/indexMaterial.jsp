@@ -34,8 +34,6 @@
 					id="dataTables-example">
 					<thead>
 						<tr align="center">
-
-
 							<th>ID Nguyên liêu</th>
 							<th>Tên Nguyên liệu</th>
 							<th>Tên Đơn vị</th>
@@ -43,14 +41,11 @@
 							<th>Tên ảnh</th>
 							<th>Delete</th>
 							<th>Edit</th>
-
-
 						</tr>
 					</thead>
 					<tbody>
 						<%
 							for (Material item : alItem) {
-								
 						%>
 						<tr class="odd gradeX" align="center">
 							<td><%=item.getId_material()%></td>
