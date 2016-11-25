@@ -20,7 +20,7 @@ public class LuongDao {
 		Luong Item = null;
 		ArrayList<Luong> alItem = new ArrayList<Luong>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM Luong ";
+		String query = "SELECT * FROM luong ";
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();

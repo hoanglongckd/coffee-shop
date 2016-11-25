@@ -77,7 +77,7 @@ public class AnhDao {
 	public boolean addAnh(Anh Anh) {
 		conn = lb.getConnectMySQL();
 		boolean result =true;
-		String query = "INSERT INTO Anh(ten, duongDan, idQuan) VALUES(?,?,?)";
+		String query = "INSERT INTO anh(ten, duongDan, idQuan) VALUES(?,?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -195,7 +195,7 @@ public class AnhDao {
 		Anh objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM Anh WHERE ten = ? LIMIT 1";
+		String query = "SELECT * FROM anh WHERE ten = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
