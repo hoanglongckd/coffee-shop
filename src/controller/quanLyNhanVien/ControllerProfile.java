@@ -37,6 +37,7 @@ public class ControllerProfile extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession msg = request.getSession();
 		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
 		int idNhanVien= Integer.parseInt(session.getAttribute("idNhanVien").toString());
 		NhanVien nhanVien = NhanVienBo.getInstance().getItemById(idNhanVien);
 		Anh anh = AnhBo.getInstance().getItemById(nhanVien.getIdAnh());
@@ -55,10 +56,15 @@ public class ControllerProfile extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/profile.jsp");
 		rd.forward(request, response);
+		}else {
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login.jsp");
+		dispatcher.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
 		
 		int idNhanVien = Integer.parseInt(request.getParameter("idNhanVien"));
 		String duongDan = request.getParameter("duongDan");
@@ -124,6 +130,10 @@ public class ControllerProfile extends HttpServlet {
 			else
 				LuongBo.getInstance().addItem(luong);
 			response.sendRedirect(request.getContextPath()+"/admin/updateNhanVien?idNhanVien="+nhanVien.getId());
+		}
+		}else {
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login.jsp");
+		dispatcher.forward(request, response);
 		}
 	}
 

@@ -29,11 +29,20 @@ public class ControllerAddNhanVien extends HttpServlet {
     
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/them-nhan-vien.jsp");
 		dispatcher.forward(request, response);
+		}else {
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login.jsp");
+		dispatcher.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+		
 		if(request.getParameter("submit")!=null){
 			String hoTen = request.getParameter("ten");
 			String ghiChu = request.getParameter("ghiChu");
@@ -58,6 +67,10 @@ public class ControllerAddNhanVien extends HttpServlet {
 			
 		}else{
 			System.out.println("xxxxxxxxxxxxx");
+		}
+		}else {
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login.jsp");
+		dispatcher.forward(request, response);
 		}
 	}
 
