@@ -4,10 +4,9 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title> Danh sách danh mục</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title> Danh sách Thực đơn</title>
 
 <!-- Page Content -->
 
@@ -18,7 +17,8 @@
 			<div class="col-lg-12">
 
 				<h1 class="page-header">
-					MANAGER TypeMenu <small>List</small>
+					Danh sách
+					<small>Danh mục</small>
 				</h1>	
 			</div>
 
@@ -30,16 +30,13 @@
 				id="dataTables-example">
 				<thead>
 					<tr align="center">
-
 						<th>ID Type Menu</th>
 						<th>Name Type Menu</th>
 						<th>Delete</th>
 						<th>Edit</th>
-
-						
-
 					</tr>
 				</thead>
+				
 				<tbody>
 					<%
 						for (TypeMenu item : alItem) {

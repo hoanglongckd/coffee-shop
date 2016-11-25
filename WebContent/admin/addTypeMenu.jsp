@@ -1,19 +1,18 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title>Thêm danh mục</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title>Thêm danh mục</title>
-
 
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Add TypeMenu
-                            <small>Add</small>
+                        <h1 class="page-header">
+                        	Thêm
+                            <small>Danh mục</small>
                         </h1>
                         
                     </div>
@@ -21,14 +20,13 @@
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="" method="post">
                             <div class="form-group">
-                                <label>Name Type Menu</label>
-                                <input class="form-control" name="name" placeholder="Please Enter Username" />
+                                <label>Tên danh mục</label>
+                                <input type="text" class="form-control" name="name" 
+                                	placeholder="Nhập tên danh mục" required />
                             </div>
                             
-                            
-                            
-                            <button type="submit" name= "submit" class="btn btn-default" > Add</button>
-                           <!--  <button type="reset" class="btn btn-default">Reset</button> -->
+                            <button type="submit" name= "submit" class="btn btn-default" >Add</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
                         </form>
                     </div>
                 </div>

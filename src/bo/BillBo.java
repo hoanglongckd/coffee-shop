@@ -61,5 +61,17 @@ public class BillBo {
 		return itemDao.editItemAdmin(item);
 	}
 
+	public float getMoneyByID(int id_bill) {
+		return itemDao.getMoneyByID(id_bill);
+	}
+
+	public int editItemAdminByIDBill(float f, int id_bill) {
+		return itemDao.editItemAdminByIDBill(f,id_bill);
+	}
+
+	public int setSumMoneyByIDBill(int id_bill, float f) {
+		return itemDao.setSumMoneyByIDBill(id_bill,f);
+	}
+
 	
 }

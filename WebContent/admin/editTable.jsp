@@ -24,6 +24,7 @@
 				%>
 				<form action="" method="POST">
 					<div class="form-group">
+					
 						<label>Tên bàn</label>
 						<input class="form-control" name="nameTable" value="<%=table.getName_table()%>"
 							placeholder="Nhập tên bàn" required />
@@ -31,9 +32,21 @@
 					<div class="form-group">
 						<label>Trạng thái</label> 
 						<select name="status" class="input-short form-control" required >
-							<option value="1">1</option>
-							<option value="0">0</option>
-						</select>
+							<%
+								for (int i = 0; i < 2; i++) {
+									String selected = "";
+									if (table.getStatus() == i) {
+										selected = "selected=\"selected\"";
+									} else {
+										selected = "";
+									}
+							%>
+							<option <%=selected%> value="<%=i%>"><%=i%></option>
+							<%
+								}
+							%>
+							</select>
+						
 					</div>
 					<button type="submit" name="submit" class="btn btn-default">Edit</button>
 					<button type="reset" class="btn btn-default">Reset</button>

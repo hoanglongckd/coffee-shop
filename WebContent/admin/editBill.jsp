@@ -11,8 +11,10 @@
 <%@page import="bean.Table"%>
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/templates/inc/header.jsp"%>
-<%@include file="/templates/inc/left_bar.jsp"%>
+<%@include file="/templates/inc/_header.jsp" %>
+<title>Sửa thực đơn</title>
+<%@include file="/templates/inc/_top.jsp" %>
+<%@include file="/templates/inc/_menu.jsp" %>
 
 
 
@@ -22,7 +24,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Thực Đơn <small>Edit</small>
+					Sửa
+					<small>Thực đơn</small>
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
@@ -31,15 +34,12 @@
 					BillAdmin Item = (BillAdmin) request.getAttribute("objItem");
 				%>
 				<form action="" method="POST">
-					
-                            
-                      <%
+                  	<%
 						ArrayList<NhanVien> alItemU = (ArrayList<NhanVien>) request.getAttribute("alItemN");
 					%>
-                               <div class="form-group">
-								<label>Nhân Viên</label> <select name="idstaff"
-								class="input-short form-control">
-
+                    <div class="form-group">
+						<label>Nhân Viên</label> 
+						<select name="idstaff" class="input-short form-control">
 						<% for(NhanVien itemM : alItemU) {
 							String selected ="";
 							if(itemM.getId()== Item.getId_staff()){
@@ -50,17 +50,15 @@
 						%>
 								<option <%=selected %> value="<%=itemM.getId()%>"><%=itemM.getTen() %></option>
 						<%}%>		
-
-							</select>
-						</div>
+						</select>
+					</div>
 						
-						<%
+					<%
 						ArrayList<Table> alItemT = (ArrayList<Table>) request.getAttribute("alItemT");
 					%>
-                               <div class="form-group">
-								<label>Bàn</label> <select name="idtable"
-								class="input-short form-control">
-
+                    <div class="form-group">
+						<label>Bàn</label>
+						<select name="idtable" class="input-short form-control">
 						<% for(Table itemM : alItemT) {
 							String selected ="";
 							if(itemM.getId_table()== Item.getId_table()){
@@ -69,17 +67,14 @@
 								selected="";
 							}
 						%>
-								<option <%=selected %> value="<%=itemM.getId_table()%>"><%=itemM.getName_table() %></option>
+							<option <%=selected %> value="<%=itemM.getId_table()%>"><%=itemM.getName_table() %></option>
 						<%}%>		
-
-							</select>
-						</div>
-						
+						</select>
+					</div>
 					
-                               <div class="form-group">
-								<label>trạng thái thanh toán</label> <select name="status"
-								class="input-short form-control">
-
+                    <div class="form-group">
+						<label>Trạng thái thanh toán</label>
+						<select name="status" class="input-short form-control">
 						<% for(int i= 0; i<2;i++) {
 							String selected ="";
 							if(Item.getStatus_pay()== i){
@@ -88,25 +83,19 @@
 								selected="";
 							}
 						%>
-								<option <%=selected %> value="<%=i%>"><%=i %></option>
+							<option <%=selected %> value="<%=i%>"><%=i %></option>
 						<%}%>		
-
-							</select>
-						</div>
+						</select>
+					</div>
 						
-						<div class="form-group">
-                     
-                               <label>Ghi chú</label> <input class="form-control" name="note" value="<%=Item.getNote() %>"
-								placeholder="Please Enter Username" />
-							
-                            </div>
-                            
-                            
+					<div class="form-group">
+                    	<label>Ghi chú</label>
+                    	<textarea class="form-control" name="note" rows="3"
+                    		placeholder="Nhập ghi chú"><%=Item.getNote() %></textarea>
+                    </div>
 
-
-					<button type="submit" name="submit" class="btn btn-default">
-						Edit</button>
-					<!--  <button type="reset" class="btn btn-default">Reset</button> -->
+					<button type="submit" name="submit" class="btn btn-default">Edit</button>
+					<button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>
 		</div>
@@ -116,7 +105,5 @@
 </div>
 <!-- /#page-wrapper -->
 
-
-</body>
-
-</html>
+<jsp:include page="/templates/inc/_footer-start.jsp" />
+<jsp:include page="/templates/inc/_footer-end.jsp" />

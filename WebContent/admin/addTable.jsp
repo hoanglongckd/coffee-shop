@@ -20,12 +20,12 @@
                         <form action="" method="post">
                         
                             <div class="form-group">
-                                <label>Name Table</label>
+                                <label>Tên bàn</label>
                                 <input class="form-control" name="nameTable" placeholder="Nhập tên bàn" required />
                             </div>
                             
                             <button type="submit" name= "submit" class="btn btn-default" > Add</button>
-                           <!--  <button type="reset" class="btn btn-default">Reset</button> -->
+                            <button type="reset" class="btn btn-default">Reset</button>
                         </form>
                     </div>
                 </div>

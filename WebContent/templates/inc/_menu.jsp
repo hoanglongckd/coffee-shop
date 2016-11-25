@@ -45,12 +45,7 @@
                 </li>
                 
                 <li>
-                    <a  href="#"><i class="fa fa-bars"></i> Hóa Đơn<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                    	
-                        <li><a href="<%=request.getContextPath()%>/admin/indexBill">List Hóa Đơn</a></li>
-                    </ul>
-                    <!-- /.nav-second-level -->
+                    <a  href="<%=request.getContextPath()%>/admin/indexBill"><i class="fa fa-clone"></i> Hóa Đơn<span class="fa arrow"></span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-cube fa-fw"></i> Nhập hàng<span class="fa arrow"></span></a>
@@ -78,10 +73,13 @@
 <!--                     /.nav-second-level -->
 <!--                 </li> -->
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-th-large"></i> Type Menu <span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-th-large"></i> Danh mục<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<%=request.getContextPath()%>/admin/addTypeMenu"> Add Type Menu</a>
+                            <a href="<%=request.getContextPath()%>/admin/addTypeMenu"> Thêm danh mục</a>
+                        </li>
+                        <li>
+                            <a href="<%=request.getContextPath()%>/admin/indexTypeMenu"> Danh sách danh mục</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
