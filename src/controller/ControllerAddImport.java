@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.DetailStock;
 import bean.ImportGoods;
@@ -58,9 +59,9 @@ public class ControllerAddImport extends HttpServlet {
 		ImportGoodsBo itemBo = new ImportGoodsBo();
 		DetailStockBo detailStockBo = new DetailStockBo();
 		StockBo stockBo = new StockBo();
-
+		HttpSession session = request.getSession();
 		if (request.getParameter("submit") != null) {// dang nhan nut submit
-			int id_staff = Integer.parseInt(request.getParameter("staff"));
+			int id_staff = Integer.parseInt(session.getAttribute("idNhanVien").toString());
 			int id_materail = Integer.parseInt(request.getParameter("material"));
 			int sl = 0;
 			float count_money = 0;

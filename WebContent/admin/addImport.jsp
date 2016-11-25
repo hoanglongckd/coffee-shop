@@ -45,22 +45,6 @@
 							%>
 						</select>
 					</div>
-
-							<%
-								ArrayList<NhanVien> alItemN = (ArrayList) request.getAttribute("alItemM");
-							%>
-					<div class="form-group">
-						<label>Chọn Nhân Viên</label> 
-						<select name="staff" class="input-short form-control">
-							<%
-								for (NhanVien itemM : alItemN) {
-							%>
-							<option value="<%=itemM.getId()%>"><%=itemM.getTen()%></option>
-							<%
-								}
-							%>
-						</select>
-					</div>
 					
 					<div class="form-group">
 						<label>Số lượng</label> 
