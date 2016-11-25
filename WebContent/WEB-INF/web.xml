@@ -371,4 +371,22 @@
     <servlet-name>ControllerDelImport</servlet-name>
     <url-pattern>/admin/delImport</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerThongKeTheoThang</servlet-name>
+    <servlet-class>controller.ControllerThongKeTheoThang</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerThongKeTheoThang</servlet-name>
+    <url-pattern>/admin/thong-ke-theo-thang</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ControllerThongKeTheoNam</servlet-name>
+    <servlet-class>controller.ControllerThongKeTheoNam</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerThongKeTheoNam</servlet-name>
+    <url-pattern>/admin/thong-ke-theo-nam</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -17,7 +17,7 @@ import bo.ThongKeBo;
 /**
  * Servlet implementation class ControllerIndexTable
  */
-@WebServlet("/admin/thong-ke-theo-nam")
+//@WebServlet("/admin/thong-ke-theo-nam")
 public class ControllerThongKeTheoNam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

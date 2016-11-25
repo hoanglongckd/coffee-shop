@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/admin/ControllerThongKeTheoThang")
+import bean.ThongkeBean;
+import bo.ThongKeBo;
+
+//@WebServlet("/admin/ControllerThongKeTheoThang")
 public class ControllerThongKeTheoThang extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +36,7 @@ public class ControllerThongKeTheoThang extends HttpServlet {
 		String filter = request.getParameter("filter");
 		System.out.println(filter);
 		if (filter == null) {
-			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/ThongKeLoiNhuan/thong-ke-theo-thang.jsp");
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/thongKeTheoThang.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {
@@ -45,20 +49,21 @@ public class ControllerThongKeTheoThang extends HttpServlet {
 				Date date = simpleDateFormat1.parse(filter);
 				year = simpleDateFormat2.format(date);
 				month = simpleDateFormat3.format(date);
-//				System.out.println("date: " + date + ", year: " + year + ", month: " + month);
-//				long profit = ThongKeLoiNhuanBO.getTotalProfitByMonth(year, month);
-//				long fee = ThongKeLoiNhuanBO.getTotalFeeByMonth(year, month);
-//				ArrayList<ThongKeLoiNhuanBEAN> thongKeLoiNhuanBEANs = ThongKeLoiNhuanBO.thongKeTheoThang(year, month);
-//				request.setAttribute("list", thongKeLoiNhuanBEANs);
-//				request.setAttribute("month", month);
-//				request.setAttribute("year", year);
-//				request.setAttribute("cost", profit - fee);
-				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/ThongKeLoiNhuan/thong-ke-theo-thang.jsp");
+				ArrayList<ThongkeBean> thongkeBeans = ThongKeBo.alItem(year, month);
+				long cost = 0;
+				for (ThongkeBean item : thongkeBeans) {
+					cost += item.getProfit() - item.getFee();
+				}
+				request.setAttribute("list", thongkeBeans);
+				request.setAttribute("month", month);
+				request.setAttribute("year", year);
+				request.setAttribute("cost", cost);
+				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/thongKeTheoThang.jsp");
 				dispatcher.forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				msg.setAttribute("errors", "Sai định dạng ngày tháng. Vui lòng nhập theo định dạng <b>MM/YYYY</b>");
-				response.sendRedirect(request.getContextPath() + "/thong-ke-theo-thang");
+				response.sendRedirect(request.getContextPath() + "/admin/thongKeTheoThang.jsp");
 			}
 			
 		}

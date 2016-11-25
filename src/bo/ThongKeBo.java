@@ -6,10 +6,14 @@ import bean.ThongkeBean;
 import dao.thongKeDao;
 
 public class ThongKeBo {
-	thongKeDao ThongKeDao = new thongKeDao();
+	static thongKeDao ThongKeDao = new thongKeDao();
 
-	public ArrayList<ThongkeBean> getListThongKeTheoNam(String year) {
+	public static ArrayList<ThongkeBean> getListThongKeTheoNam(String year) {
 		return ThongKeDao.getListThongKeByNam(year);
+	}
+	
+	public static ArrayList<ThongkeBean> alItem(String year, String month) {
+		return ThongKeDao.alItem(year, month);
 	}
 
 
