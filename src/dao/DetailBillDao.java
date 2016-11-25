@@ -116,14 +116,14 @@ public class DetailBillDao {
 		DetailBill objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM chitiethoadon WHERE id = ?  LIMIT 1";
+		String query = "SELECT * FROM chitiethoadon WHERE idChiTietHoaDon = ?  LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,Id );
 			rs = pst.executeQuery();
 			if(rs.next()){
-				objItem =   new DetailBill(rs.getInt("id"),rs.getInt("idHoaDon"),rs.getInt("idThucDon"),rs.getInt("soLuong"), rs.getFloat("soTien"),rs.getInt("trangThaiPhucVu"));
+				objItem =   new DetailBill(rs.getInt("idChiTietHoaDon"),rs.getInt("idHoaDon"),rs.getInt("idThucDon"),rs.getInt("soLuong"), rs.getFloat("soTien"),rs.getInt("trangThaiPhucVu"));
 			}
 			
 		} catch (SQLException e) {
@@ -231,6 +231,96 @@ public class DetailBillDao {
 		}
 		
 		return money;
+	}
+
+
+	public int delItemByBill(int id) {
+		conn = lb.getConnectMySQL();
+		int result =0;
+		String query = "DELETE FROM  chitiethoadon WHERE idChiTietHoaDon =? ";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id );
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return result;
+	}
+
+
+	public ArrayList<DetailBill> getListByIDBill(int id) {
+		DetailBill Item = null;
+		ArrayList<DetailBill> alItem = new ArrayList<DetailBill>();
+		conn = lb.getConnectMySQL();
+		String query = "SELECT * FROM  chitiethoadon  INNER JOIN thucdon ON chitiethoadon.idThucDon = thucdon.idThucDOn WHERE chitiethoadon.idChiTietHoadon = ?";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				Item = new DetailBill(rs.getInt("idChiTietHoaDon"),rs.getInt("idHoaDon"),rs.getInt("idThucDon"),rs.getInt("soLuong"), rs.getFloat("soTien"),rs.getInt("trangThaiPhucVu"),rs.getString("tenThucDon"));
+				alItem.add(Item);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return alItem;
+	}
+
+
+	public int setMoneyByID(int id, int count, float money, int id_menu) {
+		conn = lb.getConnectMySQL();
+		int result =0;
+		String query = "UPDATE  chitiethoadon SET soLuong =?, soTien =?, idThucDon =? WHERE idChiTietHoaDon =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, count);
+			pst.setFloat(2, money);
+			pst.setInt(3, id_menu);
+			pst.setInt(4, id);
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
 	}
 
 }

@@ -102,6 +102,17 @@ public class DetailBill {
 		this.cost_menu = cost_menu;
 		this.name_menu = name_menu;
 	}
+	public DetailBill(int id_detail, int id_bill, int id_menu, int count_menu, float count_money, int status_serve,
+			String name_menu) {
+		super();
+		this.id_detail = id_detail;
+		this.id_bill = id_bill;
+		this.id_menu = id_menu;
+		this.count_menu = count_menu;
+		this.count_money = count_money;
+		this.status_serve = status_serve;
+		this.name_menu = name_menu;
+	}
 	
 	
 

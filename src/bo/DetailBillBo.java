@@ -43,4 +43,16 @@ public class DetailBillBo {
 		return itemDao.getSumMoney(idBill);
 	}
 
+	public int delItemByBill(int id) {
+		return itemDao.delItemByBill(id);
+	}
+
+	public ArrayList<DetailBill> getListByIDBill(int id) {
+		return itemDao.getListByIDBill(id);
+	}
+
+	public int setMoneyByID(int id, int count, float money, int id_menu) {
+		return itemDao.setMoneyByID(id,count,money,id_menu);
+	}
+
 }

@@ -59,7 +59,7 @@
 							<td><%=item.getId_detail()%></td>
 							<td><%=item.getName_menu()%></td>
 							<td><%=item.getCount_menu()%></td>
-							<td><%=item.getCost_menu()%></td>
+							<td><%=item.getCount_money()%></td>
 							
 							<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
 								href="<%=request.getContextPath()%>/admin/delDetailBill?id=<%=item.getId_detail()%>">

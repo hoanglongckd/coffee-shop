@@ -156,7 +156,7 @@ public class BillDao {
 	public int delItemByID(int id) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  hoadon WHERE id =? LIMIT 1";
+		String query = "DELETE FROM  hoadon WHERE idHoaDon =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -379,6 +379,64 @@ public class BillDao {
 		}
 		return result;
 		
+	}
+	public float getMoneyByID(int id_bill) {
+		conn = lb.getConnectMySQL();
+		float result   = 0;
+		String query = "SELECT * FROM hoadon WHERE idHoaDon= ? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_bill );
+
+			rs = pst.executeQuery();
+			if(rs.next()){
+				result = rs.getFloat("tongTien");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+	}
+	public int editItemAdminByIDBill(float f, int id_bill) {
+		int result =0;
+		conn = lb.getConnectMySQL();
+		String query = "UPDATE  hoadon SET tongTien =? WHERE idHoaDon =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setFloat(1, f);
+			pst.setInt(2,id_bill);
+			
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
 	}
 
 }

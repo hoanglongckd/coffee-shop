@@ -43,6 +43,7 @@
 							<th>Tên Bàn</th>
 							<th>Trạng Thái Thanh Toán</th>
 							<th>Ngày Lập Hóa Đơn</th>
+							<th>Tổng Tiền</th>
 							<th>Ghi Chú</th>
 							<th>Delete</th>
 							<th>Edit</th>
@@ -63,6 +64,7 @@
 							<td><%=item.getName_table()%></td>
 							<td><%=item.getStatus_pay()%></td>
 							<td><%=item.getDate_single_up()%></td>
+							<td><%=item.getSumMoney()%></td>
 							<td><%=item.getNote()%></td>
 							<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
 								href="<%=request.getContextPath()%>/admin/delBill?id=<%=item.getId_bill()%>">
