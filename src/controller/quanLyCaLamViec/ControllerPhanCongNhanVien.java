@@ -41,25 +41,30 @@ public class ControllerPhanCongNhanVien extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		int idNhanVien = Integer.parseInt(session.getAttribute("idNhanVien").toString());
+		if(session.getAttribute("idNhanVien")!=null){
 		
-		ArrayList<NhanVien> listNhanVien = NhanVienBo.getInstance().getListNhanVien();
-		for(NhanVien x :listNhanVien) if(x.getId()==idNhanVien) {
-			listNhanVien.remove(x);
-			break;
+			int idNhanVien = Integer.parseInt(session.getAttribute("idNhanVien").toString());
+			ArrayList<NhanVien> listNhanVien = NhanVienBo.getInstance().getListNhanVien();
+			for(NhanVien x :listNhanVien) if(x.getId()==idNhanVien) {
+				listNhanVien.remove(x);
+				break;
+			}
+			ArrayList<CaLamViec> listCaLamViec = CaLamViecBo.getInstance().getListCaLamViec();
+			ArrayList<NgayTrongTuan> listNgayTrongTuan = NgayTrongTuanBo.getInstance().getListNgayTrongTuan();
+			ArrayList<PhanCongNhanVien> listLichLamViecCuaNhanVien = PhanCongNhanVienBo.getInstance().getListPhanCongNhanVien();
+			
+			request.setAttribute("listCaLamViec", listCaLamViec);
+			request.setAttribute("listNhanVien", listNhanVien);
+			request.setAttribute("listLichLamViecCuaNhanVien", listLichLamViecCuaNhanVien);
+			request.setAttribute("listNgayTrongTuan", listNgayTrongTuan);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/phan-cong-nhan-vien.jsp");
+			rd.forward(request, response);
+		}else
+		{
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login.jsp");
+			dispatcher.forward(request, response);
 		}
-		ArrayList<CaLamViec> listCaLamViec = CaLamViecBo.getInstance().getListCaLamViec();
-		ArrayList<NgayTrongTuan> listNgayTrongTuan = NgayTrongTuanBo.getInstance().getListNgayTrongTuan();
-		ArrayList<PhanCongNhanVien> listLichLamViecCuaNhanVien = PhanCongNhanVienBo.getInstance().getListPhanCongNhanVien();
-		
-		request.setAttribute("listCaLamViec", listCaLamViec);
-		request.setAttribute("listNhanVien", listNhanVien);
-		request.setAttribute("listLichLamViecCuaNhanVien", listLichLamViecCuaNhanVien);
-		request.setAttribute("listNgayTrongTuan", listNgayTrongTuan);
-	
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/phan-cong-nhan-vien.jsp");
-		rd.forward(request, response);
 	}
 
 	/**
