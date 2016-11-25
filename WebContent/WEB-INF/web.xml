@@ -361,4 +361,14 @@
     <servlet-name>ControllerDelDetailBill</servlet-name>
     <url-pattern>/admin/delDetailBill</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ControllerDelImport</servlet-name>
+    <servlet-class>controller.ControllerDelImport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerDelImport</servlet-name>
+    <url-pattern>/admin/delImport</url-pattern>
+  </servlet-mapping>
 </web-app>

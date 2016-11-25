@@ -51,9 +51,9 @@ public class ControllerDelDetailBill extends HttpServlet {
 		if (result1 > 0) {
 			int result = detailBo.delItemByID(id);
 			if (result > 0) {
-				response.sendRedirect(request.getContextPath() + "/admin/detailBill?id="+id);
+				response.sendRedirect(request.getContextPath() + "/admin/detailBill?id="+detailBill.getId_bill());
 			} else {
-				response.sendRedirect(request.getContextPath() + "/admin/indexBill?id="+id);
+				response.sendRedirect(request.getContextPath() + "/admin/indexBill?id="+detailBill.getId_bill());
 			}
 		}
 	}

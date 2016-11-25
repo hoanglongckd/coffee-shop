@@ -213,7 +213,6 @@ public class DetailBillDao {
 			rs = pst.executeQuery();
 			while(rs.next()){
 				money += rs.getInt("total");
-				System.out.println("i"+money);
 			}
 			System.out.println(money);
 		} catch (SQLException e) {
@@ -266,7 +265,7 @@ public class DetailBillDao {
 		DetailBill Item = null;
 		ArrayList<DetailBill> alItem = new ArrayList<DetailBill>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM  chitiethoadon  INNER JOIN thucdon ON chitiethoadon.idThucDon = thucdon.idThucDOn WHERE chitiethoadon.idChiTietHoadon = ?";
+		String query = "SELECT * FROM  chitiethoadon  INNER JOIN thucdon ON chitiethoadon.idThucDon = thucdon.idThucDOn WHERE chitiethoadon.idHoaDon = ?";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1, id);
