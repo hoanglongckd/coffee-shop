@@ -353,14 +353,15 @@ public class BillDao {
 	public int editItemAdmin(BillAdmin item) {
 		int result =0;
 		conn = lb.getConnectMySQL();
-		String query = "UPDATE  hoadon SET idNhanVien =?, idBan =? ,ghiChu= ? WHERE idHoaDon =? LIMIT 1";
+		String query = "UPDATE  hoadon SET idNhanVien =?, idBan =?,trangThaiThanhToan =? ,ghiChu= ? WHERE idHoaDon =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1, item.getId_staff());
 			pst.setInt(2,item.getId_table());
-			pst.setString(3,item.getNote());
-			pst.setInt(4,item.getId_bill());
+			pst.setInt(3, item.getStatus_pay());
+			pst.setString(4,item.getNote());
+			pst.setInt(5,item.getId_bill());
 			
 			pst.executeUpdate();
 			result =1;

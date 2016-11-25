@@ -64,9 +64,9 @@ public class ControllerEditDetailBill extends HttpServlet {
 				int result = billBo.editItemAdminByIDBill((moneyOld -Item.getCount_money())+  money,Item.getId_bill());
 
 				if (result > 0) {
-					response.sendRedirect(request.getContextPath() + "/admin/detailBill?id="+Id);
+					response.sendRedirect(request.getContextPath() + "/admin/detailBill?id="+Item.getId_bill());
 				} else {
-					response.sendRedirect(request.getContextPath() + "/admin/detailBill?id="+Id);
+					response.sendRedirect(request.getContextPath() + "/admin/detailBill?id="+Item.getId_bill());
 				}
 			}
 
