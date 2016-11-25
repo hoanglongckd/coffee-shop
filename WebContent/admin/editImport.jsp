@@ -87,7 +87,6 @@
 						<input class="form-control" type="text" name="date_end" value="<%=Item.getDate_end() %>"
 							placeholder="Nhập ngày hết hạn" required />
                   	</div>
-                       	
 					<button type="submit" name="submit" class="btn btn-default">Edit</button>
 					<button type="reset" class="btn btn-default">Reset</button>
 				</form>

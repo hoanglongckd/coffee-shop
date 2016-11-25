@@ -26,8 +26,6 @@
 					Process Item = (Process) request.getAttribute("objItem");
 				%>
 				<form action="" method="POST">
-					
-                            
                       <%
 						ArrayList<Material> alItemM = (ArrayList<Material>) request.getAttribute("alItemM");
 					%>
@@ -72,7 +70,7 @@
 							</select>
 						</div>
                                  <label>Số Lượng</label>
-                                <input class="form-control" value="<%=Item.getQuantity() %>" name="count" placeholder="Please Enter Username" />
+                                <input class="form-control" value="<%=Item.getQuantity() %>" name="count" placeholder="Please Enter Amount" />
                             </div>
                             
                             
