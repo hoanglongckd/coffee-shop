@@ -3,6 +3,7 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title>Sửa danh mục</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
 
@@ -13,7 +14,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Edit Table <small>Edit</small>
+					Sửa
+					<small>Danh mục</small>
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
@@ -23,16 +25,12 @@
 				%>
 				<form action="" method="POST">
 					<div class="form-group">
-						<label>Name Table</label> <input class="form-control"
-							name="nameTable" value="<%=Item.getNameType()%>"
-							placeholder="Please Enter Username" />
+						<label>Tên danh mục</label> 
+						<input class="form-control" name="nameTable" value="<%=Item.getNameType()%>"
+							type="text" placeholder="Nhập tên danh mục" required />
 					</div>
-					
-
-
-					<button type="submit" name="submit" class="btn btn-default">
-						Edit</button>
-					<!--  <button type="reset" class="btn btn-default">Reset</button> -->
+					<button type="submit" name="submit" class="btn btn-default">Edit</button>
+					<button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>
 		</div>
