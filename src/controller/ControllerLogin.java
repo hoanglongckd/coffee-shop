@@ -16,8 +16,8 @@ public class ControllerLogin extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/login.jsp");
-		dispatcher.forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/coffee-shop/admin/login");
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
