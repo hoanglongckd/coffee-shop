@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Stock;
 import bo.MaterialBo;
+import bo.MenuBo;
 import bo.StockBo;
 
 /**
@@ -42,9 +43,9 @@ public class ControllerEditStock extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		MaterialBo maBo = new MaterialBo();
+		MenuBo maBo = new MenuBo();
 		StockBo ItemBo = new StockBo();
-		request.setAttribute("alItemM", maBo.getList());
+		request.setAttribute("alItemM", maBo.getListMenuAdmin());
 
 		if (request.getParameter("submit") != null) {
 			int taId = Integer.parseInt(request.getParameter("id"));

@@ -81,7 +81,7 @@ public class DetailStockDao {
 	public int editItem(DetailStock Item) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "UPDATE  chitietkho SET idNhapHang = ?,idNguyenLieu =?,ngayHetHan =?,soLuongConTrongKho =?,tinhTrangSuDung =? WHERE idChiTietKho =? LIMIT 1";
+		String query = "UPDATE  chitietkho SET idNhapHang = ?,idThucDon =?,ngayHetHan =?,soLuongConTrongKho =?,tinhTrangSuDung =? WHERE idChiTietKho =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -172,7 +172,7 @@ public class DetailStockDao {
 	public int addDetailStock(DetailStock detailStock) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "INSERT INTO chitietkho(idNhapHang,idNguyenLieu,ngayHetHan,soLuongConTrongKho,tinhTrangSuDung) VALUES(?,?,?,?,?)";
+		String query = "INSERT INTO chitietkho(idNhapHang,idThucDon,ngayHetHan,soLuongConTrongKho,tinhTrangSuDung) VALUES(?,?,?,?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);

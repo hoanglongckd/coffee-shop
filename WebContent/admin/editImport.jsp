@@ -1,3 +1,4 @@
+<%@page import="beanAdmin.MenuAdmin"%>
 <%@page import="bean.NhanVien"%>
 <%@page import="bean.ImportGoods"%>
 <%@page import="bean.Picture"%>
@@ -33,26 +34,26 @@
 				%>
 				<form action="" method="POST">
 					<%
-						ArrayList<Material> alItemM = (ArrayList<Material>) request.getAttribute("alItemM");
+						ArrayList<MenuAdmin> alItemM = (ArrayList<MenuAdmin>) request.getAttribute("alItemN");
 					%>
                     <div class="form-group">
 						<label>Nguyên Liệu</label> 
 						<select name="material" class="input-short form-control">
-							<% for(Material itemM : alItemM) {
+							<% for(MenuAdmin itemM : alItemM) {
 								String selected ="";
-								if(itemM.getId_material()== Item.getId_material()){
+								if(itemM.getId_Menu()== Item.getId_material()){
 									selected ="selected=\"selected\"";
 								}else{
 									selected="";
 								}
 							%>
-							<option <%=selected %> value="<%=itemM.getId_material()%>"><%=itemM.getName() %></option>
+							<option <%=selected %> value="<%=itemM.getId_Menu()%>"><%=itemM.getName() %></option>
 							<%}%>		
 						</select>
 					</div>
 						
 					<%
-						ArrayList<NhanVien> alItemN = (ArrayList<NhanVien>) request.getAttribute("alItemN");
+						ArrayList<NhanVien> alItemN = (ArrayList<NhanVien>) request.getAttribute("alItemM");
 					%>
                    	<div class="form-group">
 						<label>Nhân Viên</label> 

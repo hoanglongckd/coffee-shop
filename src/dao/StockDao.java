@@ -20,14 +20,14 @@ public class StockDao {
 		Stock Item = null;
 		ArrayList<Stock> alItem = new ArrayList<Stock>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM  kho LEFT JOIN nguyenlieu ON kho.idNguyenLieu = nguyenlieu.idNguyenLieu WHERE kho.idQuan = 1 ";
+		String query = "SELECT * FROM  kho LEFT JOIN thucdon ON kho.idThucDon = thucdon.idThucDon WHERE kho.idQuan = 1 ";
 		try {
 			pst = conn.prepareStatement(query);
 			
 			rs = pst.executeQuery();
 			
 			while (rs.next()) {
-				Item = new Stock(rs.getInt("idKho"),rs.getInt("idNguyenLieu"),rs.getInt("idQuan"), rs.getInt("tongSoTrongKho"),rs.getString("tenNguyenLieu"));
+				Item = new Stock(rs.getInt("idKho"),rs.getInt("idThucDon"),rs.getInt("idQuan"), rs.getInt("tongSoTrongKho"),rs.getString("tenThucDon"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {
@@ -50,7 +50,7 @@ public class StockDao {
 	public int addItem(Stock Item) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "INSERT INTO kho(idNguyenLieu,idQuan,tongSoTrongKho) VALUES(?,?,?)";
+		String query = "INSERT INTO kho(idThucDon,idQuan,tongSoTrongKho) VALUES(?,?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -80,7 +80,7 @@ public class StockDao {
 	public int editItem(Stock Item) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "UPDATE  kho SET idNguyenLieu =? ,idQuan = ?,tongSoTrongKho =? WHERE idKho =? LIMIT 1";
+		String query = "UPDATE  kho SET idThucDon =? ,idQuan = ?,tongSoTrongKho =? WHERE idKho =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -119,7 +119,7 @@ public class StockDao {
 			pst.setInt(1,Id );
 			rs = pst.executeQuery();
 			if(rs.next()){
-				objItem =  new Stock(rs.getInt("idKho"),rs.getInt("idNguyenLieu"),rs.getInt("idQuan"), rs.getInt("tongSoTrongKho"));
+				objItem =  new Stock(rs.getInt("idKho"),rs.getInt("idThucDon"),rs.getInt("idQuan"), rs.getInt("tongSoTrongKho"));
 			}
 			
 		} catch (SQLException e) {
@@ -171,14 +171,14 @@ public class StockDao {
 		boolean result = false;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM kho WHERE idNguyenLieu = ?  LIMIT 1";
+		String query = "SELECT * FROM kho WHERE idThucDon = ?  LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,id_materail);
 			rs = pst.executeQuery();
 			while(rs.next()){
-				if(id_materail == rs.getInt("idNguyenLieu"));
+				if(id_materail == rs.getInt("idThucDon"));
 				result = true;
 			}
 			
@@ -203,7 +203,7 @@ public class StockDao {
 	public int setQualityByIDMaterial(int id_materail, int sl) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "UPDATE  kho SET tongSoTrongKho =? WHERE idNguyenLieu =? LIMIT 1";
+		String query = "UPDATE  kho SET tongSoTrongKho =? WHERE idThucDon =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -235,7 +235,7 @@ public class StockDao {
 		int result = 0;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM kho WHERE idNguyenLieu = ?  LIMIT 1";
+		String query = "SELECT * FROM kho WHERE idThucDon = ?  LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);

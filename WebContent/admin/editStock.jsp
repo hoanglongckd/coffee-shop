@@ -1,3 +1,4 @@
+<%@page import="beanAdmin.MenuAdmin"%>
 <%@page import="bean.Stock"%>
 <%@page import="bean.Menu"%>
 <%@page import="bean.Material"%>
@@ -24,21 +25,21 @@
                             <div class="form-group">
                             <%Stock objstock =(Stock) request.getAttribute("objItem"); %>
                       <%
-						ArrayList<Material> alItemM = (ArrayList<Material>) request.getAttribute("alItemM");
+						ArrayList<MenuAdmin> alItemM = (ArrayList<MenuAdmin>) request.getAttribute("alItemM");
 					%>
                                <div class="form-group">
 								<label>Nguyên Liệu</label> <select name="material"
 								class="input-short form-control">
 
-						<% for(Material itemM : alItemM) {
+						<% for(MenuAdmin itemM : alItemM) {
 							String selected ="";
-							if(itemM.getId_material()== objstock.getId_material()){
+							if(itemM.getId_Menu()== objstock.getId_material()){
 								selected ="selected=\"selected\"";
 							}else{
 								selected="";
 							}
 						%>
-								<option <%=selected %> value="<%=itemM.getId_material()%>"><%=itemM.getName() %></option>
+								<option <%=selected %> value="<%=itemM.getId_Menu()%>"><%=itemM.getName() %></option>
 						<%}%>			
 
 							</select>

@@ -35,7 +35,7 @@
 				<thead>
 					<tr align="center">
 						<th>ID Kho</th>
-						<th>Tên Nguyên Liệu</th>
+						<th>Tên Thực Đơn</th>
 						<th>Tổng số Lượng Còn</th>
 						<th>Delete</th>
 						<th>Edit</th>

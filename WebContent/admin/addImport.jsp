@@ -1,3 +1,4 @@
+<%@page import="beanAdmin.MenuAdmin"%>
 <%@page import="bean.NhanVien"%>
 <%@page import="bean.Picture"%>
 <%@page import="bean.Unit"%>
@@ -29,16 +30,16 @@
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="" method="post">
 					<%
-						ArrayList<Material> alItemM = (ArrayList) request.getAttribute("alItemM");
+						ArrayList<MenuAdmin> alItemM = (ArrayList) request.getAttribute("alItemN");
 					%>
 					<div class="form-group">
 						<label>Nhập Nguyên Liệu</label> 
 						<select name="material" class="input-short form-control">
 
 							<%
-								for (Material itemM : alItemM) {
+								for (MenuAdmin itemM : alItemM) {
 							%>
-							<option value="<%=itemM.getId_material()%>"><%=itemM.getName()%></option>
+							<option value="<%=itemM.getId_Menu()%>"><%=itemM.getName()%></option>
 							<%
 								}
 							%>
@@ -46,7 +47,7 @@
 					</div>
 
 							<%
-								ArrayList<NhanVien> alItemN = (ArrayList) request.getAttribute("alItemN");
+								ArrayList<NhanVien> alItemN = (ArrayList) request.getAttribute("alItemM");
 							%>
 					<div class="form-group">
 						<label>Chọn Nhân Viên</label> 

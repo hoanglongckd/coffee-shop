@@ -33,7 +33,7 @@
 				<thead>
 					<tr align="center">
 						<th>ID Nhập hàng</th>
-						<th>Tên Nguyên liệu</th>
+						<th>Tên Thực Đơn</th>
 						<th>Tên Nhân Viên</th>
 						<th>Số Lượng</th>
 						<th>Số tiền</th>

@@ -18,6 +18,7 @@ import bean.Stock;
 import bo.DetailStockBo;
 import bo.ImportGoodsBo;
 import bo.MaterialBo;
+import bo.MenuBo;
 import bo.StockBo;
 
 /**
@@ -50,10 +51,10 @@ public class ControllerAddImport extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		MenuBo meBo = new MenuBo();
 		MaterialBo maBo = new MaterialBo();
-		request.setAttribute("alItemM", maBo.getList());
-		request.setAttribute("alItemN", maBo.getListStaff());
+		request.setAttribute("alItemM", maBo.getListStaff());
+		request.setAttribute("alItemN", meBo.getListMenuAdmin());
 		ImportGoodsBo itemBo = new ImportGoodsBo();
 		DetailStockBo detailStockBo = new DetailStockBo();
 		StockBo stockBo = new StockBo();
