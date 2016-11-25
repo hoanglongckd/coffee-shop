@@ -20,12 +20,12 @@ public class NgayTrongTuanDao {
 		NgayTrongTuan Item = null;
 		ArrayList<NgayTrongTuan> alItem = new ArrayList<NgayTrongTuan>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM NgayTrongTuan ";
+		String query = "SELECT * FROM ngaytrongtuan ";
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				Item = new NgayTrongTuan(rs.getString("TenNgay"));
+				Item = new NgayTrongTuan(rs.getString("tenNgay"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {
@@ -108,14 +108,14 @@ public class NgayTrongTuanDao {
 		NgayTrongTuan objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM NgayTrongTuan WHERE id = ? LIMIT 1";
+		String query = "SELECT * FROM ngaytrongtuan WHERE id = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,taId );
 			rs = pst.executeQuery();
 			if(rs.next()){
-				objItem = new NgayTrongTuan(rs.getString("TenNgay"));
+				objItem = new NgayTrongTuan(rs.getString("tenNgay"));
 			}
 			
 		} catch (SQLException e) {

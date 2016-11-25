@@ -20,7 +20,7 @@ public class AnhDao {
 		Anh Item = null;
 		ArrayList<Anh> alItem = new ArrayList<Anh>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM Anh ";
+		String query = "SELECT * FROM anh ";
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
@@ -49,7 +49,7 @@ public class AnhDao {
 		Anh Item = null;
 		ArrayList<Anh> alItem = new ArrayList<Anh>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM Anh where idQuan ="+idQuan;
+		String query = "SELECT * FROM anh where idQuan ="+idQuan;
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
@@ -107,7 +107,7 @@ public class AnhDao {
 	public boolean editAnh(Anh Anh) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  Anh SET ten =?, duongDan =? WHERE idAnh =? LIMIT 1";
+		String query = "UPDATE  anh SET ten =?, duongDan =? WHERE idAnh =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -169,7 +169,7 @@ public class AnhDao {
 	public int delAnhByID(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  Anh WHERE idAnh =? LIMIT 1";
+		String query = "DELETE FROM  anh WHERE idAnh =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );
@@ -226,7 +226,7 @@ public class AnhDao {
 		int result =0;
 		conn = lb.getConnectMySQL();
 		
-		String query = "UPDATE  Anh SET  duongDan =? WHERE idAnh =? LIMIT 1";
+		String query = "UPDATE  anh SET  duongDan =? WHERE idAnh =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);

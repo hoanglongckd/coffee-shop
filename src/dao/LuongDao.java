@@ -48,7 +48,7 @@ public class LuongDao {
 	public boolean addLuong(Luong Luong) {
 		conn = lb.getConnectMySQL();
 		boolean result =true;
-		String query = "INSERT INTO Luong(idNhanVien,soTien) VALUES(?,?)";
+		String query = "INSERT INTO luong(idNhanVien,soTien) VALUES(?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -77,7 +77,7 @@ public class LuongDao {
 	public boolean editLuong(Luong Luong) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  Luong SET soTien =? WHERE idLuong =? LIMIT 1";
+		String query = "UPDATE  luong SET soTien =? WHERE idLuong =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -108,7 +108,7 @@ public class LuongDao {
 		Luong objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM Luong WHERE idLuong = ? LIMIT 1";
+		String query = "SELECT * FROM luong WHERE idLuong = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -137,7 +137,7 @@ public class LuongDao {
 		Luong objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM Luong WHERE idNhanVien = ? LIMIT 1";
+		String query = "SELECT * FROM luong WHERE idNhanVien = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -165,7 +165,7 @@ public class LuongDao {
 	public int delLuongById(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  Luong WHERE idLuong =? LIMIT 1";
+		String query = "DELETE FROM  luong WHERE idLuong =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );

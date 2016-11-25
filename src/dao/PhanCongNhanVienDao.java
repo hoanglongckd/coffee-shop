@@ -112,7 +112,7 @@ public class PhanCongNhanVienDao {
 	public boolean addPhanCongNhanVien(PhanCongNhanVien PhanCongNhanVien) {
 		conn = lb.getConnectMySQL();
 		boolean result =true;
-		String query = "INSERT INTO PhanCongNhanVien(idLichLamViec, idNhanVien) VALUES(?,?)";
+		String query = "INSERT INTO phancongnhanvien(idLichLamViec, idNhanVien) VALUES(?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -141,7 +141,7 @@ public class PhanCongNhanVienDao {
 	public boolean editPhanCongNhanVien(PhanCongNhanVien PhanCongNhanVien) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  PhanCongNhanVien SET idLichLamViec =?, idNhanVien =? LIMIT 1";
+		String query = "UPDATE  phancongnhanvien SET idLichLamViec =?, idNhanVien =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -203,7 +203,7 @@ public class PhanCongNhanVienDao {
 	public int delPhanCongNhanVienByID(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  PhanCongNhanVien WHERE Id =? LIMIT 1";
+		String query = "DELETE FROM  phancongnhanvien WHERE Id =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );
@@ -227,7 +227,7 @@ public class PhanCongNhanVienDao {
 
 	public void delItemByIdLichLamViecIdNhanVien(int idLichLamViec, int idNhanVien) {
 		conn = lb.getConnectMySQL();
-		String query = "DELETE FROM  PhanCongNhanVien WHERE idLichLamViec =? and idNhanVien = ? LIMIT 1";
+		String query = "DELETE FROM  phancongnhanvien WHERE idLichLamViec =? and idNhanVien = ? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,idLichLamViec );

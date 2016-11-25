@@ -48,7 +48,7 @@ public class LichLamViecDao {
 	public boolean addLichLamViec(LichLamViec LichLamViec) {
 		conn = lb.getConnectMySQL();
 		boolean result =true;
-		String query = "INSERT INTO LichLamViec(idCaLamViec, tenNgay, ghiChu) VALUES(?,?,?,?)";
+		String query = "INSERT INTO lichlamviec(idCaLamViec, tenNgay, ghiChu) VALUES(?,?,?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -78,7 +78,7 @@ public class LichLamViecDao {
 	public boolean editLichLamViec(LichLamViec LichLamViec) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  LichLamViec SET idCaLamViec =?, tenNgay =?, GhiChu = ? WHERE idLichLamViec =? LIMIT 1";
+		String query = "UPDATE  lichlamviec SET idCaLamViec =?, tenNgay =?, GhiChu = ? WHERE idLichLamViec =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -142,7 +142,7 @@ public class LichLamViecDao {
 	public int delLichLamViecByID(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  LichLamViec WHERE idLichLamViec =? LIMIT 1";
+		String query = "DELETE FROM  lichlamviec WHERE idLichLamViec =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );
@@ -169,7 +169,7 @@ public class LichLamViecDao {
 		LichLamViec objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM LichLamViec WHERE tenNgay = ? and idCaLamViec = ? LIMIT 1";
+		String query = "SELECT * FROM lichlamviec WHERE tenNgay = ? and idCaLamViec = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);

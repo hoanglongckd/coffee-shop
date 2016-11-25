@@ -20,7 +20,7 @@ public class VangNghiDao {
 		VangNghi Item = null;
 		ArrayList<VangNghi> alItem = new ArrayList<VangNghi>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM VangNghi ";
+		String query = "SELECT * FROM vangnghi ";
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
@@ -49,7 +49,7 @@ public class VangNghiDao {
 		VangNghi Item = null;
 		ArrayList<VangNghi> alItem = new ArrayList<VangNghi>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM VangNghi where idQuan ="+idQuan;
+		String query = "SELECT * FROM vangnghi where idQuan ="+idQuan;
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
@@ -77,7 +77,7 @@ public class VangNghiDao {
 	public boolean addVangNghi(VangNghi VangNghi) {
 		conn = lb.getConnectMySQL();
 		boolean result =true;
-		String query = "INSERT INTO VangNghi(idNhanVien, NgayVang, GhiChu) VALUES(?,?,?)";
+		String query = "INSERT INTO vangnghi(idNhanVien, NgayVang, GhiChu) VALUES(?,?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -139,7 +139,7 @@ public class VangNghiDao {
 		VangNghi objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM VangNghi WHERE idVangNghi = ? LIMIT 1";
+		String query = "SELECT * FROM vangnghi WHERE idVangNghi = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -169,7 +169,7 @@ public class VangNghiDao {
 	public int delVangNghiByID(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  VangNghi WHERE idVangNghi =? LIMIT 1";
+		String query = "DELETE FROM  vangnghi WHERE idVangNghi =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );

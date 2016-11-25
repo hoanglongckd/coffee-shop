@@ -111,7 +111,7 @@ public class NhanVienDao {
 	public boolean editNhanVien(NhanVien NhanVien) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  NhanVien SET idAnh =?, idQuan =?, tenNhanVien =?,  ghiChu = ? WHERE idNhanVien =? LIMIT 1";
+		String query = "UPDATE  nhanvien SET idAnh =?, idQuan =?, tenNhanVien =?,  ghiChu = ? WHERE idNhanVien =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -145,7 +145,7 @@ public class NhanVienDao {
 		NhanVien objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM NhanVien WHERE idNhanVien = ? LIMIT 1";
+		String query = "SELECT * FROM nhanvien WHERE idNhanVien = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -176,7 +176,7 @@ public class NhanVienDao {
 	public int delNhanVienById(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  NhanVien WHERE idNhanVien =? LIMIT 1";
+		String query = "DELETE FROM  nhanvien WHERE idNhanVien =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );
