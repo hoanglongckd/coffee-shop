@@ -23,6 +23,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/admin/addNhanVien">Thêm nhân viên</a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/listNhanVien">Danh sách nhân viên</a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/phancong">Lịch làm việc</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>

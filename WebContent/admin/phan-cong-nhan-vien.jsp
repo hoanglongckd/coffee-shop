@@ -12,9 +12,9 @@
     pageEncoding="UTF-8"%>
     <script type="text/javascript" src="<%=request.getContextPath() %>/templates/js/jquery-2.1.1.min.js" ></script>
 <%@include file="/templates/inc/_header.jsp" %>
+<title>Lịch làm việc</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
 
 <!-- Page Content -->
 <% 
@@ -30,20 +30,18 @@ int idSelectTag = 0;
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Phân công lịch làm việc
+					Lịch
+					<small>Làm việc</small>
 				</h1>
 			</div class="col-lg-12">
 			<!-- /.col-lg-12 -->
 			<jsp:include page="./_message-block.jsp" />
-			<div>
-			 <label>Lịch làm việc</label>
-			</div>
 			<%
 			for(NhanVien nhanVien : listNhanVien){
 			%>
 				<div class="col-lg-12">
 					<label><p style="color:red"><%=nhanVien.getTen() %></p></label> 
-					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr align="center">
 								<th> Ca làm việc</th>

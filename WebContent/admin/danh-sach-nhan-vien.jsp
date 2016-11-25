@@ -4,10 +4,10 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title> Danh sách Nhân viên</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title> Danh sách Nhân viên</title>
+
 
 <div id="wrapper">
 	<!-- Page Content -->
@@ -41,7 +41,7 @@
 							<th> Tên quán</th>
 							<th> Tên nhân viên</th>
 							<th> Lương</th>
-							<th> Edit</th>
+							<th> Detail</th>
 							<th> Delete</th>
 						</tr>
 					</thead>
