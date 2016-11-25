@@ -1,6 +1,7 @@
 package bean;
 
 public class LoginedAccount {
+	private int id_user;
 	private String username;
 	private String key;
 	private int idStaff;
@@ -23,12 +24,21 @@ public class LoginedAccount {
 	public void setIdStaff(int idStaff) {
 		this.idStaff = idStaff;
 	}
-	public LoginedAccount(String username, String key, int idStaff) {
+	
+	public int getId_user() {
+		return id_user;
+	}
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+	public LoginedAccount(int id_user, String username, String key, int idStaff) {
 		super();
+		this.id_user = id_user;
 		this.username = username;
 		this.key = key;
 		this.idStaff = idStaff;
 	}
+	
 	
 
 }

@@ -202,4 +202,29 @@ public class MenuDao {
 		}
 		return result;
 	}
+
+	public int delItem(int id) {
+		int result = 0;
+		conn = lb.getConnectMySQL();
+		String query = "DELETE FROM thucdon  WHERE idThucDon =? LIMIT 1";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, id);
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

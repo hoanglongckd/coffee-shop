@@ -31,21 +31,21 @@ public class AppServerLogin {
 		if (Item != null) {
 			if (!alCheck.isEmpty()) {
 				for (LoginedAccount checkLogin : alCheck) {
-					if (Item.getUsername().equals(checkLogin.getUsername())) {
+					if (Item.getId_user() == checkLogin.getId_user()) {
 						alCheck.remove(checkLogin);
 						String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-						alCheck.add(new LoginedAccount(username, uuid, Item.getId_NV()));
+						alCheck.add(new LoginedAccount(Item.getId_NV(),username, uuid, Item.getId_NV()));
 						result.setValue(uuid);
 
 					} else {
 						String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-						alCheck.add(new LoginedAccount(username, uuid, Item.getId_NV()));
+						alCheck.add(new LoginedAccount(Item.getId_NV(),username, uuid, Item.getId_NV()));
 						result.setValue(uuid);
 					}
 				}
 			} else {
 				String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-				alCheck.add(new LoginedAccount(username, uuid, Item.getId_NV()));
+				alCheck.add(new LoginedAccount(Item.getId_NV(),username, uuid, Item.getId_NV()));
 				result.setValue(uuid);
 			}
 		} else {
