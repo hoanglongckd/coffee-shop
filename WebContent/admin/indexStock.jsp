@@ -5,15 +5,11 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title>Quản lý kho</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title> Danh sách Nguyên liệu trong Kho</title>
-
-
 
 <!-- Page Content -->
-
 <div id="page-wrapper">
 
 	<div class="container-fluid">
@@ -21,7 +17,8 @@
 			<div class="col-lg-12">
 
 				<h1 class="page-header">
-					Kho <small>List</small>
+					Quản lý
+					<small>Kho</small>
 				</h1>
 
 			</div>
