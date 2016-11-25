@@ -143,6 +143,8 @@ function changelichlamviec(tenNgay,tenCaLamViec,idSelectTag,idNhanVienx) {
 		return false;
 		}
 </script>
+<jsp:include page="/templates/inc/_footer-start.jsp" />
+<jsp:include page="/templates/inc/_footer-end.jsp" />
 </body>
 
 </html>
