@@ -8,11 +8,13 @@
 <%@page import="bean.Anh"%>
 <%@page import="bean.NhanVien"%>
 <%@page import="java.util.ArrayList"%>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/templates/js/jquery-2.1.1.min.js" ></script>
 <%@  page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <script type="text/javascript" src="<%=request.getContextPath() %>/templates/js/jquery-2.1.1.min.js" ></script>
-<%@include file="/templates/inc/header.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp" %>
+<%@include file="/templates/inc/_header.jsp" %>
+<%@include file="/templates/inc/_top.jsp" %>
+<%@include file="/templates/inc/_menu.jsp" %>
+<title>Chỉnh sửa nhân viên</title>
 
 <!-- Page Content -->
 <% NhanVien nhanVien=(NhanVien)request.getAttribute("nhanVien");
@@ -215,6 +217,8 @@ function changelichlamviec(tenNgay,tenCaLamViec,idSelectTag,idNhanVienx) {
 		return false;
 		}
 </script>
+<jsp:include page="/templates/inc/_footer-start.jsp" />
+<jsp:include page="/templates/inc/_footer-end.jsp" />
 </body>
 
 </html>

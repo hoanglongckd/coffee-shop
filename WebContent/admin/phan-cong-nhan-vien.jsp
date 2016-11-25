@@ -11,8 +11,10 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <script type="text/javascript" src="<%=request.getContextPath() %>/templates/js/jquery-2.1.1.min.js" ></script>
-<%@include file="/templates/inc/header.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp" %>
+<%@include file="/templates/inc/_header.jsp" %>
+<%@include file="/templates/inc/_top.jsp" %>
+<%@include file="/templates/inc/_menu.jsp" %>
+<%@include file="/templates/inc/left_bar.jsp"%>
 
 <!-- Page Content -->
 <% 
