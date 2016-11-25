@@ -67,15 +67,15 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Count Profit <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<%=request.getContextPath()%>/admin/countProfit.jsp">List Count profit</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+<!--                 <li> -->
+<!--                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Count Profit <span class="fa arrow"></span></a> -->
+<!--                     <ul class="nav nav-second-level"> -->
+<!--                         <li> -->
+<%--                             <a href="<%=request.getContextPath()%>/admin/countProfit.jsp">List Count profit</a> --%>
+<!--                         </li> -->
+<!--                     </ul> -->
+<!--                     /.nav-second-level -->
+<!--                 </li> -->
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-th-large"></i> Type Menu <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
