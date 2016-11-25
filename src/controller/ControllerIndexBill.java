@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.ImportGoodsBo;
+import bo.BillBo;
 
 /**
  * Servlet implementation class ControllerIndexTable
@@ -36,8 +36,8 @@ public class ControllerIndexBill extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ImportGoodsBo ItemBo = new ImportGoodsBo();
-		request.setAttribute("alItem", ItemBo.getList());
+		BillBo itemBo = new BillBo();
+		request.setAttribute("alItem", itemBo.getListAdmin());
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexBill.jsp");
 		rd.forward(request, response);
 	}

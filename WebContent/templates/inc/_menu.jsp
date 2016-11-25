@@ -42,6 +42,15 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                
+                <li>
+                    <a  href="#"><i class="fa fa-bars"></i> Hóa  Đơn<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                    	
+                        <li><a href="<%=request.getContextPath()%>/admin/indexBill">List Hóa Đơn</a></li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
                 <li>
                     <a href="#"><i class="fa fa-cube fa-fw"></i> Import Product<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">

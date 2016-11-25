@@ -46,6 +46,20 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
+                        <li>
+                            <a  href="<%=request.getContextPath()%>/admin/indexBill"><i class="fa fa-cube fa-fw"></i>Hóa Đơn<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<%=request.getContextPath()%>/admin/indexBill">List Hóa Đơn</a>
+                                </li>
+                                <li>
+                                    <a href="<%=request.getContextPath()%>/admin/addBill">Add Hóa Đơn</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
                         <li>
                             <a href="<%=request.getContextPath()%>/admin/importProduct"><i class="fa fa-bar-chart-o fa-fw"></i> Nhập Hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

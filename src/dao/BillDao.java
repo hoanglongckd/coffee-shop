@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Bill;
+import beanAdmin.BillAdmin;
 import libraryConnectDb.LibraryConnectDb;
 
 public class BillDao {
@@ -289,6 +290,33 @@ public class BillDao {
 			
 		}
 		return result;
+	}
+	public ArrayList<BillAdmin> getListAdmin() {
+		BillAdmin Item = null;
+		ArrayList<BillAdmin> alItem = new ArrayList<BillAdmin>();
+		conn = lb.getConnectMySQL();
+		String query = "SELECT * FROM  hoadon LEFT JOIN nhanvien ON hoadon.idNhanVien = nhanvien.idNhanVien INNER JOIN ban ON hoadon.idBan = ban.idBan";
+		try {
+			pst = conn.prepareStatement(query);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Item = new BillAdmin(rs.getInt("idHoaDon"), rs.getInt("idNhanVien"),rs.getInt("idBan"),rs.getInt("trangThaiThanhToan"), rs.getFloat("tongTien"),rs.getTimestamp("ngayLapHoaDon"), rs.getString("ghiChu"), rs.getString("tenNhanVien"), rs.getString("tenBan"));
+				alItem.add(Item);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return alItem;
 	}
 
 }
