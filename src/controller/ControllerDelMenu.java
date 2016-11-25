@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bo.MenuBo;
+
 /**
  * Servlet implementation class ControllerIndexTable
  */
@@ -33,15 +35,15 @@ public class ControllerDelMenu extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		MenuBo ietmBo = new MenuBo();
-//		
-//		int id = Integer.parseInt(request.getParameter("id"));
-//		int result = itemBo.delItem(id);
-//		if(result > 0){
-//			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=1");
-//		}else{
-//			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=0");
-//		}
+		MenuBo ietmBo = new MenuBo();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		int result = ietmBo.delItem(id);
+		if(result > 0){
+			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=1");
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=0");
+		}
 	}
 
 }

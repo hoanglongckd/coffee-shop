@@ -27,4 +27,7 @@ public class MenuBo {
 	public int editItem(MenuAdmin itemNewMenu) {
 		return menuDao.editItem(itemNewMenu);
 	}
+	public int delItem(int id) {
+		return menuDao.delItem(id);
+	}
 }
