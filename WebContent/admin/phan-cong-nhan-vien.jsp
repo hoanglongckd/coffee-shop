@@ -15,15 +15,12 @@
 <%@include file="/templates/inc/left_bar.jsp" %>
 
 <!-- Page Content -->
-<% NhanVien nhanVien=(NhanVien)request.getAttribute("nhanVien");
-	Anh anh = (Anh) request.getAttribute("anh");
-	String idSelect="";
-	User user = null;
-	if(request.getAttribute("user")!=null)
-		user = (User) request.getAttribute("user");
-	Luong luong = null;
-	if(request.getAttribute("luong")!=null)
-		luong = (Luong) request.getAttribute("luong");
+<% 
+ArrayList<NhanVien> listNhanVien = (ArrayList<NhanVien>)request.getAttribute("listNhanVien");
+ArrayList<CaLamViec> listCaLamViec = (ArrayList<CaLamViec>)request.getAttribute("listCaLamViec");
+ArrayList<PhanCongNhanVien> listLichLamViecTrongTuan = (ArrayList<PhanCongNhanVien>)request.getAttribute("listLichLamViecCuaNhanVien");
+ArrayList<NgayTrongTuan> listNgayTrongTuan =(ArrayList<NgayTrongTuan>) request.getAttribute("listNgayTrongTuan");
+int idSelectTag = 0;
 %>
 
 <div id="page-wrapper">
@@ -31,78 +28,19 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Thông tin nhân viên
+					Phân công lịch làm việc
 				</h1>
-			</div>
+			</div class="col-lg-12">
 			<!-- /.col-lg-12 -->
 			<jsp:include page="./_message-block.jsp" />
-			<div class="col-lg-7" style="padding-bottom: 120px">
-				<form action="${pageContext.request.contextPath}/admin/updateNhanVien"
-					method="POST">
-					<div>
-					<input type="hidden"name="idNhanVien" value="<%=nhanVien.getId()%>"/>
-					</div>
-					<div class="form-group">
-						<label>Ảnh: </label><br/>
-						<img src="<%=anh.getDuongDan() %>" alt="Link anh khong ton tai" width="150" />
-						<br/>
-						<br/>
-						<input class="form-control" type="text"	name="duongDan" value="<%=anh.getDuongDan() %>" />
-					</div>
-					<div class="form-group">
-						<label>Quán: </label> <input class="form-control" type="text"
-							name="quan" value="Moc Coffee" readonly="read-ony"/>
-					</div>
-					<div class="form-group">
-						<label>Tên: </label> <input class="form-control" type="text"
-							name="ten" value="<%=nhanVien.getTen()%>"/>
-					</div>
-					<%
-					if(luong!=null){
-					%>
-					<div class="form-group">
-						<label>Lương theo tháng: </label> <input class="form-control" type="text"
-							name="luong" value="<%=luong.getLuong()%>" />
-					</div>
-					<%
-					}else{
-					%>	
-					<div class="form-group">
-					<label>Lương theo tháng: </label> <input class="form-control" type="text"
-							name="luong" value="" placeholder="Nhập lương của nhân viên" />
-					</div>
-					<%	
-					}
-					if(user!=null){
-					%>
-					<div class="form-group">
-						<label>Tên tài khoản: </label> <input class="form-control" type="text"
-							name="username" value="<%=user.getUsername() %>" />
-					</div>
-					<div class="form-group">
-						<label> Mật khẩu: </label> <input class="form-control" type="password"
-							name="password" value="<%=user.getPassword() %>" />
-					</div>
-					<div>
-					<input class="form-control" type="hidden"
-							name="idUser" value="<%=user.getId_user()%>"/>
-					</div>
-					<%
-					}
-					else{
-					%>
-					<div class="form-group">
-						<label>Tên tài khoản: </label> <input class="form-control" type="text"
-							name="username" value="" placeholder=" Nhập Username"/>
-					</div>
-					<div class="form-group">
-						<label>Mật khẩu: </label> <input class="form-control" type="password"
-							name="password" value="" placeholder=" Nhập Password"/>
-					</div>
-					<%} %>
-					
-				<div >
-					<label>Lịch làm việc </label> 
+			<div>
+			 <label>Lịch làm việc</label>
+			</div>
+			<%
+			for(NhanVien nhanVien : listNhanVien){
+			%>
+				<div class="col-lg-12">
+					<label><p style="color:red"><%=nhanVien.getTen() %></p></label> 
 					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 						<thead>
 							<tr align="center">
@@ -118,10 +56,6 @@
 						</thead>
 					<tbody>
 <%
-ArrayList<CaLamViec> listCaLamViec = (ArrayList<CaLamViec>)request.getAttribute("listCaLamViec");
-ArrayList<PhanCongNhanVien> listLichLamViecTrongTuan = (ArrayList<PhanCongNhanVien>)request.getAttribute("listLichLamViecCuaNhanVien");
-ArrayList<NgayTrongTuan> listNgayTrongTuan =(ArrayList<NgayTrongTuan>) request.getAttribute("listNgayTrongTuan");
-int idSelectTag = 0;
 for(CaLamViec caLamViec : listCaLamViec ){
 						String idNhanVienx = nhanVien.getId()+"";
 %>						<tr style="text-align: center">
@@ -137,7 +71,8 @@ for(CaLamViec caLamViec : listCaLamViec ){
 								for(PhanCongNhanVien phanCong : listLichLamViecTrongTuan){
 									idPhanCong = phanCong.getId();
 									if((phanCong.getTenNgay().equals(ngay.getTenNgay()))&&
-											(phanCong.getCaLamViec().equals(caLamViec.getTenCaLamViec())))
+											(phanCong.getCaLamViec().equals(caLamViec.getTenCaLamViec()))&&
+											(phanCong.getIdNhanVien()==Integer.parseInt(idNhanVienx)))
 									{
 										work="Selected";
 										trangThai = 1;
@@ -157,22 +92,13 @@ for(CaLamViec caLamViec : listCaLamViec ){
 								<%
 							}
 							%>
-							
 						</tr>							
 <%} %>					
 					</tbody>
 				</table>
-			
 			</div>
+			<%} %>
 			<div class="form-group">
-						<label>Ghi chú </label> <textarea  rows="5" cols="20" class="form-control" name="ghiChu" ><%= nhanVien.getGhiChu() %></textarea>
-					</div>		
-					
-					<button type="submit" class="btn btn-default" onClick="return Warning();">Update</button>
-					<button type="reset" class="btn btn-default">Reset</button>
-				</form>
-			</div>
-	
 		</div>
 		<!-- /.row -->
 	</div>

@@ -5,6 +5,8 @@ public class PhanCongNhanVien {
 	private int id;
 	private int idLichLamViec;
 	private int idNhanVien;
+	private String caLamViec;
+	private String tenNgay;
 	
 	
 	
@@ -13,6 +15,19 @@ public class PhanCongNhanVien {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	public PhanCongNhanVien(int id,  int idNhanVien, String caLamViec, String tenNgay) {
+		super();
+		this.id = id;
+		this.idNhanVien = idNhanVien;
+		this.caLamViec = caLamViec;
+		this.tenNgay = tenNgay;
+	}
+
+
+
 	public PhanCongNhanVien(int id, int idLichLamViec, int idNhanVien) {
 		super();
 		this.id = id;
@@ -25,7 +40,7 @@ public class PhanCongNhanVien {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getIdLichLamViec() {
+	public int i() {
 		return idLichLamViec;
 	}
 	public void setIdLichLamViec(int idLichLamViec) {
@@ -36,6 +51,21 @@ public class PhanCongNhanVien {
 	}
 	public void setIdNhanVien(int idNhanVien) {
 		this.idNhanVien = idNhanVien;
+	}
+	public String getCaLamViec() {
+		return caLamViec;
+	}
+	public void setCaLamViec(String caLamViec) {
+		this.caLamViec = caLamViec;
+	}
+	public String getTenNgay() {
+		return tenNgay;
+	}
+	public void setTenNgay(String tenNgay) {
+		this.tenNgay = tenNgay;
+	}
+	public int getIdLichLamViec() {
+		return idLichLamViec;
 	}
 	
 	

@@ -30,10 +30,13 @@ public class CaLamViecBo {
 	}
 
 	public CaLamViec getItemById(int taId) {
-		
 		return caLamViecDao.getItemByID(taId);
 	}
 
+	public CaLamViec getItemByTen(String tenCaLamViec) {
+		return caLamViecDao.getItemByTen(tenCaLamViec);
+	}
+	
 	public boolean delItem(int tid) {
 		if(caLamViecDao.delCaLamViecByID(tid)==1)
 			return true;

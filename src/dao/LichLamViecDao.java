@@ -26,7 +26,7 @@ public class LichLamViecDao {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				Item = new LichLamViec(rs.getInt("id"),rs.getInt("idCaLamViec"),rs.getString("TenCaLamViec"),
-						rs.getString("TenNgay"),rs.getString("Date_time"), rs.getString("GhiChu"));
+						rs.getString("TenNgay"), rs.getString("GhiChu"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {
@@ -48,13 +48,12 @@ public class LichLamViecDao {
 	public boolean addLichLamViec(LichLamViec LichLamViec) {
 		conn = lb.getConnectMySQL();
 		boolean result =true;
-		String query = "INSERT INTO LichLamViec(idCaLamViec, TenNgay, Date_time, GhiChu) VALUES(?,?,?,?)";
+		String query = "INSERT INTO LichLamViec(idCaLamViec, tenNgay, ghiChu) VALUES(?,?,?,?)";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,LichLamViec.getIdCaLamViec());
 			pst.setString(2,LichLamViec.getTenNgay());
-			pst.setString(3,LichLamViec.getDate());
 			pst.setString(3,LichLamViec.getGhiChu());
 			pst.executeUpdate();
 			
@@ -79,13 +78,12 @@ public class LichLamViecDao {
 	public boolean editLichLamViec(LichLamViec LichLamViec) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  LichLamViec SET idCaLamViec =?, TenNgay =?, Date_time =?  GhiChu = ? WHERE id =? LIMIT 1";
+		String query = "UPDATE  LichLamViec SET idCaLamViec =?, tenNgay =?, GhiChu = ? WHERE idLichLamViec =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,LichLamViec.getIdCaLamViec() );
 			pst.setString(2,LichLamViec.getTenNgay());
-			pst.setString(3,LichLamViec.getDate() );
 			pst.setString(4, LichLamViec.getGhiChu());
 			pst.setInt(5,LichLamViec.getId() );
 
@@ -144,7 +142,7 @@ public class LichLamViecDao {
 	public int delLichLamViecByID(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  LichLamViec WHERE Id =? LIMIT 1";
+		String query = "DELETE FROM  LichLamViec WHERE idLichLamViec =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );
@@ -165,6 +163,39 @@ public class LichLamViecDao {
 		}
 		
 		return result;
+	}
+
+	public LichLamViec getLichLamViec(String tenNgay, int idCaLamViec) {
+		LichLamViec objItem = null;
+		conn = lb.getConnectMySQL();
+		
+		String query = "SELECT * FROM LichLamViec WHERE tenNgay = ? and idCaLamViec = ? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setString(1, tenNgay );
+			pst.setInt(2, idCaLamViec);
+			rs = pst.executeQuery();
+			if(rs.next()){
+				objItem = new LichLamViec(rs.getInt("idLichLamViec"),rs.getInt("idCaLamViec"),
+						rs.getString("tenNgay"),rs.getString("ghiChu"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return objItem;
 	}
 
 }

@@ -25,7 +25,7 @@ public class NhanVienDao {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				Item = new NhanVien(rs.getInt("idNhanVien"),rs.getString("duongDan"),rs.getString("tenQuan"),
+				Item = new NhanVien(rs.getInt("idNhanVien"),rs.getInt("idAnh"),rs.getInt("idQuan"),
 						rs.getString("tenNhanVien"),rs.getString("ghiChu"));
 				alItem.add(Item);
 			}

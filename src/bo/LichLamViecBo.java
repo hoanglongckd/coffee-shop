@@ -45,7 +45,7 @@ public class LichLamViecBo {
 			return true;
 		else return false;
 	}
-	
+	//
 	public ArrayList<LichLamViec> lichLamViecTrongTuan(){
 		
 		ArrayList<LichLamViec> arLichLamViec = new ArrayList<>();
@@ -64,4 +64,22 @@ public class LichLamViecBo {
 		return arLichLamViec;
 	}
 	
+	public LichLamViec getLichLamViec(String tenNgay,int idCaLamViec){
+		return LichLamViecDao.getLichLamViec(tenNgay, idCaLamViec);
+	}
+	
+	public void setLichLamViecTrongTuan(){
+		
+		
+		ArrayList<CaLamViec> arCaLamViec = CaLamViecBo.getInstance().getListCaLamViec();
+		ArrayList<LichLamViec> arTenNgay = LichLamViecBo.getInstance().getListLichLamViec();
+		
+		for(LichLamViec  a : arTenNgay){
+			for(CaLamViec b: arCaLamViec){
+				LichLamViec c = new LichLamViec(0, b.getIdCaLamViec(),b.getTenCaLamViec(), a.getTenNgay(), "rong");
+				LichLamViecBo.getInstance().addItem(c);
+			}
+		}
+	}
+
 }

@@ -16,7 +16,7 @@
 				<!-- /input-group -->
 				</li>
 				<li>
-					<a href="<%=request.getContextPath()%>/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+					<a href="<%=request.getContextPath()%>/admin/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 				</li>
 				<li>
 					<a href="#"><i class="fa fa-users"></i> Quản lý nhân viên<span class="fa arrow"></span></a>

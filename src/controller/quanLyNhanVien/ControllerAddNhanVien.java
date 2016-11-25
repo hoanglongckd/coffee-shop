@@ -42,7 +42,6 @@ public class ControllerAddNhanVien extends HttpServlet {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Calendar cal = Calendar.getInstance();
 			String tenAnh = dateFormat.format(cal.getTime());
-			System.out.println(tenAnh);
 			Anh anh = new Anh(0,tenAnh,duongDan,1);
 			AnhBo.getInstance().addItem(anh);
 			anh = AnhBo.getInstance().getItemByName(tenAnh);

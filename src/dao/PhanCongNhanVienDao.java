@@ -20,12 +20,77 @@ public class PhanCongNhanVienDao {
 		PhanCongNhanVien Item = null;
 		ArrayList<PhanCongNhanVien> alItem = new ArrayList<PhanCongNhanVien>();
 		conn = lb.getConnectMySQL();
-		String query = "SELECT * FROM PhanCongNhanVien where 1 ";
+		String query = "SELECT p.idPhanCongNhanVien,p.idNhanVien, l.tenNgay, c.TenCaLamViec "
+				+ "FROM phancongnhanvien as p, lichlamviec as l, calamviec as c "
+				+ "WHERE p.idLichLamViec = l.idLichLamViec AND l.idCaLamViec = c.idCaLamViec";
+				
 		try {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				Item = new PhanCongNhanVien(rs.getInt("id"),rs.getInt("idLichLamViec"),rs.getInt("idNhanVien"));
+				Item = new PhanCongNhanVien(rs.getInt("idPhanCongNhanVien"),rs.getInt("idNhanVien"),rs.getString("TenCaLamViec"),rs.getString("tenNgay"));
+				alItem.add(Item);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return alItem;
+	}	
+	
+	public PhanCongNhanVien getPhanCongNhanVienDetailById(int idPhanCong) {
+		PhanCongNhanVien Item = null;
+		conn = lb.getConnectMySQL();
+		String query = "SELECT p.idPhanCongNhanVien,p.idNhanVien, l.tenNgay, c.TenCaLamViec "
+				+ "FROM phancongnhanvien as p, lichlamviec as l, calamviec as c "
+				+ "WHERE p.idLichLamViec = l.idLichLamViec AND l.idCaLamViec = c.idCaLamViec"
+				+ " AND p.idPhanCongNhanVien = "+idPhanCong;
+ 
+		try {
+			pst = conn.prepareStatement(query);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Item = new PhanCongNhanVien(rs.getInt("idPhanCongNhanVien"),rs.getInt("idNhanVien"),rs.getString("TenCaLamViec"),rs.getString("tenNgay"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return Item;
+	}	
+	
+	public ArrayList<PhanCongNhanVien> getListPhanCongNhanVienDetail(int idNhanVien) {
+		PhanCongNhanVien Item = null;
+		ArrayList<PhanCongNhanVien> alItem = new ArrayList<PhanCongNhanVien>();
+		conn = lb.getConnectMySQL();
+		String query = "SELECT p.idPhanCongNhanVien,p.idNhanVien, l.tenNgay, c.TenCaLamViec "
+				+ "FROM phancongnhanvien as p, lichlamviec as l, calamviec as c "
+				+ "WHERE p.idLichLamViec = l.idLichLamViec AND l.idCaLamViec = c.idCaLamViec"
+				+ " AND p.idNhanVien = "+idNhanVien;
+ 
+		try {
+			pst = conn.prepareStatement(query);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Item = new PhanCongNhanVien(rs.getInt("idPhanCongNhanVien"),rs.getInt("idNhanVien"),rs.getString("TenCaLamViec"),rs.getString("tenNgay"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {
@@ -155,10 +220,33 @@ public class PhanCongNhanVienDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		
 		return result;
+	}
+
+	public void delItemByIdLichLamViecIdNhanVien(int idLichLamViec, int idNhanVien) {
+		conn = lb.getConnectMySQL();
+		String query = "DELETE FROM  PhanCongNhanVien WHERE idLichLamViec =? and idNhanVien = ? LIMIT 1";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,idLichLamViec );
+			pst.setInt(2,idNhanVien );
+
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 }

@@ -27,8 +27,6 @@ public class ControllerListNhanVien extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	ArrayList<NhanVien> listNhanVien = NhanVienBo.getInstance().getListNhanVienDetailByIdQuan(1);
-		System.out.println(listNhanVien.size());
-
     	
 		request.setAttribute("listNhanVien", listNhanVien);
 		ArrayList<Luong> listLuongNhanVien = LuongBo.getInstance().getListLuong();

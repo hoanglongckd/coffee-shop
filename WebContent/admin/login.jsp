@@ -38,10 +38,10 @@
                         <form role="form" action="" method="POST">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="Username" name="username" type="text" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" required>
                                 </div>
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>

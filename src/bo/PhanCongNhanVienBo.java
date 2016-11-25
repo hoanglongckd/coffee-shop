@@ -24,6 +24,13 @@ public class PhanCongNhanVienBo {
 		return PhanCongNhanVienDao.getListPhanCongNhanVien();
 	}
 	
+	public PhanCongNhanVien getPhanCongNhanVienDetailById(int idPhanCong) {
+		return PhanCongNhanVienDao.getPhanCongNhanVienDetailById(idPhanCong);
+	}
+	public ArrayList<PhanCongNhanVien> getListPhanCongNhanVienDetail(int idNhanVien) {
+		return PhanCongNhanVienDao.getListPhanCongNhanVienDetail(idNhanVien);
+	}
+	
 	//add
 	public boolean addItem(PhanCongNhanVien PhanCongNhanVien) {
 		return PhanCongNhanVienDao.addPhanCongNhanVien(PhanCongNhanVien);
@@ -39,6 +46,10 @@ public class PhanCongNhanVienBo {
 		if(PhanCongNhanVienDao.delPhanCongNhanVienByID(tid)==1)
 			return true;
 		else return false;
+	}
+	public void delItemByIdLichLamViecIdNhanVien(int idLichLamViec, int idNhanVien) {
+		PhanCongNhanVienDao.delItemByIdLichLamViecIdNhanVien(idLichLamViec,idNhanVien);
+		
 	}
 	
 }

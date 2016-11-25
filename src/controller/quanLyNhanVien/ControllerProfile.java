@@ -26,25 +26,22 @@ import bo.NhanVienBo;
 import bo.PhanCongNhanVienBo;
 import bo.UserBo;
 
-@WebServlet("/admin/updateNhanVien")
-public class ControllerUpdateNhanVien extends HttpServlet {
+@WebServlet("/admin/profile")
+public class ControllerProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ControllerUpdateNhanVien() {
+    public ControllerProfile() {
         super();
     }
     UserBo userBo = new UserBo();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession msg = request.getSession();
-		int idNhanVien=Integer.parseInt(request.getParameter("idNhanVien"));
+		HttpSession session = request.getSession();
+		int idNhanVien= Integer.parseInt(session.getAttribute("idNhanVien").toString());
 		NhanVien nhanVien = NhanVienBo.getInstance().getItemById(idNhanVien);
 		Anh anh = AnhBo.getInstance().getItemById(nhanVien.getIdAnh());
 		User user = userBo.getItemByIdNhanVien(idNhanVien);
 		Luong luong = LuongBo.getInstance().getItemByIdNhanVien(idNhanVien);
-		ArrayList<CaLamViec> listCaLamViec = CaLamViecBo.getInstance().getListCaLamViec();
-		ArrayList<NgayTrongTuan> listNgayTrongTuan = NgayTrongTuanBo.getInstance().getListNgayTrongTuan();
-		ArrayList<PhanCongNhanVien> listLichLamViecCuaNhanVien = PhanCongNhanVienBo.getInstance().getListPhanCongNhanVienDetail(idNhanVien);
-		System.out.println("ngay:"+listNgayTrongTuan.size()+"...phancong:"+listLichLamViecCuaNhanVien.size()+"..idNhanVien:"+idNhanVien);
 
 		//if(user==null)System.out.println("NULLLLLLLL");
 		if(request.getParameter("msg")!=null){
@@ -55,11 +52,8 @@ public class ControllerUpdateNhanVien extends HttpServlet {
 		request.setAttribute("anh", anh);
 		request.setAttribute("user", user);
 		request.setAttribute("luong", luong);
-		request.setAttribute("listCaLamViec", listCaLamViec);
-		request.setAttribute("listLichLamViecCuaNhanVien", listLichLamViecCuaNhanVien);
-		request.setAttribute("listNgayTrongTuan", listNgayTrongTuan);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/chinh-sua-nhan-vien.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/profile.jsp");
 		rd.forward(request, response);
 	}
 

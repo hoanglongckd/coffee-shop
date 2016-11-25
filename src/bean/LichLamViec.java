@@ -5,20 +5,25 @@ public class LichLamViec {
 	private int idCaLamViec;
 	private String tenCaLamViec;
 	private String tenNgay;
-	private String date;
 	private String ghiChu;
 	
 	
 	
 	
 	
-	public LichLamViec(int id, int idCaLamViec, String tenCaLamViec, String tenNgay, String date, String ghiChu) {
+	public LichLamViec(int id, int idCaLamViec, String tenNgay, String ghiChu) {
+		super();
+		this.id = id;
+		this.idCaLamViec = idCaLamViec;
+		this.tenNgay = tenNgay;
+		this.ghiChu = ghiChu;
+	}
+	public LichLamViec(int id, int idCaLamViec, String tenCaLamViec, String tenNgay, String ghiChu) {
 		super();
 		this.id = id;
 		this.idCaLamViec = idCaLamViec;
 		this.tenCaLamViec = tenCaLamViec;
 		this.tenNgay = tenNgay;
-		this.date = date;
 		this.ghiChu = ghiChu;
 	}
 	public LichLamViec() {
@@ -30,7 +35,6 @@ public class LichLamViec {
 		this.id = id;
 		this.tenCaLamViec = tenCaLamViec;
 		this.tenNgay = tenNgay;
-		this.date = date;
 		this.ghiChu = ghiChu;
 	}
 	public int getId() {
@@ -50,12 +54,6 @@ public class LichLamViec {
 	}
 	public void setTenNgay(String tenNgay) {
 		this.tenNgay = tenNgay;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
 	}
 	public String getGhiChu() {
 		return ghiChu;

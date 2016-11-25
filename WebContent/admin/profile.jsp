@@ -16,7 +16,7 @@
 
 <!-- Page Content -->
 <% NhanVien nhanVien=(NhanVien)request.getAttribute("nhanVien");
-	Anh anh = (Anh) request.getAttribute("anh");
+	Anh anhx = (Anh) request.getAttribute("anh");
 	String idSelect="";
 	User user = null;
 	if(request.getAttribute("user")!=null)
@@ -44,10 +44,10 @@
 					</div>
 					<div class="form-group">
 						<label>Ảnh: </label><br/>
-						<img src="<%=anh.getDuongDan() %>" alt="Link anh khong ton tai" width="150" />
+						<img src="<%=anhx.getDuongDan() %>" alt="Link anh khong ton tai" width="150" />
 						<br/>
 						<br/>
-						<input class="form-control" type="text"	name="duongDan" value="<%=anh.getDuongDan() %>" />
+						<input class="form-control" type="text"	name="duongDan" value="<%=anhx.getDuongDan() %>" />
 					</div>
 					<div class="form-group">
 						<label>Quán: </label> <input class="form-control" type="text"
@@ -101,69 +101,6 @@
 					</div>
 					<%} %>
 					
-				<div >
-					<label>Lịch làm việc </label> 
-					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
-						<thead>
-							<tr align="center">
-								<th> Ca làm việc</th>
-								<th> Thứ 2</th>
-								<th> Thứ 3</th>
-								<th> Thứ 4</th>
-								<th> Thứ 5</th>
-								<th> Thứ 6</th>
-								<th> Thứ 7</th>
-								<th> Chủ nhật</th>
-							</tr>
-						</thead>
-					<tbody>
-<%
-ArrayList<CaLamViec> listCaLamViec = (ArrayList<CaLamViec>)request.getAttribute("listCaLamViec");
-ArrayList<PhanCongNhanVien> listLichLamViecTrongTuan = (ArrayList<PhanCongNhanVien>)request.getAttribute("listLichLamViecCuaNhanVien");
-ArrayList<NgayTrongTuan> listNgayTrongTuan =(ArrayList<NgayTrongTuan>) request.getAttribute("listNgayTrongTuan");
-int idSelectTag = 0;
-for(CaLamViec caLamViec : listCaLamViec ){
-						String idNhanVienx = nhanVien.getId()+"";
-%>						<tr style="text-align: center">
-							<td><%= caLamViec.getTenCaLamViec() %></br><%=caLamViec.getThoiGianBatDau() %>-<%=caLamViec.getThoiGianKetThuc()%></td>
-							<%
-							for(NgayTrongTuan ngay : listNgayTrongTuan){
-								idSelectTag +=1;
-								int i=1;
-								String work="";
-								String free="";
-								int idPhanCong = 0;
-								int trangThai = 0;
-								for(PhanCongNhanVien phanCong : listLichLamViecTrongTuan){
-									idPhanCong = phanCong.getId();
-									if((phanCong.getTenNgay().equals(ngay.getTenNgay()))&&
-											(phanCong.getCaLamViec().equals(caLamViec.getTenCaLamViec())))
-									{
-										work="Selected";
-										trangThai = 1;
-										i=2;
-										listLichLamViecTrongTuan.remove(phanCong);
-										break;
-									}
-								}
-								if(i==1) free = "Selected";
-								%>
-								<td> 
-									<select id ="trangthai<%=idSelectTag %>" onchange="changelichlamviec('<%= ngay.getTenNgay()%>','<%= caLamViec.getTenCaLamViec()%>','<%=idSelectTag %>','<%=idNhanVienx %>')" >
-										  <option value="work" <%=work%> >Work </option>
-										  <option value="free" <%=free%> >Free </option>
-									</select>
-								</td>
-								<%
-							}
-							%>
-							
-						</tr>							
-<%} %>					
-					</tbody>
-				</table>
-			
-			</div>
 			<div class="form-group">
 						<label>Ghi chú </label> <textarea  rows="5" cols="20" class="form-control" name="ghiChu" ><%= nhanVien.getGhiChu() %></textarea>
 					</div>		
@@ -187,34 +124,6 @@ function Warning(){
     }
        return false;
  }
-</script>
-<script>
-function changelichlamviec(tenNgay,tenCaLamViec,idSelectTag,idNhanVienx) {
-	var trangthai = document.getElementById("trangthai"+idSelectTag).value;
-	//alert("name: "+name +"\nComment : "+cmt)
-	$.ajax({
-		url: '<%=request.getContextPath()%>/admin/changelichlamviec',
-		type: 'post',
-		cache: false,
-		data: {
-						//Dữ liệu gửi đi
-				idNhanVienx :idNhanVienx,
-				trangThai : trangthai,
-				tenNgay: tenNgay,
-				tenCaLamViec :tenCaLamViec 
-				},
-		success: function(data){
-					// Xử lý thành công
-				},
-		error: function (){
-				// Xử lý nếu có lỗi
-		alert("có lỗi xãy ra");
-		}
-				
-		});
-		return false;
-		}
-</script>
 </body>
 
 </html>

@@ -25,7 +25,7 @@ public class CaLamViecDao {
 			pst = conn.prepareStatement(query);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				Item = new CaLamViec(rs.getInt("id"),rs.getString("tenCaLamViec"),
+				Item = new CaLamViec(rs.getInt("idCaLamViec"),rs.getString("tenCaLamViec"),
 						rs.getString("thoiGianKetThuc"),rs.getString("thoiGianBatDau"), rs.getInt("idQuan"));
 				alItem.add(Item);
 			}
@@ -77,7 +77,7 @@ public class CaLamViecDao {
 	public boolean editCaLamViec(CaLamViec CaLamViec) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  calamviec SET tenCaLamViec =?, thoiGianBatDau =?, thoiGianKetThuc =? WHERE id =? LIMIT 1";
+		String query = "UPDATE  calamviec SET tenCaLamViec =?, thoiGianBatDau =?, thoiGianKetThuc =? WHERE idCaLamViec =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -109,14 +109,46 @@ public class CaLamViecDao {
 		CaLamViec objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM calamviec WHERE id = ? LIMIT 1";
+		String query = "SELECT * FROM calamviec WHERE idCaLamViec = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,taId );
 			rs = pst.executeQuery();
 			if(rs.next()){
-				objItem = new CaLamViec(rs.getInt("id"),rs.getString("tenCaLamViec"),
+				objItem = new CaLamViec(rs.getInt("idCaLamViec"),rs.getString("tenCaLamViec"),
+						rs.getString("thoiGianKetThuc"),rs.getString("thoiGianBatDau"), rs.getInt("idQuan"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return objItem;
+	}
+	
+	public CaLamViec getItemByTen(String tenCaLamViec) {
+		CaLamViec objItem = null;
+		conn = lb.getConnectMySQL();
+		
+		String query = "SELECT * FROM calamviec WHERE TenCaLamViec = ? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setString(1,tenCaLamViec );
+			rs = pst.executeQuery();
+			if(rs.next()){
+				objItem = new CaLamViec(rs.getInt("idCaLamViec"),rs.getString("tenCaLamViec"),
 						rs.getString("thoiGianKetThuc"),rs.getString("thoiGianBatDau"), rs.getInt("idQuan"));
 			}
 			
@@ -140,7 +172,7 @@ public class CaLamViecDao {
 	public int delCaLamViecByID(int tid) {
 		conn = lb.getConnectMySQL();
 		int result =0;
-		String query = "DELETE FROM  calamviec WHERE id =? LIMIT 1";
+		String query = "DELETE FROM  calamviec WHERE idCaLamViec =? LIMIT 1";
 		try {
 			pst = conn.prepareStatement(query);
 			pst.setInt(1,tid );
