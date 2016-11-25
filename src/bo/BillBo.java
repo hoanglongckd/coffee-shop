@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import bean.Bill;
+import beanAdmin.BillAdmin;
 import dao.BillDao;
 
 
@@ -46,6 +47,10 @@ public class BillBo {
 
 	public int getIbBillByIDTable(int idTable) {
 		return itemDao.getIbBillByIDTable(idTable);
+	}
+
+	public ArrayList<BillAdmin> getListAdmin() {
+		return itemDao.getListAdmin();
 	}
 
 	
