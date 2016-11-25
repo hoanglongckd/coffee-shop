@@ -74,7 +74,7 @@ public class UserDao {
 	public boolean editUser(User user) {
 		conn = lb.getConnectMySQL();
 		boolean result = true;
-		String query = "UPDATE  User SET username =?, password= ? WHERE idUser =? LIMIT 1";
+		String query = "UPDATE  user SET username =?, password= ? WHERE idUser =? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -134,7 +134,7 @@ public class UserDao {
 	public boolean checkExistUsername(String username,int idNhanVien) {
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM User WHERE username = ? and idNhanVien<> ? LIMIT 1";
+		String query = "SELECT * FROM user WHERE username = ? and idNhanVien<> ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
@@ -163,7 +163,7 @@ public class UserDao {
 		User objItem = null;
 		conn = lb.getConnectMySQL();
 		
-		String query = "SELECT * FROM User WHERE idNhanVien = ? LIMIT 1";
+		String query = "SELECT * FROM user WHERE idNhanVien = ? LIMIT 1";
 		
 		try {
 			pst = conn.prepareStatement(query);
