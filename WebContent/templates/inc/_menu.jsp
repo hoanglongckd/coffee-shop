@@ -85,30 +85,30 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-fire"></i> Chế Biến <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                    	<li>
-                            <a href="<%=request.getContextPath()%>/admin/addProcess"> Thêm Chế biến</a>
-                        </li>
-                    	<li>
-                            <a href="<%=request.getContextPath()%>/admin/indexProcess"> List Chế biến</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
-                <li>
-                    <a href="#"><i class="glyphicon glyphicon-th"></i> Đơn Vị Tinh <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                    <li>
-                        <a href="<%=request.getContextPath()%>/admin/addUnit"> Thêm Đơn Vị Tính</a>
-                    </li>
-                    <li>
-                        <a href="<%=request.getContextPath()%>/admin/indexUnit"> List Đơn Vị Tính</a>
-                    </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+<!--                 <li> -->
+<!--                     <a href="#"><i class="fa fa-fire"></i> Chế Biến <span class="fa arrow"></span></a> -->
+<!--                     <ul class="nav nav-second-level"> -->
+<!--                     	<li> -->
+<%--                             <a href="<%=request.getContextPath()%>/admin/addProcess"> Thêm Chế biến</a> --%>
+<!--                         </li> -->
+<!--                     	<li> -->
+<%--                             <a href="<%=request.getContextPath()%>/admin/indexProcess"> List Chế biến</a> --%>
+<!--                         </li> -->
+<!--                     </ul> -->
+<!--                     /.nav-second-level -->
+<!--                 </li> -->
+<!--                 <li> -->
+<!--                     <a href="#"><i class="glyphicon glyphicon-th"></i> Đơn Vị Tinh <span class="fa arrow"></span></a> -->
+<!--                     <ul class="nav nav-second-level"> -->
+<!--                     <li> -->
+<%--                         <a href="<%=request.getContextPath()%>/admin/addUnit"> Thêm Đơn Vị Tính</a> --%>
+<!--                     </li> -->
+<!--                     <li> -->
+<%--                         <a href="<%=request.getContextPath()%>/admin/indexUnit"> List Đơn Vị Tính</a> --%>
+<!--                     </li> -->
+<!--                     </ul> -->
+<!--                     /.nav-second-level -->
+<!--                 </li> -->
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-inbox"></i> Nguyên Liệu Trong Kho <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
