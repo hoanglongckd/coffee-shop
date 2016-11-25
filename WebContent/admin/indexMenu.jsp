@@ -6,21 +6,19 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp"%>
+<title>Danh sách thực đơn</title>
 <%@include file="/templates/inc/_top.jsp"%>
 <%@include file="/templates/inc/_menu.jsp"%>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title>Danh sách Thuc Đơn</title>
 
 <!-- Page Content -->
-
 <div id="page-wrapper">
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
 
 				<h1 class="page-header">
-					Danh Sách Thực Đơn <small>Danh Sách</small>
+					Danh Sách
+					<small>Thực Đơn</small>
 				</h1>
 
 
@@ -34,8 +32,6 @@
 					id="dataTables-example">
 					<thead>
 						<tr align="center">
-
-
 							<th>ID Thực Đơn</th>
 							<th>Tên Thực Đơn</th>
 							<th>Tên Loại Thực DƠn</th>
@@ -44,8 +40,6 @@
 							<th>Hình Anh</th>
 							<th>Delete</th>
 							<th>Edit</th>
-
-
 						</tr>
 					</thead>
 					<tbody>
@@ -60,8 +54,6 @@
 							<td><%=item.getMota()%></td>
 							<td><img src="<%=item.getLink()%>" alt="No Image"
 								width="50" /></td>
-
-
 							<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
 								href="<%=request.getContextPath()%>/admin/delMenu?id=<%=item.getId_Menu()%>">
 									Delete</a></td>
@@ -84,4 +76,3 @@
 
 <jsp:include page="/templates/inc/_footer-start.jsp" />
 <jsp:include page="/templates/inc/_footer-end.jsp" />
-
