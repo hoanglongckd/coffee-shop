@@ -34,15 +34,11 @@
 				id="dataTables-example">
 				<thead>
 					<tr align="center">
-
 						<th>ID Kho</th>
-						<th>Tên Nguyen Liệu</th>
+						<th>Tên Nguyên Liệu</th>
 						<th>Tổng số Lượng Còn</th>
 						<th>Delete</th>
 						<th>Edit</th>
-
-						
-
 					</tr>
 				</thead>
 				<tbody>
@@ -72,10 +68,6 @@
 <!-- /#page-wrapper -->
 <jsp:include page="/templates/inc/_footer-start.jsp" />
 <jsp:include page="/templates/inc/_footer-end.jsp" />
-
-
-
-
 </body>
 
 </html>

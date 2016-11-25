@@ -12,9 +12,10 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title>Chỉnh sửa nhân viên</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<title>Chỉnh sửa nhân viên</title>
+
 
 <!-- Page Content -->
 <% NhanVien nhanVien=(NhanVien)request.getAttribute("nhanVien");
@@ -33,7 +34,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Thông tin nhân viên
+					Thông tin
+					<small>Nhân viên</small>
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
@@ -105,7 +107,7 @@
 					
 				<div >
 					<label>Lịch làm việc </label> 
-					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr align="center">
 								<th> Ca làm việc</th>

@@ -34,7 +34,7 @@ public class ControllerAddNhanVien extends HttpServlet {
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/admin/them-nhan-vien.jsp");
 		dispatcher.forward(request, response);
 		}else {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login");
 		dispatcher.forward(request, response);
 		}
 	}
@@ -61,7 +61,7 @@ public class ControllerAddNhanVien extends HttpServlet {
 			boolean valid = NhanVienBo.getInstance().addItem(nhanVien);
 			HttpSession msg = request.getSession();
 			if (valid) {
-				msg.setAttribute("messages", "<ul><li>Thêm Nhân Viên thành công!</li></ul>");
+				msg.setAttribute("messages", "<ul><li>Thêm nhân viên thành công!</li></ul>");
 			} else {
 				msg.setAttribute("errors", "<ul><li>Có lỗi xảy ra! Vui lòng liên hệ với nhà cung cấp dịch vụ!</li></ul>");
 			}

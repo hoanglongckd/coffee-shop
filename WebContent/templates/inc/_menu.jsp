@@ -10,7 +10,7 @@
 						<span class="input-group-btn">
 							<button class="btn btn-default" type="button">
 								<i class="fa fa-search"></i>
-							</button>
+							</button> 
 						</span>
 					</div>
 				<!-- /input-group -->
@@ -23,6 +23,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="<%=request.getContextPath()%>/admin/addNhanVien">Thêm nhân viên</a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/listNhanVien">Danh sách nhân viên</a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/phancong">Lịch làm việc</a></li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
@@ -44,7 +45,7 @@
                 </li>
                 
                 <li>
-                    <a  href="#"><i class="fa fa-bars"></i> Hóa  Đơn<span class="fa arrow"></span></a>
+                    <a  href="#"><i class="fa fa-bars"></i> Hóa Đơn<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                     	
                         <li><a href="<%=request.getContextPath()%>/admin/indexBill">List Hóa Đơn</a></li>
@@ -52,10 +53,10 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-cube fa-fw"></i> Import Product<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-cube fa-fw"></i> Nhập hàng<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                    	<li><a href="<%=request.getContextPath()%>/admin/addImportProduct.jsp">Add import product</a></li>
-                        <li><a href="<%=request.getContextPath()%>/admin/importProduct.jsp">List import product</a></li>
+                    	<li><a href="<%=request.getContextPath()%>/admin/addImport">Thêm hàng mới</a></li>
+                        <li><a href="<%=request.getContextPath()%>/admin/indexImport">Danh sách hàng hóa</a></li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
@@ -67,15 +68,15 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Count Profit <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="<%=request.getContextPath()%>/admin/countProfit.jsp">List Count profit</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+<!--                 <li> -->
+<!--                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Count Profit <span class="fa arrow"></span></a> -->
+<!--                     <ul class="nav nav-second-level"> -->
+<!--                         <li> -->
+<%--                             <a href="<%=request.getContextPath()%>/admin/countProfit.jsp">List Count profit</a> --%>
+<!--                         </li> -->
+<!--                     </ul> -->
+<!--                     /.nav-second-level -->
+<!--                 </li> -->
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-th-large"></i> Type Menu <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -85,36 +86,33 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-fire"></i> Chế Biến <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                    	<li>
-                            <a href="<%=request.getContextPath()%>/admin/addProcess"> Thêm Chế biến</a>
-                        </li>
-                    	<li>
-                            <a href="<%=request.getContextPath()%>/admin/indexProcess"> List Chế biến</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
-                <li>
-                    <a href="#"><i class="glyphicon glyphicon-th"></i> Đơn Vị Tinh <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                    <li>
-                        <a href="<%=request.getContextPath()%>/admin/addUnit"> Thêm Đơn Vị Tính</a>
-                    </li>
-                    <li>
-                        <a href="<%=request.getContextPath()%>/admin/indexUnit"> List Đơn Vị Tính</a>
-                    </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+<!--                 <li> -->
+<!--                     <a href="#"><i class="fa fa-fire"></i> Chế Biến <span class="fa arrow"></span></a> -->
+<!--                     <ul class="nav nav-second-level"> -->
+<!--                     	<li> -->
+<%--                             <a href="<%=request.getContextPath()%>/admin/addProcess"> Thêm Chế biến</a> --%>
+<!--                         </li> -->
+<!--                     	<li> -->
+<%--                             <a href="<%=request.getContextPath()%>/admin/indexProcess"> List Chế biến</a> --%>
+<!--                         </li> -->
+<!--                     </ul> -->
+<!--                     /.nav-second-level -->
+<!--                 </li> -->
+<!--                 <li> -->
+<!--                     <a href="#"><i class="glyphicon glyphicon-th"></i> Đơn Vị Tinh <span class="fa arrow"></span></a> -->
+<!--                     <ul class="nav nav-second-level"> -->
+<!--                     <li> -->
+<%--                         <a href="<%=request.getContextPath()%>/admin/addUnit"> Thêm Đơn Vị Tính</a> --%>
+<!--                     </li> -->
+<!--                     <li> -->
+<%--                         <a href="<%=request.getContextPath()%>/admin/indexUnit"> List Đơn Vị Tính</a> --%>
+<!--                     </li> -->
+<!--                     </ul> -->
+<!--                     /.nav-second-level -->
+<!--                 </li> -->
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-inbox"></i> Nguyên Liệu Trong Kho <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                    	<li>
-                            <a href="<%=request.getContextPath()%>/admin/addStock"> Thêm nguyên liệu trong kho</a>
-                        </li>
                         <li>
                             <a href="<%=request.getContextPath()%>/admin/indexStock"> List nguyên liệu trong kho</a>
                         </li>

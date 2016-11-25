@@ -5,10 +5,10 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title> Danh sách Nguyên liệu</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title> Danh sách Nguyên liệu</title>
+
 
 <!-- Page Content -->
 
@@ -19,7 +19,8 @@
 			<div class="col-lg-12">
 
 				<h1 class="page-header">
-					Danh Sách Nguyên liệu <small>Danh Sách</small>
+					Danh Sách
+					<small>Nguyên liệu</small>
 				</h1>
 
 
@@ -33,8 +34,6 @@
 					id="dataTables-example">
 					<thead>
 						<tr align="center">
-
-
 							<th>ID Nguyên liêu</th>
 							<th>Tên Nguyên liệu</th>
 							<th>Tên Đơn vị</th>
@@ -42,14 +41,11 @@
 							<th>Tên ảnh</th>
 							<th>Delete</th>
 							<th>Edit</th>
-
-
 						</tr>
 					</thead>
 					<tbody>
 						<%
 							for (Material item : alItem) {
-								
 						%>
 						<tr class="odd gradeX" align="center">
 							<td><%=item.getId_material()%></td>

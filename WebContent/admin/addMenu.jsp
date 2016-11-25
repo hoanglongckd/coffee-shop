@@ -8,12 +8,9 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title> Thêm thực đơn</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title> Thêm Nguyên liệu</title>
-
-
 
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -21,40 +18,47 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Thêm Thực Đơn <small>Add</small>
+					Thêm
+					<small>Thực đơn</small>
 				</h1>
 
 			</div>
 			<!-- /.col-lg-12 -->
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="" method="post">
-					<div class="form-group">
-						<%
+					<%
 						ArrayList<TypeMenu> alItemU = (ArrayList<TypeMenu>) request.getAttribute("alItem");
 					%>
-						<div class="form-group">
-							<label>Loại Thực Dơn</label> <select name="idtypemenu"
-								class="input-short form-control">
-
-								<% for(TypeMenu itemM : alItemU) {%>
-								<option value="<%=itemM.getIdType()%>"><%=itemM.getNameType()%></option>
-								<%}%>
-
-							</select>
-						</div>
-
-						<div class="form-group">
-							
-							
-							<label>Tên Thực Đơn</label> <input class="form-control" name="name"
-								placeholder="Please Enter Username" />
-							<label>Giá Tiên</label> <input class="form-control" name="price"
-								placeholder="Please Enter Username" />
-							<label>Đường dẫn hình ảnh </label> <input class="form-control" name="link"
-								placeholder="Please Enter Username" />
-							<label>Mô tả</label> <input class="form-control" name="note"
-								placeholder="Please Enter Username" />
-						</div>
+					<div class="form-group">
+						<label>Danh mục</label> 
+						<select name="idtypemenu" class="input-short form-control" required>
+							<% for(TypeMenu itemM : alItemU) {%>
+							<option value="<%=itemM.getIdType()%>"><%=itemM.getNameType()%></option>
+							<%}%>
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label>Tên thực đơn</label> 
+						<input class="form-control" name="name"
+							placeholder="Nhập tên thực đơn" required />
+					</div>
+					
+					<div class="form-group">
+						<label>Giá tiền</label> 
+						<input type="number" class="form-control" name="price"
+							placeholder="Nhập giá tiền" required />
+					</div>
+					
+					<div class="form-group">
+						<label>Đường dẫn hình ảnh </label> 
+						<input type="text" class="form-control" name="link"
+							placeholder="Nhập đường dẫn hình ảnh" required />
+					</div>
+					<div class="form-group">
+						<label>Mô tả</label> 
+						<textarea class="form-control" name="note" placeholder="Nhập mô tả"></textarea>
+					</div>
 
 
 

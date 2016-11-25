@@ -17,7 +17,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Thêm <small> nhân viên</small>
+					Thêm 
+					<small>Nhân viên</small>
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
@@ -25,25 +26,22 @@
 				<form action="<%=request.getContextPath() %>/admin/addNhanVien"
 					method="POST">
 					<div class="form-group">
-						<label>Ảnh: </label> <input class="form-control" type="text"
+						<label>Ảnh</label> <input class="form-control" type="text"
 							name="anh" value="" placeholder="Nhập đường dẫn của ảnh" />
 					</div>
 					<div class="form-group">
-						<label>Quán: </label> <input class="form-control" type="text"
+						<label>Quán</label> <input class="form-control" type="text"
 							name="quan" value="Moc Coffee" readonly="read-ony"/>
 					</div>
 					<div class="form-group">
-						<label>Tên: </label> <input class="form-control" type="text"
+						<label>Tên</label> <input class="form-control" type="text"
 							name="ten" value=""/>
 					</div>
 					<div class="form-group">
-						<label>Ghi chú: </label> 
+						<label>Ghi chú</label> 
+						<textarea rows="4" cols="50" name="ghiChu" class="form-control"
+						placeholder="Nhập ghi chú"></textarea>
 					</div>
-					<div>
-						<textarea rows="4" cols="50" name= "ghiChu">
-						</textarea>
-					</div>
-					<br/>
 					<button type="submit" name="submit" class="btn btn-default">Add</button>
 					<button type="reset" class="btn btn-default">Reset</button>
 				</form>
