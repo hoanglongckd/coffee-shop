@@ -318,5 +318,67 @@ public class BillDao {
 		}
 		return alItem;
 	}
+	public BillAdmin getItemByIdAdmin(int id) {
+		conn = lb.getConnectMySQL();
+		
+		BillAdmin item = null;
+		String query = "SELECT * FROM hoadon WHERE idHoaDon = ? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id );
+			
+			rs = pst.executeQuery();
+			if(rs.next()){
+				item = new BillAdmin(rs.getInt("idHoaDon"),rs.getInt("idNhanVien"),rs.getInt("idBan"),rs.getInt("trangThaiThanhToan"),rs.getFloat("tongTien"),rs.getTimestamp("ngayLapHoaDon"),rs.getString("ghiChu"));
+			
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return item;
+	}
+	public int editItemAdmin(BillAdmin item) {
+		int result =0;
+		conn = lb.getConnectMySQL();
+		String query = "UPDATE  hoadon SET idNhanVien =?, idBan =? ,ghiChu= ? WHERE idHoaDon =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, item.getId_staff());
+			pst.setInt(2,item.getId_table());
+			pst.setString(3,item.getNote());
+			pst.setInt(4,item.getId_bill());
+			
+			pst.executeUpdate();
+			result =1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+		
+	}
 
 }

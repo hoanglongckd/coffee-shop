@@ -79,6 +79,25 @@ public class BillAdmin {
 		this.name_staff = name_staff;
 		this.name_table = name_table;
 	}
+	public BillAdmin(int id_bill, int id_staff, int id_table, int status_pay, float sumMoney, Timestamp date_single_up,
+			String note) {
+		super();
+		this.id_bill = id_bill;
+		this.id_staff = id_staff;
+		this.id_table = id_table;
+		this.status_pay = status_pay;
+		this.sumMoney = sumMoney;
+		this.date_single_up = date_single_up;
+		this.note = note;
+	}
+	public BillAdmin(int id_bill, int id_staff, int id_table, int status_pay, String note) {
+		super();
+		this.id_bill = id_bill;
+		this.id_staff = id_staff;
+		this.id_table = id_table;
+		this.status_pay = status_pay;
+		this.note = note;
+	}
 	
 
 }
