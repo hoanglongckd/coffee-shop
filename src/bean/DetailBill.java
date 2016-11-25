@@ -8,6 +8,14 @@ public class DetailBill {
 	private float count_money;
 	private int status_serve;
 	private float cost_menu;
+	private String name_menu;
+	
+	public String getName_menu() {
+		return name_menu;
+	}
+	public void setName_menu(String name_menu) {
+		this.name_menu = name_menu;
+	}
 	public int getId_detail() {
 		return id_detail;
 	}
@@ -81,6 +89,18 @@ public class DetailBill {
 		this.count_money = count_money;
 		this.status_serve = status_serve;
 		this.cost_menu = cost_menu;
+	}
+	public DetailBill(int id_detail, int id_bill, int id_menu, int count_menu, float count_money, int status_serve,
+			float cost_menu, String name_menu) {
+		super();
+		this.id_detail = id_detail;
+		this.id_bill = id_bill;
+		this.id_menu = id_menu;
+		this.count_menu = count_menu;
+		this.count_money = count_money;
+		this.status_serve = status_serve;
+		this.cost_menu = cost_menu;
+		this.name_menu = name_menu;
 	}
 	
 	

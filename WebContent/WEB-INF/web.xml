@@ -315,4 +315,14 @@
     <servlet-name>ControllerIndexBill</servlet-name>
     <url-pattern>/admin/indexBill</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ControllerEditBill</servlet-name>
+    <servlet-class>controller.ControllerEditBill</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerEditBill</servlet-name>
+    <url-pattern>/admin/editBill</url-pattern>
+  </servlet-mapping>
 </web-app>

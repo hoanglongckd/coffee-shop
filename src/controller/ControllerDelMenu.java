@@ -40,9 +40,9 @@ public class ControllerDelMenu extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		int result = ietmBo.delItem(id);
 		if(result > 0){
-			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=1");
+			response.sendRedirect(request.getContextPath()+"/admin/indexMenu?msg=1");
 		}else{
-			response.sendRedirect(request.getContextPath()+"/admin/indexMaterial?msg=0");
+			response.sendRedirect(request.getContextPath()+"/admin/indexMenu?msg=0");
 		}
 	}
 

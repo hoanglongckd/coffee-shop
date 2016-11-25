@@ -1,3 +1,4 @@
+<%@page import="bean.DetailBill"%>
 <%@page import="beanAdmin.BillAdmin"%>
 <%@page import="bean.Bill"%>
 <%@page import="bean.ImportGoods"%>
@@ -22,14 +23,14 @@
 			<div class="col-lg-12">
 
 				<h1 class="page-header">
-					Danh Sách Hóa Đơn<small>Danh Sách</small>
+					Danh Sách Chi Tiết Theo Hóa Đơn Hóa<small>Danh Sách edit</small>
 				</h1>
 
 
 			</div>
 
 			<%
-				ArrayList<BillAdmin> alItem = (ArrayList<BillAdmin>) request.getAttribute("alItem");
+				ArrayList<DetailBill> alItem = (ArrayList<DetailBill>) request.getAttribute("alItem");
 			%>
 			<form action="">
 				<table class="table table-striped table-bordered table-hover"
@@ -38,41 +39,34 @@
 						<tr align="center">
 
 
-							<th>ID Hóa Đơn</th>
-							<th>Tên Nhân Viên</th>
-							<th>Tên Bàn</th>
-							<th>Trạng Thái Thanh Toán</th>
-							<th>Ngày Lập Hóa Đơn</th>
-							<th>Ghi Chú</th>
+							<th>ID Chi Tiết Hóa Đơn</th>
+							<th>Tên Thực Đơn</th>
+							<th>Số Lượng</th>
+							<th>Số Tiền</th>
+							
 							<th>Delete</th>
 							<th>Edit</th>
-							<th>Detail</th>
-							
 
 
 						</tr>
 					</thead>
 					<tbody>
 						<%
-							for (BillAdmin item : alItem) {
+							for (DetailBill item : alItem) {
 								
 						%>
 						<tr class="odd gradeX" align="center">
-							<td><%=item.getId_bill()%></td>
-							<td><%=item.getName_staff()%></td>
-							<td><%=item.getName_table()%></td>
-							<td><%=item.getStatus_pay()%></td>
-							<td><%=item.getDate_single_up()%></td>
-							<td><%=item.getNote()%></td>
+							<td><%=item.getId_detail()%></td>
+							<td><%=item.getName_menu()%></td>
+							<td><%=item.getCount_menu()%></td>
+							<td><%=item.getCost_menu()%></td>
+							
 							<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
-								href="<%=request.getContextPath()%>/admin/delBill?id=<%=item.getId_bill()%>">
+								href="<%=request.getContextPath()%>/admin/delDetailBill?id=<%=item.getId_detail()%>">
 									Delete</a></td>
 							<td class="center"><i class="fa fa-pencil fa-fw"></i> <a
-								href="<%=request.getContextPath()%>/admin/editBill?id=<%=item.getId_bill()%>">
+								href="<%=request.getContextPath()%>/admin/editDetailBill?id=<%=item.getId_detail()%>">
 									Edit</a></td>
-							<td class="center"><i class="fa fa-pencil fa-fw"></i> <a
-								href="<%=request.getContextPath()%>/admin/detailBill?id=<%=item.getId_bill()%>">
-									Detail</a></td>
 						</tr>
 						<%
 							}

@@ -53,5 +53,13 @@ public class BillBo {
 		return itemDao.getListAdmin();
 	}
 
+	public BillAdmin getItemByIdAdmin(int id) {
+		return itemDao.getItemByIdAdmin(id);
+	}
+
+	public int editItemAdmin(BillAdmin item) {
+		return itemDao.editItemAdmin(item);
+	}
+
 	
 }
