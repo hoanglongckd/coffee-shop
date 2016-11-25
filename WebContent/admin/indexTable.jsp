@@ -5,7 +5,6 @@
 <%@include file="/templates/inc/_header.jsp" %>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
 
 <title>Danh sách bàn</title>
 

@@ -8,7 +8,6 @@
 <%@include file="/templates/inc/_header.jsp" %>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
 <title> Thêm Nguyên liệu</title>
 
 
@@ -27,25 +26,24 @@
 			<div class="col-lg-7" style="padding-bottom: 120px">
 				<form action="" method="post">
 					<div class="form-group">
-						
-						<div class="form-group">
-							
-							
-							<label>Tên Nguyên Liệu</label> <input class="form-control" name="name"
-								placeholder="Please Enter Username" />
-								<label>Đơn Vị Tính</label> <input class="form-control" name="unit"
-								placeholder="Please Enter Username" />
-							<label>Đường dẫn hình ảnh</label> <input class="form-control" name="link"
-								placeholder="Please Enter Username" />
-							<label>Ghi Chú</label> <input class="form-control" name="note"
-								placeholder="Please Enter Username" />
-						</div>
-
-
-
-						<button type="submit" name="submit" class="btn btn-default">
-							Add</button>
-						<!--  <button type="reset" class="btn btn-default">Reset</button> -->
+						<label>Tên Nguyên Liệu</label> 
+						<input class="form-control" name="name" placeholder="Please Enter Username" />
+					</div>
+					<div class="form-group">
+						<label>Đơn Vị Tính</label>
+						<input class="form-control" name="unit" placeholder="Please Enter Username" />
+					</div>
+					<div class="form-group">
+						<label>Đường dẫn hình ảnh</label> 
+						<input class="form-control" name="link" placeholder="Please Enter Username" />
+					</div>
+					<div class="form-group">
+						<label>Ghi Chú</label> 
+						<input class="form-control" name="note" placeholder="Please Enter Username" />
+					</div>
+					
+					<button type="submit" name="submit" class="btn btn-default">Add</button>
+					 <button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>
 		</div>
