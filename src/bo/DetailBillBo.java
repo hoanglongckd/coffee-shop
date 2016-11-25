@@ -59,4 +59,8 @@ public class DetailBillBo {
 		return itemDao.delItemByID(id);
 	}
 
+	public boolean getItemByIdBillDel(int id_bill) {
+		return itemDao.dgetItemByIdBillDel(id_bill);
+	}
+
 }

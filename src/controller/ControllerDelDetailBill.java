@@ -44,16 +44,24 @@ public class ControllerDelDetailBill extends HttpServlet {
 		BillBo itemBo = new BillBo();
 		DetailBillBo detailBo = new DetailBillBo();
 		int id = Integer.parseInt(request.getParameter("id"));
-		
+
 		DetailBill detailBill = detailBo.getItemById(id);
 		float moneyBill = itemBo.getMoneyByID(detailBill.getId_bill());
-		int result1 = itemBo.setSumMoneyByIDBill(detailBill.getId_bill(), moneyBill- detailBill.getCount_money());
+		int result1 = itemBo.setSumMoneyByIDBill(detailBill.getId_bill(), moneyBill - detailBill.getCount_money());
 		if (result1 > 0) {
-			int result = detailBo.delItemByID(id);
-			if (result > 0) {
-				response.sendRedirect(request.getContextPath() + "/admin/detailBill?id="+detailBill.getId_bill());
-			} else {
-				response.sendRedirect(request.getContextPath() + "/admin/indexBill?id="+detailBill.getId_bill());
+			int result2 = detailBo.delItemByID(id);
+			if (result2 > 0) {
+				int result = 0;
+				if (detailBo.getItemByIdBillDel(detailBill.getId_bill()) == true) {
+					result = itemBo.delItem(detailBill.getId_bill());
+				} else {
+					result = 1;
+				}
+				if (result > 0) {
+					response.sendRedirect(request.getContextPath() + "/admin/detailBill?id=" + detailBill.getId_bill());
+				} else {
+					response.sendRedirect(request.getContextPath() + "/admin/indexBill?id=" + detailBill.getId_bill());
+				}
 			}
 		}
 	}

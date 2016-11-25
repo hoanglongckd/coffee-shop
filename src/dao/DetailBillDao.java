@@ -322,4 +322,37 @@ public class DetailBillDao {
 		return result;
 	}
 
+
+	public boolean dgetItemByIdBillDel(int id_bill) {
+		conn = lb.getConnectMySQL();
+		boolean result = true;
+		String query = "SELECT * FROM chitiethoadon WHERE idHoaDon =? ";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_bill);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				if(id_bill == rs.getInt("idHoaDon")){
+					result = false;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return result;
+	}
+
 }
