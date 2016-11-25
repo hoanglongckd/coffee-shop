@@ -8,24 +8,20 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title> Danh sách hóa đơn</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-<%@include file="/templates/inc/left_bar.jsp"%>
-<title> Danh sách Nguyên liệu</title>
 
 <!-- Page Content -->
-
 <div id="page-wrapper">
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-
 				<h1 class="page-header">
-					Danh Sách Hóa Đơn<small>Danh Sách</small>
+					Danh Sách
+					<small>Hóa đơn</small>
 				</h1>
-
-
 			</div>
 
 			<%
@@ -36,8 +32,6 @@
 					id="dataTables-example">
 					<thead>
 						<tr align="center">
-
-
 							<th>ID Hóa Đơn</th>
 							<th>Tên Nhân Viên</th>
 							<th>Tên Bàn</th>
@@ -48,15 +42,11 @@
 							<th>Delete</th>
 							<th>Edit</th>
 							<th>Detail</th>
-							
-
-
 						</tr>
 					</thead>
 					<tbody>
 						<%
 							for (BillAdmin item : alItem) {
-								
 						%>
 						<tr class="odd gradeX" align="center">
 							<td><%=item.getId_bill()%></td>
@@ -91,4 +81,3 @@
 
 <jsp:include page="/templates/inc/_footer-start.jsp" />
 <jsp:include page="/templates/inc/_footer-end.jsp" />
-

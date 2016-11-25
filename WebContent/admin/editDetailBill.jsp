@@ -11,9 +11,9 @@
 <%@  page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/templates/inc/_header.jsp" %>
+<title>Sửa hóa đơn chi tiết</title>
 <%@include file="/templates/inc/_top.jsp" %>
 <%@include file="/templates/inc/_menu.jsp" %>
-
 
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -21,7 +21,8 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">
-					Thực Đơn <small>Edit</small>
+					Sửa
+					<small>Hóa đơn chi tiết</small>
 				</h1>
 			</div>
 			<!-- /.col-lg-12 -->
@@ -30,14 +31,12 @@
 					DetailBill Item = (DetailBill) request.getAttribute("objItem");
 				%>
 				<form action="" method="POST">
-					
-                            
-                      <%
+                	<%
 						ArrayList<MenuAdmin> alItemU = (ArrayList<MenuAdmin>) request.getAttribute("alItem");
 					%>
-                               <div class="form-group">
-								<label>Thực Đơn</label> <select name="menu"
-								class="input-short form-control">
+                    <div class="form-group">
+						<label>Thực Đơn</label>
+						<select name="menu" class="input-short form-control">
 
 						<% for(MenuAdmin itemM : alItemU) {
 							String selected ="";
@@ -49,23 +48,17 @@
 						%>
 								<option <%=selected %> value="<%=itemM.getId_Menu()%>"><%=itemM.getName()%></option>
 						<%}%>		
-
-							</select>
-						</div>
+						</select>
+					</div>
 						
-						<div class="form-group">
-                     
-                               <label>Số Lượng</label> <input class="form-control" name="count" value="<%=Item.getCount_menu() %>"
-								placeholder="Please Enter Username" />
-							
-                            </div>
-                            
-                            
-
-
-					<button type="submit" name="submit" class="btn btn-default">
-						Edit</button>
-					<!--  <button type="reset" class="btn btn-default">Reset</button> -->
+					<div class="form-group">
+                       	<label>Số Lượng</label>
+                       	<input class="form-control" name="count" value="<%=Item.getCount_menu() %>"
+							type="number" placeholder="Nhập số lượng" />
+                       </div>
+                        
+					<button type="submit" name="submit" class="btn btn-default">Edit</button>
+					<button type="reset" class="btn btn-default">Reset</button>
 				</form>
 			</div>
 		</div>
@@ -77,6 +70,3 @@
 
 <jsp:include page="/templates/inc/_footer-start.jsp" />
 <jsp:include page="/templates/inc/_footer-end.jsp" />
-</body>
-
-</html>
