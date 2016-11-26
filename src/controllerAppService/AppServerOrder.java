@@ -18,7 +18,9 @@ import bean.PrimitiveType;
 import bo.BillBo;
 import bo.CostBo;
 import bo.DetailBillBo;
+import bo.DetailStockBo;
 import bo.OrderBo;
+import bo.StockBo;
 import bo.TableBo;
 
 @Path("/serverOrder")
@@ -28,6 +30,9 @@ public class AppServerOrder {
 	DetailBillBo detailBillBo = new DetailBillBo();
 	TableBo tableBo = new TableBo();
 	CostBo costBo = new CostBo();
+
+	DetailStockBo detaiStockBo = new DetailStockBo();
+	StockBo stickBo = new StockBo();
 
 	@GET
 	@Path("/list")
@@ -55,7 +60,19 @@ public class AppServerOrder {
 							float money = costBo.getItemByIdMenu(order.getId_menu()).getCost() * order.getCount_menu();
 							detailBillBo.addItem(
 									new DetailBill(0, idBill, order.getId_menu(), order.getCount_menu(), money, 0));
-
+							boolean checkIdMenu = detaiStockBo.checkIdMenuByID(order.getId_menu());
+							if (checkIdMenu == true) {
+								int res1 = detaiStockBo.getAcountGoodByIDMenu(order.getId_menu());
+								if (res1 > 0) {
+									detaiStockBo.setAcountGoodByID(order.getId_menu(), (res1 - order.getCount_menu()));
+									boolean checkStocIdMenu = stickBo.getItemByIdMaterial(order.getId_menu());
+									if (checkStocIdMenu == true) {
+										int countStock = stickBo.getQuality(order.getId_menu());
+										stickBo.setQualityByIDMaterial(order.getId_menu(),
+												countStock - order.getCount_menu());
+									}
+								}
+							}
 						}
 						float money = detailBillBo.getSumMoney(idBill);
 						billBo.setSumMoney(idBill, money);
@@ -68,7 +85,20 @@ public class AppServerOrder {
 							float money = costBo.getItemByIdMenu(order.getId_menu()).getCost() * order.getCount_menu();
 							detailBillBo.addItem(
 									new DetailBill(0, idBill, order.getId_menu(), order.getCount_menu(), money, 0));
-
+							boolean checkIdMenu = detaiStockBo.checkIdMenuByID(order.getId_menu());
+							System.out.println("te1" + checkIdMenu);
+							if (checkIdMenu == true) {
+								int res1 = detaiStockBo.getAcountGoodByIDMenu(order.getId_menu());
+								if (res1 > 0) {
+									detaiStockBo.setAcountGoodByID(order.getId_menu(), (res1 - order.getCount_menu()));
+									boolean checkStocIdMenu = stickBo.getItemByIdMaterial(order.getId_menu());
+									if (checkStocIdMenu == true) {
+										int countStock = stickBo.getQuality(order.getId_menu());
+										stickBo.setQualityByIDMaterial(order.getId_menu(),
+												countStock - order.getCount_menu());
+									}
+								}
+							}
 						}
 						float money = detailBillBo.getSumMoney(idBill);
 						billBo.setSumMoney(idBill, money);

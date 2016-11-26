@@ -233,4 +233,98 @@ public class DetailStockDao {
 		return result;
 	}
 
+
+	public boolean checkIdMenuByID(int id_menu) {
+		boolean result =false;
+		conn = lb.getConnectMySQL();
+		
+		String query = "SELECT * FROM chitietkho WHERE idThucDon = ?  LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_menu);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				if(rs.getInt("idThucDon")== id_menu){
+					result =true;
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+	}
+
+
+	public int getAcountGoodByIDMenu(int id_menu) {
+		int result =0;
+		conn = lb.getConnectMySQL();
+		
+		String query = "SELECT * FROM chitietkho WHERE idThucDon = ?  LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1,id_menu);
+			rs = pst.executeQuery();
+			if(rs.next()){
+				result = rs.getInt("soLuongConTrongKho");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return result;
+	}
+
+
+	public void setAcountGoodByID(int id_menu, int count_menu) {
+		conn = lb.getConnectMySQL();
+		String query = "UPDATE  chitietkho SET soLuongConTrongKho =? WHERE idThucDon =? LIMIT 1";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, count_menu);
+			pst.setInt(2, id_menu);
+			
+			
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+
 }

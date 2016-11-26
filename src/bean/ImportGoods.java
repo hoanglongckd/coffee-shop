@@ -15,6 +15,7 @@ public class ImportGoods {
 	private  float count_money;
 	private Timestamp date_end;
 	private int status_use;
+	private int count_good_until_stock;
 	public int getId_import() {
 		return id_import;
 	}
@@ -56,6 +57,13 @@ public class ImportGoods {
 	}
 	public void setCount_money(float count_money) {
 		this.count_money = count_money;
+	}
+	
+	public int getCount_good_until_stock() {
+		return count_good_until_stock;
+	}
+	public void setCount_good_until_stock(int count_good_until_stock) {
+		this.count_good_until_stock = count_good_until_stock;
 	}
 	public ImportGoods(int id_import, int id_material, int id_staff, int id_shop, int count_goods,
 			Timestamp date_import, float count_money) {
@@ -111,6 +119,23 @@ public class ImportGoods {
 		this.count_money = count_money;
 		this.date_end = date_end;
 		this.status_use = status_use;
+	}
+	public ImportGoods(int id_import, int id_material, String name_material, int id_staff, String name_staff,
+			int id_shop, int count_goods, Timestamp date_import, float count_money, Timestamp date_end, int status_use,
+			int count_good_until_stock) {
+		super();
+		this.id_import = id_import;
+		this.id_material = id_material;
+		this.name_material = name_material;
+		this.id_staff = id_staff;
+		this.name_staff = name_staff;
+		this.id_shop = id_shop;
+		this.count_goods = count_goods;
+		this.date_import = date_import;
+		this.count_money = count_money;
+		this.date_end = date_end;
+		this.status_use = status_use;
+		this.count_good_until_stock = count_good_until_stock;
 	}
 	
 

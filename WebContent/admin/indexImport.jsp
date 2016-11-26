@@ -37,6 +37,8 @@
 						<th>Tên Nhân Viên</th>
 						<th>Số Lượng</th>
 						<th>Số tiền</th>
+						<th>Số Lượng còn trong kho</th>
+						<th>Tình Trạng sử dụng</th>
 						<th>Delete</th>
 						<th>Edit</th>
 					</tr>
@@ -52,6 +54,12 @@
 						<td><%=item.getName_staff()%></td>
 						<td><%=item.getCount_goods()%></td>
 						<td><%=(int)item.getCount_money()%></td>
+						<td><%=(int)item.getCount_good_until_stock()%></td>
+						<%if(item.getStatus_use() ==1){ %>
+							<td>Đang dùng được</td>
+							<%}else{ %>
+							<td>Không dùng được</td>
+							<%} %>
 						
 						<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a
 							href="<%=request.getContextPath()%>/admin/delImport?id=<%=item.getId_import()%>">

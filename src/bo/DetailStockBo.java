@@ -37,5 +37,18 @@ public class DetailStockBo {
 		return itemDao.getIdDetailByID(id_import);
 	}
 
+	public boolean checkIdMenuByID(int id_menu) {
+		return itemDao.checkIdMenuByID(id_menu);
+	}
+
+	public int getAcountGoodByIDMenu(int id_menu) {
+		return itemDao.getAcountGoodByIDMenu(id_menu);
+	}
+
+	public void setAcountGoodByID(int id_menu, int count_menu) {
+		itemDao.setAcountGoodByID(id_menu, count_menu);
+		
+	}
+
 	
 }

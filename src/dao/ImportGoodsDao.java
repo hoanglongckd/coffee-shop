@@ -26,7 +26,7 @@ public class ImportGoodsDao {
 			rs = pst.executeQuery();
 			
 			while (rs.next()) {
-				Item = new ImportGoods(rs.getInt("idNhapHang"),rs.getInt("idThucDon"),rs.getString("tenThucDon"),rs.getInt("idNhanVien"), rs.getString("tenNhanVien"),rs.getInt("idQuan"), rs.getInt("soLuong"), rs.getTimestamp("ngayNhapHang"), rs.getFloat("soTien"),rs.getTimestamp("ngayHetHan"), rs.getInt("tinhTrangSuDung"));
+				Item = new ImportGoods(rs.getInt("idNhapHang"),rs.getInt("idThucDon"),rs.getString("tenThucDon"),rs.getInt("idNhanVien"), rs.getString("tenNhanVien"),rs.getInt("idQuan"), rs.getInt("soLuong"), rs.getTimestamp("ngayNhapHang"), rs.getFloat("soTien"),rs.getTimestamp("ngayHetHan"), rs.getInt("tinhTrangSuDung"),rs.getInt("soLuongConTrongKho"));
 				alItem.add(Item);
 			}
 		} catch (SQLException e) {
