@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bo.CostBo;
 
@@ -35,13 +36,18 @@ public class ControllerDelCost extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CostBo ItemBo = new CostBo();
-		int id = Integer.parseInt(request.getParameter("id"));
-		int result = ItemBo.delItem(id);
-		if(result > 0){
-			response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=1");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			CostBo ItemBo = new CostBo();
+			int id = Integer.parseInt(request.getParameter("id"));
+			int result = ItemBo.delItem(id);
+			if(result > 0){
+				response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=1");
+			}else{
+				response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=0");
+			}
 		}else{
-			response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=0");
+			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}
 	}
 

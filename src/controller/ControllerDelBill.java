@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bo.BillBo;
 import bo.DetailBillBo;
@@ -40,17 +41,22 @@ public class ControllerDelBill extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BillBo itemBo = new BillBo();
-		DetailBillBo detailBo = new DetailBillBo();
-		int id = Integer.parseInt(request.getParameter("id"));
-		int result1 = detailBo.delItemByBill(id);
-		if (result1 > 0) {
-			int result = itemBo.delItem(id);
-			if (result > 0) {
-				response.sendRedirect(request.getContextPath() + "/admin/indexBill?msg=1");
-			} else {
-				response.sendRedirect(request.getContextPath() + "/admin/indexBill?msg=0");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			BillBo itemBo = new BillBo();
+			DetailBillBo detailBo = new DetailBillBo();
+			int id = Integer.parseInt(request.getParameter("id"));
+			int result1 = detailBo.delItemByBill(id);
+			if (result1 > 0) {
+				int result = itemBo.delItem(id);
+				if (result > 0) {
+					response.sendRedirect(request.getContextPath() + "/admin/indexBill?msg=1");
+				} else {
+					response.sendRedirect(request.getContextPath() + "/admin/indexBill?msg=0");
+				}
 			}
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}
 	}
 
