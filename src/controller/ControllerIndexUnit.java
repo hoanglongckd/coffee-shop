@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bo.UnitBo;
 
@@ -36,10 +37,16 @@ public class ControllerIndexUnit extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UnitBo ItemBo = new UnitBo();
-		request.setAttribute("alItem", ItemBo.getList());
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUnit.jsp");
-		rd.forward(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			UnitBo ItemBo = new UnitBo();
+			request.setAttribute("alItem", ItemBo.getList());
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUnit.jsp");
+			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
+		}
+		
 	}
 
 }

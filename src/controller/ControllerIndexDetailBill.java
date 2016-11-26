@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bo.DetailBillBo;
 
@@ -36,11 +37,16 @@ public class ControllerIndexDetailBill extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		DetailBillBo itemBillBo = new DetailBillBo();
-		request.setAttribute("alItem", itemBillBo.getListByIDBill(id));
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/detailBill.jsp");
-		rd.forward(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			int id = Integer.parseInt(request.getParameter("id"));
+			DetailBillBo itemBillBo = new DetailBillBo();
+			request.setAttribute("alItem", itemBillBo.getListByIDBill(id));
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/detailBill.jsp");
+			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
+		}
 	}
 
 }

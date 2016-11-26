@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bo.ProcessBo;
 
@@ -36,10 +37,15 @@ public class ControllerIndexProcess extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProcessBo ItemBo = new ProcessBo();
-		request.setAttribute("alItem", ItemBo.getList());
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexProcess.jsp");
-		rd.forward(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			ProcessBo ItemBo = new ProcessBo();
+			request.setAttribute("alItem", ItemBo.getList());
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/indexProcess.jsp");
+			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
+		}
 	}
 
 }

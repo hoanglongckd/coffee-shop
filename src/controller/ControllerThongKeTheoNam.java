@@ -33,18 +33,23 @@ public class ControllerThongKeTheoNam extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ThongKeBo thongkeBo = new ThongKeBo();
-		System.out.println("thong ke theo nam");
-		ArrayList<ThongkeBean> listThongKeTheoNam = thongkeBo.getListThongKeTheoNam("2016");
-		int tongLoiNhuan=0;
-		for(ThongkeBean thongKe : listThongKeTheoNam){
-			tongLoiNhuan+=thongKe.getProfit()-thongKe.getFee();
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			ThongKeBo thongkeBo = new ThongKeBo();
+			System.out.println("thong ke theo nam");
+			ArrayList<ThongkeBean> listThongKeTheoNam = thongkeBo.getListThongKeTheoNam("2016");
+			int tongLoiNhuan=0;
+			for(ThongkeBean thongKe : listThongKeTheoNam){
+				tongLoiNhuan+=thongKe.getProfit()-thongKe.getFee();
+			}
+			request.setAttribute("listThongKeTheoNam", listThongKeTheoNam);
+			request.setAttribute("nam", "2016");
+			request.setAttribute("tongLoiNhuan", tongLoiNhuan);
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/thongKeTheoNam.jsp");
+			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}
-		request.setAttribute("listThongKeTheoNam", listThongKeTheoNam);
-		request.setAttribute("nam", "2016");
-		request.setAttribute("tongLoiNhuan", tongLoiNhuan);
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/thongKeTheoNam.jsp");
-		rd.forward(request, response);
 		
 	}
 
