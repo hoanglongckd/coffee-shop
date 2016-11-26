@@ -26,22 +26,25 @@ public class ControllerListNhanVien extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
     	HttpSession session = request.getSession();
-    	int idNhanVien = Integer.parseInt(session.getAttribute("idNhanVien").toString());
-    	ArrayList<NhanVien> listNhanVien = NhanVienBo.getInstance().getListNhanVienDetailByIdQuan(1);
-    	for(NhanVien nv : listNhanVien){
-    		if (nv.getId()==idNhanVien){
-    			listNhanVien.remove(nv);
-    			break;
-    		}
-    	}
-		request.setAttribute("listNhanVien", listNhanVien);
-		ArrayList<Luong> listLuongNhanVien = LuongBo.getInstance().getListLuong();
-		request.setAttribute("listLuongNhanVien", listLuongNhanVien);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/danh-sach-nhan-vien.jsp");
-		rd.forward(request, response);
+		if(session.getAttribute("idNhanVien")!=null){
+	    	int idNhanVien = Integer.parseInt(session.getAttribute("idNhanVien").toString());
+	    	ArrayList<NhanVien> listNhanVien = NhanVienBo.getInstance().getListNhanVienDetailByIdQuan(1);
+	    	for(NhanVien nv : listNhanVien){
+	    		if (nv.getId()==idNhanVien){
+	    			listNhanVien.remove(nv);
+	    			break;
+	    		}
+	    	}
+			request.setAttribute("listNhanVien", listNhanVien);
+			ArrayList<Luong> listLuongNhanVien = LuongBo.getInstance().getListLuong();
+			request.setAttribute("listLuongNhanVien", listLuongNhanVien);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/danh-sach-nhan-vien.jsp");
+			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
+		}
 	}
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
