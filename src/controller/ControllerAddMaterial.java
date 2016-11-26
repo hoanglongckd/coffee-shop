@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Anh;
 import bean.Material;
@@ -48,7 +49,8 @@ public class ControllerAddMaterial extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
 		MaterialBo maBo = new MaterialBo();
 
 		UnitBo unitBo = new UnitBo();
@@ -79,6 +81,9 @@ public class ControllerAddMaterial extends HttpServlet {
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/addMaterial.jsp");
 			rd.forward(request, response);
+		}
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}
 	}
 

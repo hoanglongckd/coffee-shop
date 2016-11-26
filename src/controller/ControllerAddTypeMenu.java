@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.TypeMenu;
 import bo.TypeMenuBo;
@@ -37,6 +38,8 @@ public class ControllerAddTypeMenu extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
 		TypeMenuBo itemBo = new TypeMenuBo();
 		if(request.getParameter("submit")!= null){// dang nhan nut submit
 			 
@@ -54,6 +57,9 @@ public class ControllerAddTypeMenu extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/addTypeMenu.jsp");
 			rd.forward(request, response);
 		}
+	}else{
+		response.sendRedirect(request.getContextPath()+"/admin/login");
+	}
 	}
 	
 }

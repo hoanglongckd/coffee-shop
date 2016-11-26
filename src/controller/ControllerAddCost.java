@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Cost;
 import bo.CostBo;
@@ -40,37 +41,42 @@ public class ControllerAddCost extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CostBo ItemBo = new CostBo();
-		if(request.getParameter("submit")!= null){// dang nhan nut submit
-			 int id_menu =0;
-			 float cost = 0;
-			//String name  =new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
-			 if(request.getParameter("id_menu")!=null){
-				 id_menu = Integer.parseInt(request.getParameter("id_menu"));
-			 }
-			  cost = Float.parseFloat(request.getParameter("cost"));
-			  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			  Timestamp date_update = null; 
-			 java.util.Date prareDate  = null;
-			 try {
-				prareDate = sdf.parse(request.getParameter("date"));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			 date_update = new Timestamp(prareDate.getTime());
-			Cost item = new Cost(0, id_menu, cost, date_update);
-			
-			int result = ItemBo.addItem(item);
-			if(result >0){
-				response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=1");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			CostBo ItemBo = new CostBo();
+			if(request.getParameter("submit")!= null){// dang nhan nut submit
+				 int id_menu =0;
+				 float cost = 0;
+				//String name  =new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
+				 if(request.getParameter("id_menu")!=null){
+					 id_menu = Integer.parseInt(request.getParameter("id_menu"));
+				 }
+				  cost = Float.parseFloat(request.getParameter("cost"));
+				  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				  Timestamp date_update = null; 
+				 java.util.Date prareDate  = null;
+				 try {
+					prareDate = sdf.parse(request.getParameter("date"));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 date_update = new Timestamp(prareDate.getTime());
+				Cost item = new Cost(0, id_menu, cost, date_update);
+				
+				int result = ItemBo.addItem(item);
+				if(result >0){
+					response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=1");
+				}else{
+					response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=0");
+				}
+				
 			}else{
-				response.sendRedirect(request.getContextPath()+"/admin/indexCost?msg=0");
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/addCost.jsp");
+				rd.forward(request, response);
 			}
-			
 		}else{
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/addCost.jsp");
-			rd.forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}
 	}
 	

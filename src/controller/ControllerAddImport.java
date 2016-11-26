@@ -52,6 +52,8 @@ public class ControllerAddImport extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
 		MenuBo meBo = new MenuBo();
 		MaterialBo maBo = new MaterialBo();
 		request.setAttribute("alItemM", maBo.getListStaff());
@@ -59,7 +61,6 @@ public class ControllerAddImport extends HttpServlet {
 		ImportGoodsBo itemBo = new ImportGoodsBo();
 		DetailStockBo detailStockBo = new DetailStockBo();
 		StockBo stockBo = new StockBo();
-		HttpSession session = request.getSession();
 		if (request.getParameter("submit") != null) {// dang nhan nut submit
 			int id_staff = Integer.parseInt(session.getAttribute("idNhanVien").toString());
 		
@@ -117,6 +118,9 @@ public class ControllerAddImport extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/addImport.jsp");
 			rd.forward(request, response);
 		}
+	}else{
+		response.sendRedirect(request.getContextPath()+"/admin/login");
+	}
 	}
 
 }

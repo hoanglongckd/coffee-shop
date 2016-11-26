@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Anh;
 import bean.Cost;
@@ -50,6 +51,8 @@ public class ControllerAddMenu extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
 		TypeMenuBo typemenuBo = new TypeMenuBo();
 		MenuBo itemBo = new MenuBo();
 		CostBo costBo = new CostBo();
@@ -97,6 +100,9 @@ public class ControllerAddMenu extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/addMenu.jsp");
 			rd.forward(request, response);
 		}
+	}else{
+		response.sendRedirect(request.getContextPath()+"/admin/login");
+	}
 	}
 
 }
