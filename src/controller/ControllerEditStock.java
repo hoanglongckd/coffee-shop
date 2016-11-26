@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Stock;
 import bo.MaterialBo;
@@ -43,39 +44,44 @@ public class ControllerEditStock extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		MenuBo maBo = new MenuBo();
-		StockBo ItemBo = new StockBo();
-		request.setAttribute("alItemM", maBo.getListMenuAdmin());
-
-		if (request.getParameter("submit") != null) {
-			int taId = Integer.parseInt(request.getParameter("id"));
-			int id_Shop =1;
-			 
-			 int id_material =0;
-			 int totalNumber =0;
-			//String name  =new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
-			 if(request.getParameter("material")!=null){
-				 id_material = Integer.parseInt(request.getParameter("material"));
-			 }
-			 
-			 if(request.getParameter("totalnumber")!=null){
-				 totalNumber = Integer.parseInt(request.getParameter("totalnumber"));
-			 }
-			
-			Stock Item = new Stock(taId, id_material, id_Shop, totalNumber);
-			int result = ItemBo.editItem(Item);
-			if(result >0){
-				response.sendRedirect(request.getContextPath()+"/admin/indexStock?msg=1");
-			}else{
-				response.sendRedirect(request.getContextPath()+"/admin/indexStock?msg=0");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			MenuBo maBo = new MenuBo();
+			StockBo ItemBo = new StockBo();
+			request.setAttribute("alItemM", maBo.getListMenuAdmin());
+	
+			if (request.getParameter("submit") != null) {
+				int taId = Integer.parseInt(request.getParameter("id"));
+				int id_Shop =1;
+				 
+				 int id_material =0;
+				 int totalNumber =0;
+				//String name  =new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
+				 if(request.getParameter("material")!=null){
+					 id_material = Integer.parseInt(request.getParameter("material"));
+				 }
+				 
+				 if(request.getParameter("totalnumber")!=null){
+					 totalNumber = Integer.parseInt(request.getParameter("totalnumber"));
+				 }
+				
+				Stock Item = new Stock(taId, id_material, id_Shop, totalNumber);
+				int result = ItemBo.editItem(Item);
+				if(result >0){
+					response.sendRedirect(request.getContextPath()+"/admin/indexStock?msg=1");
+				}else{
+					response.sendRedirect(request.getContextPath()+"/admin/indexStock?msg=0");
+				}
+	
+			} else {
+				int taId = Integer.parseInt(request.getParameter("id"));
+				Stock Item = ItemBo.getItemById(taId);
+				request.setAttribute("objItem", Item);
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/editStock.jsp");
+				rd.forward(request, response);
 			}
-
-		} else {
-			int taId = Integer.parseInt(request.getParameter("id"));
-			Stock Item = ItemBo.getItemById(taId);
-			request.setAttribute("objItem", Item);
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/editStock.jsp");
-			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}
 	}
 }

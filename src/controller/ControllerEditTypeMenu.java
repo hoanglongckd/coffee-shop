@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.TypeMenu;
 import bo.TypeMenuBo;
@@ -41,30 +42,35 @@ public class ControllerEditTypeMenu extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		TypeMenuBo ItemBo = new TypeMenuBo();
-
-		if (request.getParameter("submit") != null) {
-
-			int id = Integer.parseInt(request.getParameter("tMid"));
-			String name = new String(request.getParameter("nameTable").getBytes("ISO-8859-1"), "UTF-8");
-			
-			 
-
-			TypeMenu Item = new TypeMenu(id, name);
-			
-			int result = ItemBo.editItem(Item);
-			if (result > 0) {
-				response.sendRedirect(request.getContextPath() + "/admin/indexTypeMenu?msg=1");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("idNhanVien")!=null){
+			TypeMenuBo ItemBo = new TypeMenuBo();
+	
+			if (request.getParameter("submit") != null) {
+	
+				int id = Integer.parseInt(request.getParameter("tMid"));
+				String name = new String(request.getParameter("nameTable").getBytes("ISO-8859-1"), "UTF-8");
+				
+				 
+	
+				TypeMenu Item = new TypeMenu(id, name);
+				
+				int result = ItemBo.editItem(Item);
+				if (result > 0) {
+					response.sendRedirect(request.getContextPath() + "/admin/indexTypeMenu?msg=1");
+				} else {
+					response.sendRedirect(request.getContextPath() + "/admin/indexTypeMenu?msg=0");
+				}
+	
 			} else {
-				response.sendRedirect(request.getContextPath() + "/admin/indexTypeMenu?msg=0");
+				int taId = Integer.parseInt(request.getParameter("tMid"));
+				TypeMenu Item = ItemBo.getItemById(taId);
+				request.setAttribute("objItem", Item);
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/editTypeMenu.jsp");
+				rd.forward(request, response);
 			}
-
-		} else {
-			int taId = Integer.parseInt(request.getParameter("tMid"));
-			TypeMenu Item = ItemBo.getItemById(taId);
-			request.setAttribute("objItem", Item);
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/editTypeMenu.jsp");
-			rd.forward(request, response);
+		}else{
+			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}
 	}
 }
